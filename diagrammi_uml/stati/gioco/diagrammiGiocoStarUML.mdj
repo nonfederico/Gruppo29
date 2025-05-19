@@ -7094,7 +7094,7 @@
 											"top": 727,
 											"width": 151,
 											"height": 13,
-											"text": "Carte: StateMachine2"
+											"text": "Carte"
 										},
 										{
 											"_type": "LabelView",
@@ -10153,10 +10153,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGWJ0PbvA5tqF8="
 							},
-							"name": "Carte",
-							"submachine": {
-								"$ref": "AAAAAAGW6KV3xngvz4g="
-							}
+							"name": "Carte"
 						},
 						{
 							"_type": "UMLState",
@@ -11266,23 +11263,6 @@
 							]
 						}
 					]
-				}
-			]
-		},
-		{
-			"_type": "UMLStateMachine",
-			"_id": "AAAAAAGW6KV3xngvz4g=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "StateMachine2",
-			"regions": [
-				{
-					"_type": "UMLRegion",
-					"_id": "AAAAAAGW6KV3xngwlEI=",
-					"_parent": {
-						"$ref": "AAAAAAGW6KV3xngvz4g="
-					}
 				}
 			]
 		}
