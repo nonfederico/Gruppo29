@@ -15,3 +15,6 @@ plancia di volo -> reprogrammato
 starUML per diagramma delle classi e macchina a stati
 
 https://staruml.io/
+
+SWING
+https://web.cs.ucla.edu/~miryung/teaching/EE379K-Spring2014/SwingTutorial.html
