@@ -14,23 +14,8 @@ public class Gioco {
 	private static Gioco g = null; //uso pattern singleton
 	
     public static void main(String[] args){
-    	BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-    	System.out.print("benvenuto, vuoi creare un gioco? (type y or n) ");
-    	String scelta= "";
-    	try {
-    		scelta = buffer.readLine();
-    		while(!scelta.equalsIgnoreCase("y") && !scelta.equalsIgnoreCase("n")) {
-    			System.out.print("vuoi creare un gioco? (type y or n)");
-    			scelta = buffer.readLine();
-    		}
-    	}catch (Exception e) {
-    		 System.out.println("errore nell'input");
-   	 	}
-    	 if (scelta.equalsIgnoreCase("y")) {
-             creaGioco();
-         } else {
-             System.out.println("Non hai voluto creare un gioco, addio astronauta.");
-         }
+    	Gioco.welcome();
+    	System.out.print("benvenuto, il numero di giocatori è: " + g.getNumeroGiocatori());
 	}
     
 	
@@ -39,7 +24,28 @@ public class Gioco {
     	//costruttore vuoto perchè settiamo il nome tramite funzione setnome
  }
 
-static void creaGioco() {
+ static void welcome() {
+
+ 	BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+ 	System.out.print("benvenuto, vuoi creare un gioco? (type y or n) ");
+ 	String scelta= "";
+ 	try {
+ 		scelta = buffer.readLine();
+ 		while(!scelta.equalsIgnoreCase("y") && !scelta.equalsIgnoreCase("n")) {
+ 			System.out.print("vuoi creare un gioco? (type y or n)");
+ 			scelta = buffer.readLine();
+ 		}
+ 	}catch (Exception e) {
+ 		 System.out.println("errore nell'input");
+	 	}
+ 	 if (scelta.equalsIgnoreCase("y")) {
+          creaGioco();
+      } else {
+          System.out.println("Non hai voluto creare un gioco, addio astronauta.");
+      }
+ }
+ 
+static Gioco creaGioco() {
 
 	getIstanza();
 	//imposta nome
@@ -69,7 +75,9 @@ static void creaGioco() {
 	 }
 	 }catch (Exception e) {
 		System.out.println("errore nell'inserimento del numero di giocatori");	}
+	 g.setNumGiocatori(numGiocatori);
 	 System.out.println("il numero di giocatori è: " + numGiocatori);
+	 return g;
 }
 
 public static Gioco getIstanza() {
@@ -103,10 +111,6 @@ public static Gioco getIstanza() {
      * @param nomeGioco
      */
 
-
-    public void selezioneGiocatori() {
-        // TODO implement here
-    }
 
     public void creaMazzo() {
         // TODO implement here
