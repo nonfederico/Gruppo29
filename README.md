@@ -36,3 +36,13 @@ prima si compila con il comando javac e poi si esegue con il comando java
 2)dopo aver compilato dobbiamo eseguire la classe contenente il main, avendo però importato altri package dobbiamo usare il comando  
 	![image](https://github.com/user-attachments/assets/7ce5000c-c62a-4ddd-9917-cfa8eae124f7)  
 -cp (-classpath) specifica dove la JVM o compilatore devono cercare i file.class e le librerie, in questo caso cercano partendo dalla cartella corrente ( . ) cioè quella in cui siamo quando usiamo il comando  
+
+# interfaccia gioco
+
+![Screenshot From 2025-05-23 01-15-22](https://github.com/user-attachments/assets/fea8e131-7457-4397-aada-10c747e625b3)
+ 
+frame formato da 4 panel fissi  
+il primo contenente il testo  
+il secondo contenente la plancia di volo  
+il terzo contenente le informazioni di gioco (batterie, soldi ecc)   
+il quarto contenente la plancia nave  
