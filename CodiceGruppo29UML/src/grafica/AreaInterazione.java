@@ -1,20 +1,22 @@
 package grafica;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
+//è il primo pannello in cui interagiamo con il giocatore tramite testo
 public class AreaInterazione extends JPanel {
 	// jpanel è un contenitore dove aggiungo componenti
+	private JTextArea textAreaUtente;
 	private JTextArea textArea;
-	private JTextField textField;
 
 	public AreaInterazione() {
+		textAreaUtente = new JTextArea();
 		textArea = new JTextArea();
-		setLayout(new BorderLayout()); // setto il layout solo di questo panel
-		add(textArea, BorderLayout.CENTER);
+		setLayout(new GridLayout(2, 1)); // setto il layout solo di questo panel
+		add(textArea);
+		add(textAreaUtente);
 	}
 
 	public void writeText(String testo) {
@@ -23,8 +25,8 @@ public class AreaInterazione extends JPanel {
 	}
 
 	public String readText() {
-		String inputText = textArea.getText();
-		textArea.setText("");
+		String inputText = textAreaUtente.getText();
+		textAreaUtente.setText("");
 		return inputText;
 	}
 }

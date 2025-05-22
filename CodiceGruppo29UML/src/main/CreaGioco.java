@@ -9,6 +9,7 @@ public class CreaGioco implements GameState {
 
 	@Override
 	public void enter() {
+
 		frameBase.returnAreaText("Inserisci nome del gioco:");
 //		if (!frameBase.areaInterazione.readText().equals("")) {
 //			frameBase.areaInterazione.writeText("Benvenuto astronauta...");
