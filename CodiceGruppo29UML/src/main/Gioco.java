@@ -1,80 +1,13 @@
 package main;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import grafica.FrameBase;
-
 public class Gioco {
 
 	private String nomeGioco;
 	private int numeroGiocatori;
 	private static Gioco g = null; // uso pattern singleton
 
-	public static void main(String[] args) {
-		new FrameBase();
-		// Gioco.welcome();
-	}
-
 	public Gioco() {
 		// costruttore vuoto perchè settiamo il nome tramite funzione setnome
-	}
-
-	static void welcome() {
-
-		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("benvenuto, vuoi creare un gioco? (type y or n) ");
-		String scelta = "";
-		try {
-			scelta = buffer.readLine();
-			while (!scelta.equalsIgnoreCase("y") && !scelta.equalsIgnoreCase("n")) {
-				System.out.print("vuoi creare un gioco? (type y or n)");
-				scelta = buffer.readLine();
-			}
-		} catch (Exception e) {
-			System.out.println("errore nell'input");
-		}
-		if (scelta.equalsIgnoreCase("y")) {
-			creaGioco();
-		} else {
-			System.out.println("Non hai voluto creare un gioco, addio astronauta.");
-		}
-	}
-
-	static Gioco creaGioco() {
-
-		getIstanza();
-		// imposta nome
-		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-
-		System.out.print("inserisci il nome del gioco: (4-10 caratteri):");
-		try {
-			String nome = buffer.readLine();
-			while (nome.isEmpty() || nome.length() < 4 || nome.length() > 10) {
-				System.out.print("inserisci il nome del gioco: ");
-				nome = buffer.readLine();
-			}
-			g.setNomeGioco(nome);
-			System.out.println("il nome è " + g.nomeGioco);
-		} catch (Exception e) {
-			System.out.println("errore nell'input");
-		}
-
-		// imposta numero giocatori
-		System.out.print("inserisci numero giocatori (1-4):");
-		int numGiocatori = 0;
-		try {
-			numGiocatori = Integer.parseInt(buffer.readLine());
-			while (numGiocatori < 1 || numGiocatori > 4) {
-				System.out.print("errore, inserisci numero giocatori (1-4):");
-				numGiocatori = Integer.parseInt(buffer.readLine());
-			}
-		} catch (Exception e) {
-			System.out.println("errore nell'inserimento del numero di giocatori");
-		}
-		g.setNumGiocatori(numGiocatori);
-		System.out.println("il numero di giocatori è: " + numGiocatori);
-		return g;
 	}
 
 	public static Gioco getIstanza() {
@@ -101,6 +34,64 @@ public class Gioco {
 	public int getNumeroGiocatori() {
 		return this.numeroGiocatori;
 	}
+
+//	static void welcome() {
+//
+//		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+//		System.out.print("benvenuto, vuoi creare un gioco? (type y or n) ");
+//		String scelta = "";
+//		try {
+//			scelta = buffer.readLine();
+//			while (!scelta.equalsIgnoreCase("y") && !scelta.equalsIgnoreCase("n")) {
+//				System.out.print("vuoi creare un gioco? (type y or n)");
+//				scelta = buffer.readLine();
+//			}
+//		} catch (Exception e) {
+//			System.out.println("errore nell'input");
+//		}
+//		if (scelta.equalsIgnoreCase("y")) {
+//			creaGioco();
+//		} else {
+//			System.out.println("Non hai voluto creare un gioco, addio astronauta.");
+//		}
+//	}
+//
+//	static Gioco creaGioco() {
+//
+//		getIstanza();
+//		// imposta nome
+//		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+//
+//		System.out.print("inserisci il nome del gioco: (4-10 caratteri):");
+//		try {
+//			String nome = buffer.readLine();
+//			while (nome.isEmpty() || nome.length() < 4 || nome.length() > 10) {
+//				System.out.print("inserisci il nome del gioco: ");
+//				nome = buffer.readLine();
+//			}
+//			g.setNomeGioco(nome);
+//			System.out.println("il nome è " + g.nomeGioco);
+//		} catch (Exception e) {
+//			System.out.println("errore nell'input");
+//		}
+//
+//		// imposta numero giocatori
+//		System.out.print("inserisci numero giocatori (1-4):");
+//		int numGiocatori = 0;
+//		try {
+//			numGiocatori = Integer.parseInt(buffer.readLine());
+//			while (numGiocatori < 1 || numGiocatori > 4) {
+//				System.out.print("errore, inserisci numero giocatori (1-4):");
+//				numGiocatori = Integer.parseInt(buffer.readLine());
+//			}
+//		} catch (Exception e) {
+//			System.out.println("errore nell'inserimento del numero di giocatori");
+//		}
+//		g.setNumGiocatori(numGiocatori);
+//		System.out.println("il numero di giocatori è: " + numGiocatori);
+//		return g;
+//	}
+//
 
 	/**
 	 * @param nomeGioco
