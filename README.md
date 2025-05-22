@@ -19,7 +19,7 @@ https://staruml.io/
 SWING
 https://web.cs.ucla.edu/~miryung/teaching/EE379K-Spring2014/SwingTutorial.html
 
-#USO DEL TERMINALE
+# USO DEL TERMINALE
 
 prima si compila con il comando javac e poi si esegue con il comando java
 
