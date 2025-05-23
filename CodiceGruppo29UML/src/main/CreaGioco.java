@@ -6,15 +6,21 @@ public class CreaGioco implements GameState {
 
 	private static Gioco g = null; // uso pattern singleton
 	FrameBase frameBase = new FrameBase(); // interfaccia grafica
+	String testoInserito;
 
 	@Override
 	public void enter() {
 
-		frameBase.returnAreaText("Inserisci nome del gioco:");
-//		if (!frameBase.areaInterazione.readText().equals("")) {
-//			frameBase.areaInterazione.writeText("Benvenuto astronauta...");
-//			g.getIstanza(); // creo un gioco o carico quello che esiste già
-//		}
+		frameBase.DisabledAreaText("Inserisci nome del gioco: /n");
+		do {
+			testoInserito = frameBase.writeAreaText();
+		} while (testoInserito.equals(""));
+
+		// if (!frameBase.writeAreaText().equals("")) {
+		frameBase.DisabledAreaText("benvenuto astronauta /n");
+		g.getIstanza(); // creo un gioco o carico quello che esiste già
+		frameBase.DisabledAreaText("gioco creato");
+		// }
 	}
 
 	@Override

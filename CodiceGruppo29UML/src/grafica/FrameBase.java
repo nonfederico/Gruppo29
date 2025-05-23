@@ -38,14 +38,19 @@ public class FrameBase extends JFrame {
 		add(tre);
 		add(quattro);
 
-		due.writeText("due");
-		tre.writeText("tre");
-		quattro.writeText("quattro");
+		due.writeTextfisso("due");
+		tre.writeTextfisso("tre");
+		quattro.writeTextfisso("quattro");
 
 	}
 
-	public void returnAreaText(String testoScritto) {
-		areaInterazione.writeText(testoScritto);
+	public void DisabledAreaText(String testoScritto) {
+		areaInterazione.writeTextfisso(testoScritto);
 	}
 
+	public String writeAreaText() {
+		// areaInterazione.writeTextfisso(testo);
+		String testoScritto = areaInterazione.readText();
+		return testoScritto;
+	}
 }
