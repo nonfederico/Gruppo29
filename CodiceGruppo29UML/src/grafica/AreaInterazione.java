@@ -52,4 +52,12 @@ public class AreaInterazione extends JPanel {
 //		textAreaUtente.setText("");
 //		return inputText;
 	}
+
+	public void disableReadText() {
+		textFieldUtente.setText("");
+
+//		String inputText = textAreaUtente.getText();
+//		textAreaUtente.setText("");
+//		return inputText;
+	}
 }

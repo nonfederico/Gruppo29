@@ -1,31 +1,51 @@
 package main;
 
-import java.io.*;
-import java.util.*;
-
 /**
  * 
  */
-public class Clessidra {
+public class Clessidra implements Runnable {
+	boolean attivo;
 
-    /**
-     * Default constructor
-     */
-    public Clessidra() {
-    }
+	@Override
+	public void run() {
+		// la clessidra sarà in un pane fissa
+		attivo = true;
+		while (attivo) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
-    /**
-     * 
-     */
-    public int tempoMax;
+	/**
+	 * Default constructor
+	 */
+	public Clessidra() {
+//    	creo clessidra, avvio
 
+	}
 
+//	public void avviaClessidra() {
+//	
+//	}
 
-    /**
-     * 
-     */
-    public void start() {
-        // TODO implement here
-    }
+	public void stopClessidra() {
+		attivo = false;
+	}
+
+	/**
+	 * 
+	 */
+	public int tempoMax;
+
+	/**
+	 * 
+	 */
+//	public void start() {
+//		// TODO implement here
+//	} uso run
 
 }

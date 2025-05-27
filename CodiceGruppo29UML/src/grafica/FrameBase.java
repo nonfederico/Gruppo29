@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 public class FrameBase extends JFrame {
+	// classe usata per gestire le 4 aree grafiche, ogni area sarà un thread
 
 	// viene implementata da tutti gli stati per mostrare a schermo quello che
 	// succede
@@ -49,8 +50,11 @@ public class FrameBase extends JFrame {
 	}
 
 	public String writeAreaText() {
-		// areaInterazione.writeTextfisso(testo);
 		String testoScritto = areaInterazione.readText();
 		return testoScritto;
+	}
+
+	public void disablewriteAreaText() {
+		areaInterazione.disableReadText();
 	}
 }
