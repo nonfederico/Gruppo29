@@ -3,12 +3,13 @@ package CreazioneGioco;
 import java.util.ArrayList;
 
 import grafica.HandleGraphics;
+import main.GameState;
 import player.Giocatore;
 
 //public class CreaGioco implements GameState {
 
-public class CreaGioco {
-	private static Gioco g = null; // uso pattern singleton
+public class CreaGioco implements GameState {
+	private static Gioco g = null; // uso pattern singleton per creare una sola partita (per la versione attuale)
 
 	private String testoInserito = "";
 	ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>(); // lista di giocatori, poi implementiamo lista
@@ -21,18 +22,28 @@ public class CreaGioco {
 //
 //	timer.setRepeats(false); // esegue solo una volta
 //	timer.start();
+	@Override
+	public void enter() {
+		switchState();
+	};
+
+	@Override
+	public void pause() {
+		// salva stato attuale per andare nel menu
+	}
+
+	@Override
+	public void exit() {
+		// salva stato del gioco
+
+	}
 
 	enum sottoStato {
 		ENTER, RUN, EXIT
 	}
 
-//	public void run() {
-//
-//	}
-	// boolean r = false;
 	private sottoStato statoCorrente = null;
 
-//	private handleState statoAttuale;
 	public CreaGioco() {
 		System.out.println("settatoStatoCorrente = ENTER");
 		setCurrentState(sottoStato.ENTER);
@@ -42,7 +53,7 @@ public class CreaGioco {
 	public void switchState() {
 		statoCorrente = getCurrentState();
 		System.out.println("entrato in switch con stato " + getCurrentState().toString());
-		// while (statoCorrente != sottoStato.EXIT) {
+
 		switch (statoCorrente) {
 
 		case ENTER:
@@ -74,7 +85,7 @@ public class CreaGioco {
 		case EXIT:
 			break;
 		}
-		// }
+
 	}
 
 	public void creaGiocatori(int numeroGiocatori) {
