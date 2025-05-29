@@ -17,11 +17,9 @@ public class HandleGraphics {
 	}
 
 	public static FrameBase getGraphics() {
-		if (frameBase != null) {
-			return frameBase;
-		} else {
-			frameBase.DisabledAreaText("errore,frame non creato");
-			return null;
+		if (frameBase == null) {
+			return createGraphics();
 		}
+		return frameBase;
 	}
 }

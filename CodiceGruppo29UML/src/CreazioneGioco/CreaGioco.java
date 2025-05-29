@@ -2,6 +2,7 @@ package CreazioneGioco;
 
 import java.util.ArrayList;
 
+import grafica.FrameBase;
 import grafica.HandleGraphics;
 import main.GameState;
 import player.Giocatore;
@@ -16,7 +17,8 @@ public class CreaGioco implements GameState {
 																	// esterna
 	private int numeroGiocatori = 0;
 	private String num = "";
-	public HandleGraphics handleGraphic = new HandleGraphics();
+	// public HandleGraphics handleGraphic = new HandleGraphics();
+	private FrameBase handleGraphic = HandleGraphics.getGraphics();
 
 //	Timer timer = new Timer(1000);
 //
@@ -58,24 +60,24 @@ public class CreaGioco implements GameState {
 
 		case ENTER:
 
-			handleGraphic.getGraphics().DisabledAreaText("benvenuto astronauta... Inserisci nome del gioco:");
+			handleGraphic.DisabledAreaText("benvenuto astronauta... Inserisci nome del gioco:");
 			do {
-				testoInserito = handleGraphic.getGraphics().writeAreaText();
+				testoInserito = handleGraphic.writeAreaText();
 			} while (testoInserito.equals(""));
 
-			handleGraphic.getGraphics().disablewriteAreaText();
+			handleGraphic.disablewriteAreaText();
 			g.getIstanza(); // creo un gioco o carico quello che esiste già
 
-			handleGraphic.getGraphics().DisabledAreaText("gioco creato");
+			handleGraphic.DisabledAreaText("gioco creato");
 			System.out.println("stato attuale " + getCurrentState().toString());
 			setCurrentState(sottoStato.RUN);
 			switchState();
 
 		case RUN:
 
-			handleGraphic.getGraphics().DisabledAreaText("inserisci numero giocatori:");
+			handleGraphic.DisabledAreaText("inserisci numero giocatori:");
 			do {
-				num = handleGraphic.getGraphics().writeAreaText();
+				num = handleGraphic.writeAreaText();
 			} while (num.equals("") || num.isEmpty()); // perchè altrimenti controlla numerogiocatori che diventa ""
 														// anche se
 			// settata precedentemente
@@ -93,28 +95,27 @@ public class CreaGioco implements GameState {
 		String nome = "";
 		String colore = "";
 
-		handleGraphic.getGraphics().DisabledAreaText("num=" + num);
+		handleGraphic.DisabledAreaText("num=" + num);
 		setNumeGiocatori(Integer.parseInt(num));
 
-		handleGraphic.getGraphics().DisabledAreaText("ora creo giocatori");
+		handleGraphic.DisabledAreaText("ora creo giocatori");
 
 		// settiamo nome e colore per ogni giocatore
 		for (int i = 0; i < numeroGiocatori; i++) {
 			giocatori.add(new Giocatore());
-			handleGraphic.getGraphics().DisabledAreaText("inserisci nome:");
-			nome = handleGraphic.getGraphics().writeAreaText();
+			handleGraphic.DisabledAreaText("inserisci nome:");
+			nome = handleGraphic.writeAreaText();
 			giocatori.get(i).selezionaNome(nome);
-			handleGraphic.getGraphics().DisabledAreaText("inserisci colore (verde, blu, giallo, rosso):");
-			colore = handleGraphic.getGraphics().writeAreaText();
+			handleGraphic.DisabledAreaText("inserisci colore (verde, blu, giallo, rosso):");
+			colore = handleGraphic.writeAreaText();
 			while (colore.toLowerCase() != "verde" || colore.toLowerCase() != "blu" || colore.toLowerCase() != "giallo"
 					|| colore.toLowerCase() != "rosso") {
-				handleGraphic.getGraphics()
-						.DisabledAreaText("colore non presente, inserisci colore (verde, blu, giallo, rosso): /n");
-				colore = handleGraphic.getGraphics().writeAreaText();
+				handleGraphic.DisabledAreaText("colore non presente, inserisci colore (verde, blu, giallo, rosso): /n");
+				colore = handleGraphic.writeAreaText();
 			}
-			handleGraphic.getGraphics().DisabledAreaText("colore selezionato: " + colore);
+			handleGraphic.DisabledAreaText("colore selezionato: " + colore);
 			giocatori.get(i).selezionaColore(colore);
-			handleGraphic.getGraphics().DisabledAreaText("benvenuto " + nome);
+			handleGraphic.DisabledAreaText("benvenuto " + nome);
 		}
 	}
 
