@@ -1,5 +1,5 @@
 package grafica;
 
-public class graficaPlanciaVolo {
+public class GraficaPlanciaVolo {
 	// TO DO: gestire parte grafica relativa alla plancia volo (posizione 1,2)
 }

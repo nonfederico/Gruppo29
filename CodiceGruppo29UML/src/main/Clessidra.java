@@ -12,25 +12,22 @@ public class Clessidra implements Runnable {
 		attivo = true;
 		while (attivo) {
 			try {
+//				HandleGraphics.getGraphics().writeInformazioni("timer attivo");
 				Thread.sleep(1000);
+//				stopClessidra();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+//			HandleGraphics.getGraphics().writeInformazioni("timer scaduto");
 		}
+
 	}
 
-	/**
-	 * Default constructor
-	 */
 	public Clessidra() {
 //    	creo clessidra, avvio
 
 	}
-
-//	public void avviaClessidra() {
-//	
-//	}
 
 	public void stopClessidra() {
 		attivo = false;

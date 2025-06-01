@@ -11,7 +11,7 @@ public class FrameBase extends JFrame {
 	// succede
 	private AreaInterazione areaInterazione;
 	private AreaInterazione due;
-	private AreaInterazione tre;
+	private GraficaInformazioni graficaInformazioni;
 	private AreaInterazione quattro;
 	// solo per prova, poi cambio layout
 
@@ -26,7 +26,7 @@ public class FrameBase extends JFrame {
 
 		areaInterazione = new AreaInterazione();
 		due = new AreaInterazione();
-		tre = new AreaInterazione();
+		graficaInformazioni = new GraficaInformazioni();
 		quattro = new AreaInterazione();
 
 		// layout del frame, borderLayout è lo standart
@@ -36,15 +36,15 @@ public class FrameBase extends JFrame {
 		// imposto i container
 		add(areaInterazione);
 		add(due);
-		add(tre);
+		add(graficaInformazioni);
 		add(quattro);
 
 		due.writeTextfisso("due");
-		tre.writeTextfisso("tre");
 		quattro.writeTextfisso("quattro");
 
 	}
 
+	// funzioni per areainterazione
 	public void DisabledAreaText(String testoScritto) {
 		areaInterazione.writeTextfisso(testoScritto);
 	}
@@ -57,4 +57,10 @@ public class FrameBase extends JFrame {
 	public void disablewriteAreaText() {
 		areaInterazione.disableReadText();
 	}
+
+//funzioni per timer
+	public void writeInformazioni(String timer) {
+		graficaInformazioni.writeTextfisso(timer);
+	}
+
 }
