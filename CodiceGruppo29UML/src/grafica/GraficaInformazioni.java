@@ -13,11 +13,12 @@ import main.Clessidra;
 public class GraficaInformazioni extends JPanel {
 //TO DO si occuperà di gestire la parte grafica relativa a carte e informazioni (posizione 2,1)
 	private JTextField textField;
-	Clessidra timer = new Clessidra();
+	private Clessidra timer = new Clessidra();
 	JButton button = new JButton();
 
 	public GraficaInformazioni() {
-		new Thread(timer).start();
+
+		// new Thread(timer).start();
 		textField = new JTextField();
 		setLayout(new GridLayout(1, 1));
 
@@ -25,10 +26,10 @@ public class GraficaInformazioni extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				timer.run();
+				timer.execute();
+				// timer.run();
 			}
 		});
-
 		add(textField);
 		add(button);
 

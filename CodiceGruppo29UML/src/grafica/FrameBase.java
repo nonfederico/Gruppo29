@@ -22,7 +22,7 @@ public class FrameBase extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false); // finestra a dimensione fissa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		// setVisible(true);
 
 		areaInterazione = new AreaInterazione();
 		due = new AreaInterazione();
@@ -34,14 +34,15 @@ public class FrameBase extends JFrame {
 		setLayout(new GridLayout(2, 2));
 
 		// imposto i container
-		add(areaInterazione);
-		add(due);
-		add(graficaInformazioni);
-		add(quattro);
+
+		getContentPane().add(areaInterazione);
+		getContentPane().add(due);
+		getContentPane().add(graficaInformazioni);
+		getContentPane().add(quattro);
 
 		due.writeTextfisso("due");
 		quattro.writeTextfisso("quattro");
-
+		setVisible(true);
 	}
 
 	// funzioni per areainterazione
