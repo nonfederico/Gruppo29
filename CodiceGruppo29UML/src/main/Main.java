@@ -1,10 +1,19 @@
 package main;
 
+import CreazioneGioco.CreaGioco;
+import grafica.HandleGraphics;
+
 public class Main {
 	public static void main(String[] args) {
-		CreaGioco creaGioco = new CreaGioco();
-		creaGioco.enter();
-//		creaGioco.update();
-//		creaGioco.exit();
+		// classe client
+		HandleGraphics.createGraphics();
+		GameContext context = new GameContext();
+		GameState creagioco = new CreaGioco();
+		context.setState(creagioco);
+		context.enter(); // entra nell'enter di creagioco
+
+		// context.pause lo associo ad un pulsante che sta in ascolto e cambia stato
+		// quando viene premuto
+
 	}
 }

@@ -1,4 +1,4 @@
-package main;
+package CreazioneGioco;
 
 public class Gioco {
 

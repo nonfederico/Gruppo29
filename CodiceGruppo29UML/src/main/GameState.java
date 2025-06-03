@@ -1,13 +1,24 @@
 package main;
 
 public interface GameState {
-	// rappresentiamo gli stati del gioco presenti nel diagramma della macchina a
-	// stati
-	// usiamo lo state pattern
+	// rappresentiamo tutti i possibili stati, context si occupa dimantenere il
+	// riferimento allo stato corrente che delega l'oggetto context di eseguire le
+	// operazioni (contenitore dello sstao)
 
-	void enter(); // inizializziamo i componenti che ci servono
+//	void mainMenu(GameContext context);
+//
+//	void playing(GameContext context);
+//
+//	void paused(GameContext context);
+//
+//	// void loading(); //da implementare se volessimo dare l'opzione di caricare i
+//	// salvataggi
+//
+//	void ending(GameContext context);
 
-	void update(); // operazioni negli stati
+	void enter(); // per entrare nello stato corrente
 
-	void exit(); // salviamo le variabili utili e passiamo al prossimo stato
+	void pause();
+
+	void exit(); // per uscire dallo stato corrente
 }

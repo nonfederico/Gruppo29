@@ -5,12 +5,13 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 public class FrameBase extends JFrame {
+	// classe usata per gestire le 4 aree grafiche, ogni area sarà un thread
 
 	// viene implementata da tutti gli stati per mostrare a schermo quello che
 	// succede
 	private AreaInterazione areaInterazione;
 	private AreaInterazione due;
-	private AreaInterazione tre;
+	private GraficaInformazioni graficaInformazioni;
 	private AreaInterazione quattro;
 	// solo per prova, poi cambio layout
 
@@ -21,11 +22,11 @@ public class FrameBase extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false); // finestra a dimensione fissa
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		// setVisible(true);
 
 		areaInterazione = new AreaInterazione();
 		due = new AreaInterazione();
-		tre = new AreaInterazione();
+		graficaInformazioni = new GraficaInformazioni();
 		quattro = new AreaInterazione();
 
 		// layout del frame, borderLayout è lo standart
@@ -33,19 +34,34 @@ public class FrameBase extends JFrame {
 		setLayout(new GridLayout(2, 2));
 
 		// imposto i container
-		add(areaInterazione);
-		add(due);
-		add(tre);
-		add(quattro);
 
-		due.writeText("due");
-		tre.writeText("tre");
-		quattro.writeText("quattro");
+		getContentPane().add(areaInterazione);
+		getContentPane().add(due);
+		getContentPane().add(graficaInformazioni);
+		getContentPane().add(quattro);
 
+		due.writeTextfisso("due");
+		quattro.writeTextfisso("quattro");
+		setVisible(true);
 	}
 
-	public void returnAreaText(String testoScritto) {
-		areaInterazione.writeText(testoScritto);
+	// funzioni per areainterazione
+	public void DisabledAreaText(String testoScritto) {
+		areaInterazione.writeTextfisso(testoScritto);
+	}
+
+	public String writeAreaText() {
+		String testoScritto = areaInterazione.readText();
+		return testoScritto;
+	}
+
+	public void disablewriteAreaText() {
+		areaInterazione.disableReadText();
+	}
+
+//funzioni per timer
+	public void writeInformazioni(String timer) {
+		graficaInformazioni.writeTextfisso(timer);
 	}
 
 }

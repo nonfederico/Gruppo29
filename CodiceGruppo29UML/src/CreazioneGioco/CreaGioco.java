@@ -1,0 +1,85 @@
+package CreazioneGioco;
+
+import grafica.HandleGraphics;
+import main.GameState;
+
+//public class CreaGioco implements GameState {
+
+public class CreaGioco implements GameState {
+	private static Gioco g = null; // uso pattern singleton per creare una sola partita (per la versione attuale)
+	private CreaGiocatori creaGioc = new CreaGiocatori();
+	private String testoInserito = "";
+
+	@Override
+	public void enter() {
+		switchState();
+	};
+
+	@Override
+	public void pause() {
+		// salva stato attuale per andare nel menu
+	}
+
+	@Override
+	public void exit() {
+		// salva stato del gioco
+
+	}
+
+	enum sottoStato {
+		ENTER, RUN, EXIT
+	}
+
+	private sottoStato statoCorrente = null;
+
+	public CreaGioco() {
+		System.out.println("settatoStatoCorrente = ENTER");
+		setCurrentState(sottoStato.ENTER);
+
+	}
+
+	public void switchState() {
+		statoCorrente = getCurrentState();
+		System.out.println("entrato in switch con stato " + getCurrentState().toString());
+
+		switch (statoCorrente) {
+
+		case ENTER:
+
+			HandleGraphics.getGraphics().DisabledAreaText("benvenuto astronauta... Inserisci nome del gioco:");
+			do {
+				testoInserito = HandleGraphics.getGraphics().writeAreaText();
+			} while (testoInserito.equals(""));
+
+			HandleGraphics.getGraphics().disablewriteAreaText();
+			g.getIstanza(); // creo un gioco o carico quello che esiste già
+
+			HandleGraphics.getGraphics().DisabledAreaText("gioco creato");
+			System.out.println("stato attuale " + getCurrentState().toString());
+			setCurrentState(sottoStato.RUN);
+			switchState();
+
+		case RUN:
+
+			creaGioc.execute();
+
+		case EXIT:
+			break;
+		}
+
+	}
+
+	public sottoStato setCurrentState(sottoStato state) {
+		this.statoCorrente = state;
+		return statoCorrente;
+	}
+
+	public sottoStato getCurrentState() {
+		return statoCorrente;
+	}
+
+	public static Gioco getGioco() {
+		return g;
+	}
+
+}
