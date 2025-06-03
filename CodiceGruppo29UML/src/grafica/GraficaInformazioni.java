@@ -20,7 +20,7 @@ public class GraficaInformazioni extends JPanel {
 
 		// new Thread(timer).start();
 		textField = new JTextField();
-		setLayout(new GridLayout(1, 1));
+		setLayout(new GridLayout(1, 2));
 
 		button.addActionListener(new ActionListener() {
 
