@@ -31,7 +31,11 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		String nome = "";
 		String colore = "";
 		try {
+<<<<<<< HEAD
 			Thread.sleep(1 * 1000);
+=======
+			Thread.sleep(2 * 1000);
+>>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
 			HandleGraphics.getGraphics().DisabledAreaText("num=" + num);
 			setNumeGiocatori(Integer.parseInt(num));
 		} catch (InterruptedException e) {
@@ -40,7 +44,11 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		}
 
 		try {
+<<<<<<< HEAD
 			Thread.sleep(1 * 1000);
+=======
+			Thread.sleep(2 * 1000);
+>>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
 			HandleGraphics.getGraphics().DisabledAreaText("ora creo giocatori");
 
 		} catch (InterruptedException e) {
@@ -48,6 +56,15 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			e.printStackTrace();
 		}
 
+<<<<<<< HEAD
+=======
+		try {
+			Thread.sleep(3 * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+>>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
 		// settiamo nome e colore per ogni giocatore
 		for (int i = 0; i < numeroGiocatori; i++) {
 			giocatori.add(new Giocatore());
