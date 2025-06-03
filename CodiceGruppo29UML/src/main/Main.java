@@ -15,10 +15,5 @@ public class Main {
 		// context.pause lo associo ad un pulsante che sta in ascolto e cambia stato
 		// quando viene premuto
 
-//		System.out.println("devo creare gioco");
-//		CreaGioco creaGioco = new CreaGioco();
-//		System.out.println("creato creaGioco");
-//		creaGioco.switchState();
-
 	}
 }

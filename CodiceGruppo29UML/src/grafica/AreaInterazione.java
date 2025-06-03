@@ -19,20 +19,17 @@ public class AreaInterazione extends JPanel {
 									// "String.equals(Object)" because "this.testoInserito" is null
 
 	public AreaInterazione() {
-//		textAreaUtente = new JTextArea();
-//		textArea = new JTextArea();
+
 		textField = new JTextField(20);
 		textFieldUtente = new JTextField(20);
 		setLayout(new GridLayout(2, 1)); // setto il layout solo di questo panel
 		add(textField);
 		add(textFieldUtente);
-//		add(textArea);
-//		add(textAreaUtente);
+
 	}
 
 	public void writeTextfisso(String testo) {
-//		textArea.setEditable(false);
-//		textArea.setText(testo);
+
 		textField.setEditable(false);
 		textField.setText(testo);
 	}
@@ -42,22 +39,14 @@ public class AreaInterazione extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				inputText = textFieldUtente.getText();
 			}
 		});
 		return inputText;
 
-//		String inputText = textAreaUtente.getText();
-//		textAreaUtente.setText("");
-//		return inputText;
 	}
 
 	public void disableReadText() {
 		textFieldUtente.setText("");
-
-//		String inputText = textAreaUtente.getText();
-//		textAreaUtente.setText("");
-//		return inputText;
 	}
 }
