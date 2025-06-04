@@ -57,12 +57,6 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		}
 	}
 
-	@Override
-	protected Void doInBackground() throws Exception {
-		statiCreaGiocatori();
-		return null;
-	}
-
 	private void setInformazioni(ArrayList<Giocatore> lista) {
 		for (int i = 0; i < numeroGiocatori; i++) {
 			Giocatore giocatore = new Giocatore();
@@ -77,7 +71,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 				Thread.sleep(1 * 1000);
 				HandleGraphics.getGraphics().DisabledAreaText("nome =" + nome);
 				giocatore.setNome(nome);
-				System.out.println(giocatore.nome);
+				System.out.println(giocatore.getNome());
 				Thread.sleep(1 * 1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -85,7 +79,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			}
 
 			HandleGraphics.getGraphics()
-					.DisabledAreaText(giocatore.nome + " ,inserisci colore (verde, blu, giallo, rosso): ");
+					.DisabledAreaText(giocatore.getColore() + " ,inserisci colore (verde, blu, giallo, rosso): ");
 			do {
 				colore = HandleGraphics.getGraphics().writeAreaText();
 			} while (colore.equals("") || colore.trim().isEmpty()
@@ -96,7 +90,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 				Thread.sleep(1 * 1000);
 				HandleGraphics.getGraphics().DisabledAreaText("colore =" + colore);
 				giocatore.setColore(colore);
-				System.out.println(giocatore.colore);
+				System.out.println(giocatore.getColore());
 				Thread.sleep(1 * 1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -104,8 +98,16 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			}
 
 			lista.add(giocatore);
+
 		}
-		HandleGraphics.getGraphics().DisabledAreaText("benvenuti " + lista.size());
+
+		HandleGraphics.getGraphics().DisabledAreaText("benvenuti ");
+	}
+
+	@Override
+	protected Void doInBackground() throws Exception {
+		statiCreaGiocatori();
+		return null;
 	}
 
 	public int getNumeGiocatori() {

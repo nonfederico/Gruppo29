@@ -8,27 +8,38 @@ public class Giocatore {
 	public Giocatore() {
 	}
 
-	public String nome;
+	private String nome;
 
-	public String ruolo;
+	private String ruolo;
 
-	public String colore;
+	private String colore;
+
+	private ListaPezziGiocatore listaPezzi = null;
 
 	private int id;
 
 	public void setColore(String colore) {
-		// TODO implement here
 		this.colore = colore;
 	}
 
 	public void setNome(String nome) {
-		// TODO implement here
 		this.nome = nome;
 	}
 
+	public String getNome() {
+		return this.nome;
+	}
+
+	public String getColore() {
+		return this.colore;
+	}
+
 	public void setId(int id) {
-		// TODO implement here
 		this.id = id;
+	}
+
+	public void addListaPezzi(ListaPezziGiocatore lista) {
+		this.listaPezzi = lista;
 	}
 
 	public void pescaCarte() {
