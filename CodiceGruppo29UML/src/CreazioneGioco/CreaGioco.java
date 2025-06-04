@@ -30,7 +30,7 @@ public class CreaGioco implements GameState {
 		ENTER, RUN, EXIT
 	}
 
-	private sottoStato statoCorrente = null;
+	public sottoStato statoCorrente = null;
 
 	public CreaGioco() {
 		System.out.println("settatoStatoCorrente = ENTER");
@@ -58,12 +58,28 @@ public class CreaGioco implements GameState {
 			System.out.println("stato attuale " + getCurrentState().toString());
 			setCurrentState(sottoStato.RUN);
 			switchState();
+			break;
 
 		case RUN:
-
+//
+//			while (creaGioc.isCancelled())
 			creaGioc.execute();
+			while (!creaGioc.isDone()) {
+
+			}
+
+			System.out.println("esco da execute: " + getCurrentState());
+			setCurrentState(sottoStato.EXIT);
+			System.out.println("setto exit: " + getCurrentState());
+			switchState();
+			break;
 
 		case EXIT:
+			HandleGraphics.getGraphics().DisabledAreaText("gioco e giocatori creati, andiamo a creare le navi");
+			break;
+
+		default:
+			System.out.println("Stato sconosciuto: " + getCurrentState());
 			break;
 		}
 

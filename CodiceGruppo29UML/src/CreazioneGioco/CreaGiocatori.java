@@ -13,10 +13,10 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
 	private String nome = "";
 	private String colore = "";
-	statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
+	private statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
 
 	enum statiCreaGiocatori {
-		NUMEROGIOCATORI, SELEZIONAINFO
+		NUMEROGIOCATORI, SELEZIONAINFO, CREAZIONENAVE
 	}
 
 	public void statiCreaGiocatori() {
@@ -54,7 +54,23 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 
 			setInformazioni(giocatori);
 			break;
+
+		case CREAZIONENAVE:
+
+			try {
+				HandleGraphics.getGraphics().DisabledAreaText("creazione lista giocatori");
+				Thread.sleep(2 * 1000);
+
+			} catch (InterruptedException e) {
+				HandleGraphics.getGraphics().disablewriteAreaText();
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			done();
+			return;
+
 		}
+
 	}
 
 	private void setInformazioni(ArrayList<Giocatore> lista) {
@@ -99,9 +115,15 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 
 			lista.add(giocatore);
 
+			// TO DO: add di plance e lista pezzi
+
 		}
 
 		HandleGraphics.getGraphics().DisabledAreaText("benvenuti ");
+
+		statiCrea = statiCreaGiocatori.CREAZIONENAVE;
+		statiCreaGiocatori();
+
 	}
 
 	@Override
@@ -120,6 +142,10 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 
 	public String returnNum() {
 		return this.num;
+	}
+
+	public String getStatiCrea() {
+		return this.statiCrea.toString();
 	}
 
 }
