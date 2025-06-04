@@ -39,11 +39,17 @@ public class AreaInterazione extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
 				inputText = textFieldUtente.getText();
+				disableReadText();
 			}
 		});
 		return inputText;
 
+	}
+
+	public String returnString() {
+		return this.inputText;
 	}
 
 	public void disableReadText() {

@@ -14,16 +14,21 @@ public class Giocatore {
 
 	public String colore;
 
-	public int id;
+	private int id;
 
-	public void selezionaColore(String colore) {
+	public void setColore(String colore) {
 		// TODO implement here
 		this.colore = colore;
 	}
 
-	public void selezionaNome(String nome) {
+	public void setNome(String nome) {
 		// TODO implement here
 		this.nome = nome;
+	}
+
+	public void setId(int id) {
+		// TODO implement here
+		this.id = id;
 	}
 
 	public void pescaCarte() {

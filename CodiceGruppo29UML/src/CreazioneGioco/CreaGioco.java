@@ -47,11 +47,11 @@ public class CreaGioco implements GameState {
 		case ENTER:
 
 			HandleGraphics.getGraphics().DisabledAreaText("benvenuto astronauta... Inserisci nome del gioco:");
+
 			do {
 				testoInserito = HandleGraphics.getGraphics().writeAreaText();
-			} while (testoInserito.equals(""));
+			} while (testoInserito.equals("") || testoInserito.isEmpty());
 
-			HandleGraphics.getGraphics().disablewriteAreaText();
 			g.getIstanza(); // creo un gioco o carico quello che esiste già
 
 			HandleGraphics.getGraphics().DisabledAreaText("gioco creato");
