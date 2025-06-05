@@ -96,7 +96,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			}
 
 			HandleGraphics.getGraphics()
-					.DisabledAreaText(giocatore.getColore() + " ,inserisci colore (verde, blu, giallo, rosso): ");
+					.DisabledAreaText(giocatore.getNome() + " ,inserisci colore (verde, blu, giallo, rosso): ");
 			do {
 				colore = HandleGraphics.getGraphics().writeAreaText();
 			} while (colore.equals("") || colore.trim().isEmpty()
