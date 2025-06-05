@@ -24,7 +24,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		switch (statiCrea) {
 		case NUMEROGIOCATORI:
 			do {
-				HandleGraphics.getGraphics().DisabledAreaText("inserisci numero giocatori:");
+				HandleGraphics.getGraphics().DisabledAreaText("inserisci numero giocatori (da 1 a 4):");
 				num = HandleGraphics.getGraphics().writeAreaText();
 			} while (num.equals("") || num.isEmpty() || (Integer.parseInt(num) < 1 || Integer.parseInt(num) > 4));
 
@@ -78,10 +78,11 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			Giocatore giocatore = new Giocatore();
 			giocatore.setId(i);
 
-			HandleGraphics.getGraphics().DisabledAreaText("giocatore " + i + " ,inserisci nome:");
+			HandleGraphics.getGraphics()
+					.DisabledAreaText("giocatore " + i + " ,inserisci nome (massimo 10 caratteri):");
 			do {
-				nome = HandleGraphics.getGraphics().writeAreaText();
-			} while (nome.equals("") || nome.isEmpty());
+				nome = HandleGraphics.getGraphics().writeAreaText().trim();
+			} while (nome.equals("") || nome.isEmpty() || (nome.length() > 10 && nome.length() > 1));
 
 			try {
 				Thread.sleep(1 * 1000);
@@ -115,7 +116,8 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 
 			lista.add(giocatore);
 
-			// TO DO: add di plance e lista pezzi
+			// add listapezzi
+			// add plancia nave
 
 		}
 

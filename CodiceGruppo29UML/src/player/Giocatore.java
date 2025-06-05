@@ -9,18 +9,11 @@ public class Giocatore {
 	}
 
 	private String nome;
-
-	private String ruolo;
-
-	private String colore;
-
+	private Ruolo ruolo = null;
+	private String colore = null;
 	private ListaPezziGiocatore listaPezzi = null;
-
 	private int id;
-
-	public void setColore(String colore) {
-		this.colore = colore;
-	}
+	private int crediti;
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -28,6 +21,10 @@ public class Giocatore {
 
 	public String getNome() {
 		return this.nome;
+	}
+
+	public void setColore(String colore) {
+		this.colore = colore;
 	}
 
 	public String getColore() {
@@ -38,8 +35,12 @@ public class Giocatore {
 		this.id = id;
 	}
 
-	public void addListaPezzi(ListaPezziGiocatore lista) {
-		this.listaPezzi = lista;
+	public ListaPezziGiocatore getListaPezzi() {
+		// una sola listapezzi per ogni giocatore
+		if (listaPezzi == null) {
+			listaPezzi = new ListaPezziGiocatore();
+		}
+		return listaPezzi;
 	}
 
 	public void pescaCarte() {
@@ -90,6 +91,6 @@ public class Giocatore {
 
 }
 
-enum colore {
-	bianco, blu, rosso, verde
+enum Ruolo {
+	LEADER, PILOTA
 }

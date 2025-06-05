@@ -1,6 +1,7 @@
 package CreazioneGioco;
 
 import grafica.HandleGraphics;
+import main.GameContext;
 import main.GameState;
 
 //public class CreaGioco implements GameState {
@@ -9,6 +10,8 @@ public class CreaGioco implements GameState {
 	private static Gioco g = null; // uso pattern singleton per creare una sola partita (per la versione attuale)
 	private CreaGiocatori creaGioc = new CreaGiocatori();
 	private String testoInserito = "";
+
+	GameState creaPlanciaNave = new CreaPlanciaNave();
 
 	@Override
 	public void enter() {
@@ -50,7 +53,9 @@ public class CreaGioco implements GameState {
 
 			do {
 				testoInserito = HandleGraphics.getGraphics().writeAreaText();
-			} while (testoInserito.equals("") || testoInserito.isEmpty());
+			} while (testoInserito.equals("") || testoInserito.isEmpty()
+					|| (testoInserito.length() > 10 || testoInserito.length() < 1));
+			;
 
 			g.getIstanza(); // creo un gioco o carico quello che esiste già
 
@@ -61,8 +66,7 @@ public class CreaGioco implements GameState {
 			break;
 
 		case RUN:
-//
-//			while (creaGioc.isCancelled())
+
 			creaGioc.execute();
 			while (!creaGioc.isDone()) {
 
@@ -76,6 +80,8 @@ public class CreaGioco implements GameState {
 
 		case EXIT:
 			HandleGraphics.getGraphics().DisabledAreaText("gioco e giocatori creati, andiamo a creare le navi");
+			GameContext.getIstanzaGC().setState(creaPlanciaNave);
+			GameContext.getIstanzaGC().enter();
 			break;
 
 		default:

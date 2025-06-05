@@ -5,7 +5,15 @@ public class GameContext implements GameState {
 	// SEMAFORO sarebbe il contesto (contenitore) e GIALLO, ROSSO, VERDE i possibili
 	// stati
 
+	private static GameContext istanzaGameContext = new GameContext();
 	private GameState currentState;
+
+	private GameContext() {
+	}
+
+	public static GameContext getIstanzaGC() {
+		return istanzaGameContext;
+	}
 
 	public void setState(GameState state) {
 		this.currentState = state;
