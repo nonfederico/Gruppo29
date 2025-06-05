@@ -12,6 +12,7 @@ public class MatricePosizione {
      * Default constructor
      */
     public MatricePosizione() {
+    	
     }
 
 
