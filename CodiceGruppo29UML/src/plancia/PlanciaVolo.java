@@ -4,9 +4,6 @@ import java.io.*;
 import java.util.*;
 import player.Giocatore;
 
-/**
- * 
- */
 public class PlanciaVolo {
 
 	private final int LUNGHEZZA = 21;
