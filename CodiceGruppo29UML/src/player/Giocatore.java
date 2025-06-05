@@ -22,6 +22,8 @@ public class Giocatore {
 	public String getNome() {
 		return this.nome;
 	}
+	
+	// commento
 
 	public void setColore(String colore) {
 		this.colore = colore;
