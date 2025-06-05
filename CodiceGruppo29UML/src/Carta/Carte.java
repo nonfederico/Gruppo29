@@ -17,7 +17,7 @@ public abstract class Carte {
     /**
      * 
      */
-    public int numeroGiorni;
+    public int numeroGiorni; 
 
 
     /**

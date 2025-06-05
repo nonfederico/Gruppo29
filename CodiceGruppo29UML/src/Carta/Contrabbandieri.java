@@ -34,6 +34,8 @@ public class Contrabbandieri extends Carte {
      */
     public void battaglia() {
         // TODO implement here
+    	
+    	// da implementare perdi posizioni 
     }
 
 }
