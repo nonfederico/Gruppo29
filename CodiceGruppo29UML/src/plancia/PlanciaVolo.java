@@ -30,7 +30,7 @@ public class PlanciaVolo {
     	percorso[0].add(g);
     }
     
-//    Trova la posizione di un determinato giocatore
+//    trova la posizione di un determinato giocatore
     
     public int trovaPosizione(Giocatore g) {
     	
@@ -45,7 +45,7 @@ public class PlanciaVolo {
     	return -1;
     }
     
-//    Muove un giocatore di un certo numero di passi
+//    muove un giocatore di un certo numero di passi
     
     public void muoviGiocatore(Giocatore g, int passi) {
     	
