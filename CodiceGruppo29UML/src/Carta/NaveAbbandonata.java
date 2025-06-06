@@ -48,13 +48,17 @@ public class NaveAbbandonata extends Carte {
      */
     public boolean vendiNave(Giocatore g) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("🔧 " + g.getNome() + ", vuoi vendere la Nave Abbandonata per " +
-                prezzo + " crediti? Perderai " + pedineEquipaggioPerse + " membri equipaggio e " +
-                giorniPersi + " giorni di volo. (s/n): ");
-        String input = scanner.nextLine().trim().toLowerCase();
-
-        return input.equals("s");
+        while (true) {
+            System.out.print( g.getNome() + ", vuoi vendere la nave abbandonata per "
+                    + prezzo + " crediti, sacrificando " + pedineEquipaggioPerse + " membri dell'equipaggio e "
+                    + giorniPersi + " giorni di volo? (si/no): ");
+            String risposta = scanner.nextLine().trim().toLowerCase();
+            if (risposta.equals("si")) return true;
+            if (risposta.equals("no")) return false;
+            System.out.println("⚠️ Risposta non valida. Scrivi 'si' o 'no'.");
+        }
     }
+
 
     // Getter e Setter opzionali
     public int getPrezzo() {
