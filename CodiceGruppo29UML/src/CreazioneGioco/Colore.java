@@ -11,7 +11,7 @@ public class Colore {
 
 	private ArrayList<Colori> colori = new ArrayList<Colori>();
 
-	private Colore() {
+	public Colore() {
 		esiste = true;
 		colori.add(Colori.BLU);
 		colori.add(Colori.VERDE);
@@ -19,15 +19,25 @@ public class Colore {
 		colori.add(Colori.ROSSO);
 	}
 
-	public ArrayList<Colori> getListaColori() {
+	public String getListaColori() {
 		StringBuilder listaColoriDisponibili = new StringBuilder();
-		if (esiste = true) {
+		if (esiste == true) {
 			for (Colori colore : colori) {
 				listaColoriDisponibili.append(colore).append(" , ");
-				System.out.println(listaColoriDisponibili.toString());
 			}
+			System.out.println(listaColoriDisponibili.toString());
 		}
-		return colori;
+		return listaColoriDisponibili.toString();
+	}
+
+	public void chooseColore(String s) {
+		for (int i = 0; i < colori.size(); i++) {
+			if (colori.get(i).name().equalsIgnoreCase(s)) {
+				colori.remove(i);
+				return;
+			}
+
+		}
 	}
 
 }

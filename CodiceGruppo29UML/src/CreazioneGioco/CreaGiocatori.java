@@ -14,6 +14,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	private String nome = "";
 	private String colore = "";
 	private statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
+	private Colore c = new Colore();
 
 	enum statiCreaGiocatori {
 		NUMEROGIOCATORI, SELEZIONAINFO, CREAZIONENAVE
@@ -96,13 +97,15 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			}
 
 			HandleGraphics.getGraphics()
-					.DisabledAreaText(giocatore.getNome() + " ,inserisci colore (verde, blu, giallo, rosso): ");
+					.DisabledAreaText(giocatore.getNome() + " ,inserisci colore " + c.getListaColori());
+
 			do {
 				colore = HandleGraphics.getGraphics().writeAreaText();
 			} while (colore.equals("") || colore.trim().isEmpty()
 					|| (!colore.toLowerCase().equals("verde") && !colore.toLowerCase().equals("blu")
 							&& !colore.toLowerCase().equals("giallo") && !colore.toLowerCase().equals("rosso")));
-
+			c.chooseColore(colore);
+			System.out.println("colore eliminato");
 			try {
 				Thread.sleep(1 * 1000);
 				HandleGraphics.getGraphics().DisabledAreaText("colore =" + colore);
