@@ -12,6 +12,7 @@ public class ZonaDiGuerra extends Carte {
      * Default constructor
      */
     public ZonaDiGuerra() {
+    	// la carta ha regole fisse 
     }
 
 
