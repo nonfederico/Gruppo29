@@ -8,7 +8,6 @@ public class Giocatore {
 	public Giocatore() {
 	}
 
-
 	private String nome;
 	private Ruolo ruolo = null;
 	private String colore = null;
@@ -86,15 +85,12 @@ public class Giocatore {
 		// TODO implement here
 	}
 
->>>>>>> codiceGiocoFede
 	public void prendiCrediti() {
 		// TODO implement here
 	}
 
 }
 
-
 enum Ruolo {
 	LEADER, PILOTA
->>>>>>> codiceGiocoFede
 }

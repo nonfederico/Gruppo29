@@ -8,7 +8,6 @@ public class Main {
 	public static void main(String[] args) {
 		// classe client
 
-
 		HandleGraphics.createGraphics();
 
 		// GameContext context = new GameContext();
@@ -17,7 +16,6 @@ public class Main {
 		GameContext.getIstanzaGC().enter();
 //		context.setState(creagioco);
 //		context.enter(); // entra nell'enter di creagioco
->>>>>>> codiceGiocoFede
 
 		// context.pause lo associo ad un pulsante che sta in ascolto e cambia stato
 		// quando viene premuto

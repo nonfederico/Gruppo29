@@ -1,10 +1,7 @@
 package CreazioneGioco;
 
 import grafica.HandleGraphics;
-<<<<<<< HEAD
-=======
 import main.GameContext;
->>>>>>> codiceGiocoFede
 import main.GameState;
 
 //public class CreaGioco implements GameState {
@@ -13,12 +10,9 @@ public class CreaGioco implements GameState {
 	private static Gioco g = null; // uso pattern singleton per creare una sola partita (per la versione attuale)
 	private CreaGiocatori creaGioc = new CreaGiocatori();
 	private String testoInserito = "";
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-=======
 
 	GameState creaPlanciaNave = new CreaPlanciaNave();
 
->>>>>>> codiceGiocoFede
 	@Override
 	public void enter() {
 		switchState();
@@ -40,7 +34,6 @@ public class CreaGioco implements GameState {
 	}
 
 	public sottoStato statoCorrente = null;
->>>>>>> codiceGiocoFede
 
 	public CreaGioco() {
 		System.out.println("settatoStatoCorrente = ENTER");
@@ -64,24 +57,17 @@ public class CreaGioco implements GameState {
 					|| (testoInserito.length() > 10 || testoInserito.length() < 1));
 			;
 
->>>>>>> codiceGiocoFede
 			g.getIstanza(); // creo un gioco o carico quello che esiste già
 
 			HandleGraphics.getGraphics().DisabledAreaText("gioco creato");
 			System.out.println("stato attuale " + getCurrentState().toString());
 			setCurrentState(sottoStato.RUN);
 			switchState();
-
->>>>>>> codiceGiocoFede
+			break;
 
 		case RUN:
 
 			creaGioc.execute();
-
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-
-		case EXIT:
-=======
 			while (!creaGioc.isDone()) {
 
 			}
@@ -100,31 +86,20 @@ public class CreaGioco implements GameState {
 
 		default:
 			System.out.println("Stato sconosciuto: " + getCurrentState());
->>>>>>> codiceGiocoFede
 			break;
 		}
 
 	}
 
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-=======
->>>>>>> codiceGiocoFede
 	public sottoStato setCurrentState(sottoStato state) {
 		this.statoCorrente = state;
 		return statoCorrente;
 	}
 
-
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-=======
->>>>>>> codiceGiocoFede
 	public sottoStato getCurrentState() {
 		return statoCorrente;
 	}
 
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-=======
->>>>>>> codiceGiocoFede
 	public static Gioco getGioco() {
 		return g;
 	}

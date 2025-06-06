@@ -18,9 +18,7 @@ public class Clessidra extends SwingWorker<String, Void> {
 		while (attivo) {
 			try {
 				HandleGraphics.getGraphics().writeInformazioni("timer attivo");
-
 				Thread.sleep(3 * 1000);
->>>>>>> codiceGiocoFede
 				done();
 //				stopClessidra();
 			} catch (InterruptedException e) {

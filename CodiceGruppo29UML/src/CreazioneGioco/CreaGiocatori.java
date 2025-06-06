@@ -3,6 +3,7 @@ package CreazioneGioco;
 import java.util.ArrayList;
 
 import javax.swing.SwingWorker;
+
 import grafica.HandleGraphics;
 import player.Giocatore;
 
@@ -10,7 +11,6 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	private String num = "";
 	private int numeroGiocatori = 0;
 	private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
-=======
 	private String nome = "";
 	private String colore = "";
 	private statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
@@ -137,7 +137,6 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		return null;
 	}
 
->>>>>>> codiceGiocoFede
 	public int getNumeGiocatori() {
 		return this.numeroGiocatori;
 	}
@@ -149,11 +148,9 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	public String returnNum() {
 		return this.num;
 	}
-=======
 
 	public String getStatiCrea() {
 		return this.statiCrea.toString();
 	}
 
->>>>>>> codiceGiocoFede
 }

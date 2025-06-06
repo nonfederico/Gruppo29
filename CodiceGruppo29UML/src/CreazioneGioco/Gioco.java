@@ -35,7 +35,6 @@ public class Gioco {
 		return this.numeroGiocatori;
 	}
 
->>>>>>> codiceGiocoFede
 	public void creaMazzo() {
 		// TODO implement here
 	}
