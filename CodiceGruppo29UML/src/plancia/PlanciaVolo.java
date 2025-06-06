@@ -49,12 +49,24 @@ public class PlanciaVolo {
     	int posizioneCorrente = trovaPosizione(g);
     	if(posizioneCorrente == -1) {
     		
+    		System.out.println("il giocatore: " + g.getNome() + " non è presente sulla plancia.");
     		return;
     	}
     	
-    	percorso[posizioneCorrente].remove(g);
     	int nuovaPosizione = Math.min(posizioneCorrente + passi, LUNGHEZZA -1);
+    	
+    	
+    	if(!percorso[nuovaPosizione].isEmpty()) {
+			
+			System.out.println("la posizione " + nuovaPosizione + " è gia occupata.");
+		}
+    	
+//    	sposta il giocatore 
+    	
+    	percorso[posizioneCorrente].remove(g);
     	percorso[nuovaPosizione].add(g);
+    	
+    	System.out.println(g.getNome() + " si è mosso alla posizione " + nuovaPosizione);
     	
     }
     
@@ -81,6 +93,7 @@ public class PlanciaVolo {
     	for(int i = 0; i < LUNGHEZZA ; i++) {
     		
     		System.out.println("[ " + i + " ]");
+    		
     		for(Giocatore g : percorso[i]) {
     			
     			System.out.println(g.getNome() + " ");
