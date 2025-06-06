@@ -55,6 +55,11 @@ public class FrameBase extends JFrame {
 		return testoScritto;
 	}
 
+	public String returnStringScritta() {
+		return areaInterazione.returnString();
+	}
+
+>>>>>>> codiceGiocoFede
 	public void disablewriteAreaText() {
 		areaInterazione.disableReadText();
 	}

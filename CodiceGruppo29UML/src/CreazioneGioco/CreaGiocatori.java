@@ -3,7 +3,6 @@ package CreazioneGioco;
 import java.util.ArrayList;
 
 import javax.swing.SwingWorker;
-
 import grafica.HandleGraphics;
 import player.Giocatore;
 
@@ -11,98 +10,134 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	private String num = "";
 	private int numeroGiocatori = 0;
 	private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
+=======
+	private String nome = "";
+	private String colore = "";
+	private statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
+	private Colore c = new Colore();
+
+	enum statiCreaGiocatori {
+		NUMEROGIOCATORI, SELEZIONAINFO, CREAZIONENAVE
+	}
+
+	public void statiCreaGiocatori() {
+
+		switch (statiCrea) {
+		case NUMEROGIOCATORI:
+			do {
+				HandleGraphics.getGraphics().DisabledAreaText("inserisci numero giocatori (da 1 a 4):");
+				num = HandleGraphics.getGraphics().writeAreaText();
+			} while (num.equals("") || num.isEmpty() || (Integer.parseInt(num) < 1 || Integer.parseInt(num) > 4));
+
+			try {
+				Thread.sleep(1 * 1000);
+				HandleGraphics.getGraphics().DisabledAreaText("num=" + num);
+				setNumeGiocatori(Integer.parseInt(num));
+				Thread.sleep(1 * 1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			statiCrea = statiCreaGiocatori.SELEZIONAINFO;
+			statiCreaGiocatori();
+			break;
+
+		case SELEZIONAINFO:
+			try {
+				HandleGraphics.getGraphics().DisabledAreaText("ora creo giocatori");
+				Thread.sleep(1 * 1000);
+				System.out.println("creazione giocatori");
+			} catch (InterruptedException e) {
+				HandleGraphics.getGraphics().disablewriteAreaText();
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			setInformazioni(giocatori);
+			break;
+
+		case CREAZIONENAVE:
+
+			try {
+				HandleGraphics.getGraphics().DisabledAreaText("creazione lista giocatori");
+				Thread.sleep(2 * 1000);
+
+			} catch (InterruptedException e) {
+				HandleGraphics.getGraphics().disablewriteAreaText();
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			done();
+			return;
+
+		}
+
+	}
+
+	private void setInformazioni(ArrayList<Giocatore> lista) {
+		for (int i = 0; i < numeroGiocatori; i++) {
+			Giocatore giocatore = new Giocatore();
+			giocatore.setId(i);
+
+			HandleGraphics.getGraphics()
+					.DisabledAreaText("giocatore " + i + " ,inserisci nome (massimo 10 caratteri):");
+			do {
+				nome = HandleGraphics.getGraphics().writeAreaText().trim();
+			} while (nome.equals("") || nome.isEmpty() || (nome.length() > 10 && nome.length() > 1));
+
+			try {
+				Thread.sleep(1 * 1000);
+				HandleGraphics.getGraphics().DisabledAreaText("nome =" + nome);
+				giocatore.setNome(nome);
+				System.out.println(giocatore.getNome());
+				Thread.sleep(1 * 1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			HandleGraphics.getGraphics()
+					.DisabledAreaText(giocatore.getNome() + " ,inserisci colore " + c.getListaColori());
+
+			do {
+				colore = HandleGraphics.getGraphics().writeAreaText();
+			} while (colore.equals("") || colore.trim().isEmpty()
+					|| (!colore.toLowerCase().equals("verde") && !colore.toLowerCase().equals("blu")
+							&& !colore.toLowerCase().equals("giallo") && !colore.toLowerCase().equals("rosso")));
+			c.chooseColore(colore);
+			System.out.println("colore eliminato");
+			try {
+				Thread.sleep(1 * 1000);
+				HandleGraphics.getGraphics().DisabledAreaText("colore =" + colore);
+				giocatore.setColore(colore);
+				System.out.println(giocatore.getColore());
+				Thread.sleep(1 * 1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			lista.add(giocatore);
+
+			// add listapezzi
+			// add plancia nave
+
+		}
+
+		HandleGraphics.getGraphics().DisabledAreaText("benvenuti ");
+
+		statiCrea = statiCreaGiocatori.CREAZIONENAVE;
+		statiCreaGiocatori();
+
+	}
 
 	@Override
 	protected Void doInBackground() throws Exception {
-		HandleGraphics.getGraphics().DisabledAreaText("inserisci numero giocatori:");
-		do {
-			num = HandleGraphics.getGraphics().writeAreaText();
-		} while (num.equals("") || num.isEmpty()); // perchè altrimenti controlla numerogiocatori che diventa ""
-													// anche se
-		// settata precedentemente
-		creaGiocatoriSelezionati(getNumeGiocatori());
-		// aggiungiamo giocatori
-
+		statiCreaGiocatori();
 		return null;
 	}
 
-	public void creaGiocatoriSelezionati(int numeroGiocatori) {
-
-		String nome = "";
-		String colore = "";
-		try {
-<<<<<<< HEAD
-			Thread.sleep(1 * 1000);
-=======
-			Thread.sleep(2 * 1000);
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-			HandleGraphics.getGraphics().DisabledAreaText("num=" + num);
-			setNumeGiocatori(Integer.parseInt(num));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		try {
-<<<<<<< HEAD
-			Thread.sleep(1 * 1000);
-=======
-			Thread.sleep(2 * 1000);
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-			HandleGraphics.getGraphics().DisabledAreaText("ora creo giocatori");
-
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-<<<<<<< HEAD
-=======
-		try {
-			Thread.sleep(3 * 1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
->>>>>>> 8b20f3fb8bf27c780b2ec35f8d2224dd8904c391
-		// settiamo nome e colore per ogni giocatore
-		for (int i = 0; i < numeroGiocatori; i++) {
-			giocatori.add(new Giocatore());
-			HandleGraphics.getGraphics().DisabledAreaText("inserisci nome:");
-			nome = HandleGraphics.getGraphics().writeAreaText();
-			giocatori.get(i).selezionaNome(nome);
-			try {
-				Thread.sleep(3 * 1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			HandleGraphics.getGraphics().DisabledAreaText("inserisci colore (verde, blu, giallo, rosso):");
-			colore = HandleGraphics.getGraphics().writeAreaText();
-			while (colore.toLowerCase() != "verde" || colore.toLowerCase() != "blu" || colore.toLowerCase() != "giallo"
-					|| colore.toLowerCase() != "rosso") {
-				HandleGraphics.getGraphics()
-						.DisabledAreaText("colore non presente, inserisci colore (verde, blu, giallo, rosso): /n");
-				colore = HandleGraphics.getGraphics().writeAreaText();
-			}
-			try {
-				Thread.sleep(3 * 1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			HandleGraphics.getGraphics().DisabledAreaText("colore selezionato: " + colore);
-			giocatori.get(i).selezionaColore(colore);
-			try {
-				Thread.sleep(3 * 1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			HandleGraphics.getGraphics().DisabledAreaText("benvenuto " + nome);
-		}
-	}
-
+>>>>>>> codiceGiocoFede
 	public int getNumeGiocatori() {
 		return this.numeroGiocatori;
 	}
@@ -114,4 +149,11 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	public String returnNum() {
 		return this.num;
 	}
+=======
+
+	public String getStatiCrea() {
+		return this.statiCrea.toString();
+	}
+
+>>>>>>> codiceGiocoFede
 }
