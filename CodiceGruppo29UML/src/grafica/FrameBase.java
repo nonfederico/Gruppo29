@@ -10,7 +10,8 @@ public class FrameBase extends JFrame {
 	// viene implementata da tutti gli stati per mostrare a schermo quello che
 	// succede
 	private AreaInterazione areaInterazione;
-	private AreaInterazione due;
+//	private AreaInterazione due;
+	private GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
 	private AreaInterazione quattro;
 	// solo per prova, poi cambio layout
@@ -25,7 +26,8 @@ public class FrameBase extends JFrame {
 		// setVisible(true);
 
 		areaInterazione = new AreaInterazione();
-		due = new AreaInterazione();
+		graficaPlanciaNave = new GraficaPlanciaNave();
+//		due = new AreaInterazione();
 		graficaInformazioni = new GraficaInformazioni();
 		quattro = new AreaInterazione();
 
@@ -36,11 +38,12 @@ public class FrameBase extends JFrame {
 		// imposto i container
 
 		getContentPane().add(areaInterazione);
-		getContentPane().add(due);
+		getContentPane().add(graficaPlanciaNave);
+//		getContentPane().add(due);
 		getContentPane().add(graficaInformazioni);
 		getContentPane().add(quattro);
 
-		due.writeTextfisso("due");
+//		due.writeTextfisso("due");
 		quattro.writeTextfisso("quattro");
 		setVisible(true);
 	}

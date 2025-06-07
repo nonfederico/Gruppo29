@@ -1,9 +1,11 @@
 package CreazioneGioco;
 
+import javax.swing.SwingWorker;
+
 import grafica.HandleGraphics;
 import main.GameState;
 
-public class CreaPlanciaNave implements GameState {
+public class CreaPlanciaNave extends SwingWorker<Void, Void> implements GameState {
 	public CreaPlanciaNave() {
 
 	}
@@ -31,5 +33,11 @@ public class CreaPlanciaNave implements GameState {
 	public void exit() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	protected Void doInBackground() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

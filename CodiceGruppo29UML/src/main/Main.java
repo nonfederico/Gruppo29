@@ -23,3 +23,10 @@ public class Main {
 	}
 
 }
+
+//struttura codice:
+//	campi
+//	campi statici
+//	costruttori
+//	metodi
+//	metodi statici
