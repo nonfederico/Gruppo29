@@ -56,13 +56,13 @@ public class GraficaPlanciaNave extends JPanel {
 		caselle[1][4].setBorder(new LineBorder(Color.white));
 		caselle[4][2].setBorder(new LineBorder(Color.white));
 
-		caselle[0][0].setEnabled(false);
-		caselle[0][1].setEnabled(false);
-		caselle[0][3].setEnabled(false);
-		caselle[0][4].setEnabled(false);
-		caselle[1][0].setEnabled(false);
-		caselle[1][4].setEnabled(false);
-		caselle[4][2].setEnabled(false);
+//		caselle[0][0].setEnabled(false);
+//		caselle[0][1].setEnabled(false);
+//		caselle[0][3].setEnabled(false);
+//		caselle[0][4].setEnabled(false);
+//		caselle[1][0].setEnabled(false);
+//		caselle[1][4].setEnabled(false);
+//		caselle[4][2].setEnabled(false);
 	}
 
 //	public void caselleInutilizzabili() {

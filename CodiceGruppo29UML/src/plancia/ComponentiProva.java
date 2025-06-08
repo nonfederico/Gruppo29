@@ -20,7 +20,8 @@ public class ComponentiProva extends JPanel {
 
 	public ComponentiProva() {
 		this.nome = "connettoreProva";
-		setEnabled(true);
+		setEnabled(false);
+//		setEnabled(true); usato per prova, setto false inizialmente
 		this.nord = connettori.NESSUNO;
 		this.est = connettori.SINGOLO;
 		this.sud = connettori.NESSUNO;
@@ -37,3 +38,9 @@ public class ComponentiProva extends JPanel {
 		});
 	}
 }
+
+//funzione per abilitare:
+//prima attivo solo la posizione centrale dove metto il cuore
+//poi funzione per far mettere componente , devo abilitare solo le posizioni dove posso mettere il componente
+//appena clicco disabilito tutto, faccio scegliere il nuovo componente e abilito ancora le nuove posizioni.
+//lo faccio finchè non finisce i soldi o finchè non scade il timer 

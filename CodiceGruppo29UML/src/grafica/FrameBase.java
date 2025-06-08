@@ -13,7 +13,7 @@ public class FrameBase extends JFrame {
 //	private AreaInterazione due;
 	private GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
-	private AreaInterazione quattro;
+	private AreaInterazione due;
 	// solo per prova, poi cambio layout
 
 	public FrameBase() {
@@ -27,9 +27,8 @@ public class FrameBase extends JFrame {
 
 		areaInterazione = new AreaInterazione();
 		graficaPlanciaNave = new GraficaPlanciaNave();
-//		due = new AreaInterazione();
+		due = new AreaInterazione();
 		graficaInformazioni = new GraficaInformazioni();
-		quattro = new AreaInterazione();
 
 		// layout del frame, borderLayout è lo standart
 
@@ -38,13 +37,13 @@ public class FrameBase extends JFrame {
 		// imposto i container
 
 		getContentPane().add(areaInterazione);
-		getContentPane().add(graficaPlanciaNave);
-//		getContentPane().add(due);
-		getContentPane().add(graficaInformazioni);
-		getContentPane().add(quattro);
 
-//		due.writeTextfisso("due");
-		quattro.writeTextfisso("quattro");
+		getContentPane().add(due);
+		getContentPane().add(graficaInformazioni);
+		getContentPane().add(graficaPlanciaNave);
+
+		due.writeTextfisso("due");
+
 		setVisible(true);
 	}
 
