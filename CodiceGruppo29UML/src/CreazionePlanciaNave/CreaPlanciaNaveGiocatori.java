@@ -86,9 +86,13 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			e.printStackTrace();
 		}
 		try {
+			// devo chiamare con handlegraphics i metodi per modificare i componenti grafici
+			// altrimenti non funziona e si blocca nel thread
 			System.out.println("plancia nave setcaselle");
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
 					.setCaselleVuote(Gioco.getlistaGiocatori().get(0));
+			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
+					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(0));
 
 			Thread.sleep(500);
 		} catch (InterruptedException e) {

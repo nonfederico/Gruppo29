@@ -66,7 +66,7 @@ public class GraficaPlanciaNave extends JPanel {
 		HandleGraphics.getGraphics().rivalidaPlanciaNave();
 	}
 
-	private void setCaselleDisponibili(Giocatore g) {
+	public void setCaselleDisponibili(Giocatore g) {
 		System.out.println("1");
 		g.getPlancia().getCaselle()[2][2].setPannello(); // creo il centro
 
