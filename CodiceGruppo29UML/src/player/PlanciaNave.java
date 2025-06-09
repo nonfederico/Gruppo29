@@ -2,12 +2,6 @@ package player;
 
 import plancia.ComponentiProva;
 
-/**
- * 
- */
-//public class PlanciaNave extends SwingWorker<Void, Void> {
-//classe che si occupa dell'oggetto PlanciaNave
-
 //la associo ad un giocatore e accedo tramite il giocatore cosi da avere 4 plance diverse
 public class PlanciaNave {
 
@@ -57,10 +51,5 @@ public class PlanciaNave {
 	public ComponentiProva[][] getCaselle() {
 		return this.caselle;
 	}
-//	@Override
-//	protected Void doInBackground() throws Exception {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 }

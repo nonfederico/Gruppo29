@@ -5,12 +5,12 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 public class FrameBase extends JFrame {
-	// classe usata per gestire le 4 aree grafiche, ogni area sarà un thread
-
+	// classe usata per gestire le 4 aree grafiche
 	// viene implementata da tutti gli stati per mostrare a schermo quello che
 	// succede
+
 	private AreaInterazione areaInterazione;
-	static GraficaPlanciaNave graficaPlanciaNave;
+	private static GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
 	private AreaInterazione due;
 
@@ -34,10 +34,8 @@ public class FrameBase extends JFrame {
 
 		setLayout(new GridLayout(2, 2));
 
-		// imposto i container
-
+		// imposto i 4 container, setto in ordine per posizione 1,1 ; 1,2 ; 2,1 ; 2,2
 		getContentPane().add(areaInterazione);
-
 		getContentPane().add(due);
 		getContentPane().add(graficaInformazioni);
 		getContentPane().add(graficaPlanciaNave);
@@ -56,26 +54,12 @@ public class FrameBase extends JFrame {
 		return testoScritto;
 	}
 
-	public String returnStringScritta() {
-		return areaInterazione.returnString();
-	}
-
 	public void disablewriteAreaText() {
 		areaInterazione.disableReadText();
 	}
 
-	public static void rivalidaPlanciaNave() {
-		// quando la plancia nave passa da un giocatore all'altro
-
-		System.out.println("removeall");
-		graficaPlanciaNave.removeAll();
-
-		System.out.println("revalidate");
-		graficaPlanciaNave.revalidate();
-
-		System.out.println("repaint");
-		graficaPlanciaNave.repaint();
-
+	public String returnStringScritta() {
+		return areaInterazione.returnString();
 	}
 
 	public GraficaPlanciaNave getPlanciaNave() {

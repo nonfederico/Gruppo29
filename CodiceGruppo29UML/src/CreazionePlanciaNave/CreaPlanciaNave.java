@@ -3,8 +3,8 @@ package CreazionePlanciaNave;
 import main.GameState;
 
 public class CreaPlanciaNave implements GameState {
-	// stato del gioco in cui si crea la plancianave di ogni giocatore
-//	GraficaPlanciaNave grafica = new GraficaPlanciaNave();
+	// contesto del gioco in cui si crea la plancianave di ogni giocatore
+
 	private CreaPlanciaNaveGiocatori planciaG = new CreaPlanciaNaveGiocatori();
 
 	public CreaPlanciaNave() {
@@ -16,20 +16,19 @@ public class CreaPlanciaNave implements GameState {
 		// TODO Auto-generated method stub
 
 		planciaG.execute();
+		// quando execute termina, vado nel contesto volo
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
+		// cosa fare quando schiaccio pausa
 
 	}
 
 	@Override
 	public void exit() {
-		// all'uscita vado alla fase di volo
-//		GameContext.getIstanzaGC().setState(Volo);
-//		GameContext.getIstanzaGC().enter();
+		// all'uscita cosa faccio
 
 	}
 

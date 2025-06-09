@@ -7,8 +7,8 @@ import grafica.HandleGraphics;
 
 public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
-	enum sottoStati {
-		GIOCATORE1, GIOCATORE2, GIOCATORE3, GIOCATORE4
+	enum sottoStati { // sottostati della creazione planciaNave
+		GIOCATORE1, GIOCATORE2, GIOCATORE3, GIOCATORE4, VOLO
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		}
 		HandleGraphics.getGraphics().DisabledAreaText("crea la plancia nave");
 
-		switchState();
+		switchState(); // switch per la creazione delle 1..4 navi
 		return null;
 	}
 
@@ -37,27 +37,17 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		switch (stati) {
 		case GIOCATORE1: {
 			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
-			System.out.println("sono in giocatore1");
-			// si blocca alla riga 40 'sono in giocatore 1' di CreaPlanciaNaveGIocatore dove
-			// vado a prendere il riferimento alla plancia e setto le caselle vuote (stato
-			// iniziale)
-//			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-//					.setCaselleVuote(Gioco.getlistaGiocatori().get(0));
-			rivalidaPlanciaNave();
+			System.out.println("sono in giocatore 1");
 
-			System.out.println("sono in giocatore1-plancia creata");
 			try {
 				System.out.println("sono in giocatore1 - ridisegno la plancia");
-//				HandleGraphics.getGraphics().rivalidaPlanciaNave();
+				// funzione che carica le caselle della plancia nave
 				rivalidaPlanciaNave();
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//			GraficaPlanciaNave.getGraficaPlanciaNave().setCaselleVuote(Gioco.getlistaGiocatori().get(0)); // ritorna il
-			// giocatore
-			// 1
+
 			return;
 		}
 		case GIOCATORE2: {
@@ -69,9 +59,14 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		case GIOCATORE4: {
 
 		}
+		case VOLO: {
+//			GameContext.getIstanzaGC().setState(Volo);
+//			GameContext.getIstanzaGC().enter();
+		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + stati);
 		}
+
 	}
 
 	public boolean rivalidaPlanciaNave() {
