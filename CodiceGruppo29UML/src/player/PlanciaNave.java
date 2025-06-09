@@ -1,11 +1,17 @@
 package player;
 
-import javax.swing.SwingWorker;
+import plancia.ComponentiProva;
 
 /**
  * 
  */
-public class PlanciaNave extends SwingWorker<Void, Void> {
+//public class PlanciaNave extends SwingWorker<Void, Void> {
+//classe che si occupa dell'oggetto PlanciaNave
+
+//la associo ad un giocatore e accedo tramite il giocatore cosi da avere 4 plance diverse
+public class PlanciaNave {
+
+	private ComponentiProva[][] caselle = new ComponentiProva[5][5];
 
 	public PlanciaNave() {
 	}
@@ -48,10 +54,13 @@ public class PlanciaNave extends SwingWorker<Void, Void> {
 		// TODO implement here
 	}
 
-	@Override
-	protected Void doInBackground() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ComponentiProva[][] getCaselle() {
+		return this.caselle;
 	}
+//	@Override
+//	protected Void doInBackground() throws Exception {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

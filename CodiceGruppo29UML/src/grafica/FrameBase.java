@@ -10,8 +10,7 @@ public class FrameBase extends JFrame {
 	// viene implementata da tutti gli stati per mostrare a schermo quello che
 	// succede
 	private AreaInterazione areaInterazione;
-//	private AreaInterazione due;
-	private GraficaPlanciaNave graficaPlanciaNave;
+	static GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
 	private AreaInterazione due;
 	// solo per prova, poi cambio layout
@@ -26,7 +25,7 @@ public class FrameBase extends JFrame {
 		// setVisible(true);
 
 		areaInterazione = new AreaInterazione();
-		graficaPlanciaNave = new GraficaPlanciaNave();
+		graficaPlanciaNave = GraficaPlanciaNave.getGraficaPlanciaNave();
 		due = new AreaInterazione();
 		graficaInformazioni = new GraficaInformazioni();
 
@@ -41,7 +40,6 @@ public class FrameBase extends JFrame {
 		getContentPane().add(due);
 		getContentPane().add(graficaInformazioni);
 		getContentPane().add(graficaPlanciaNave);
-
 		due.writeTextfisso("due");
 
 		setVisible(true);
@@ -63,6 +61,19 @@ public class FrameBase extends JFrame {
 
 	public void disablewriteAreaText() {
 		areaInterazione.disableReadText();
+	}
+
+	public static void rivalidaPlanciaNave() {
+		graficaPlanciaNave.revalidate();
+		graficaPlanciaNave.repaint();
+	}
+
+	public GraficaPlanciaNave getPlanciaNave() {
+		return this.graficaPlanciaNave;
+	}
+
+	static void setPlanciaNave(GraficaPlanciaNave g) {
+		graficaPlanciaNave = g;
 	}
 
 //funzioni per timer

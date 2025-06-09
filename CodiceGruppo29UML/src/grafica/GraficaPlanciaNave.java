@@ -2,59 +2,89 @@ package grafica;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.Stack;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import plancia.ComponentiProva;
+import player.Giocatore;
 
 public class GraficaPlanciaNave extends JPanel {
 //TO DO: gestire parte grafica relativa alla plancia nave (posizione 2,2)
-	private ComponentiProva[][] caselle = new ComponentiProva[5][5];
-	private Stack<ComponentiProva> pilaComponenti = new Stack<ComponentiProva>();
+//	private PlanciaNave caselle = new PlanciaNave();
+//	private Stack<ComponentiProva> pilaComponenti = new Stack<ComponentiProva>();
 
-	public GraficaPlanciaNave() {
+	private static GraficaPlanciaNave grafica = null;
+
+	private GraficaPlanciaNave() {
 		setLayout(new GridLayout(5, 5));
-		setCaselleVuote();
-
-		setCaselleDisponibili();
+//		setCaselleVuote();
+//
+//		setCaselleDisponibili();
 		setVisible(true);
 	}
 
-	public void setCaselleVuote() {
+	public static GraficaPlanciaNave getGraficaPlanciaNave() {
+		if (grafica == null) {
+			grafica = new GraficaPlanciaNave();
+		}
+		return grafica;
+	}
+
+	public void setCaselleVuote(Giocatore g) { // lo vado a richiamare durante la fase creazionePlanciaNave
+		// setto caselle per ogni giocatore poi faccio repaint
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				ComponentiProva componente = new ComponentiProva();
 				componente.setCoordinate(i, j);
 				componente.setBackground(Color.LIGHT_GRAY);
 				componente.setBorder(new LineBorder(Color.BLUE));
-				caselle[i][j] = componente;
+				g.getPlancia().getCaselle()[i][j] = componente;
+//				caselle.getCaselle()[i][j] = componente;
 				add(componente);
+				setCaselleDisponibili(g);
+				// per aggiornare interfaccia
+				FrameBase.rivalidaPlanciaNave();
+				setVisible(true);
 
 			}
 		}
 	}
 
-	private void setCaselleDisponibili() {
-		caselle[2][2].setPannello(); // creo il centro
+	private void setCaselleDisponibili(Giocatore g) {
+		g.getPlancia().getCaselle()[2][2].setPannello(); // creo il centro
 
+		g.getPlancia().getCaselle()[0][0].setBackground(Color.white);
+		g.getPlancia().getCaselle()[0][1].setBackground(Color.white);
+		g.getPlancia().getCaselle()[0][3].setBackground(Color.white);
+		g.getPlancia().getCaselle()[0][4].setBackground(Color.white);
+		g.getPlancia().getCaselle()[1][0].setBackground(Color.white);
+		g.getPlancia().getCaselle()[1][4].setBackground(Color.white);
+		g.getPlancia().getCaselle()[4][2].setBackground(Color.white);
+
+		g.getPlancia().getCaselle()[0][0].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselle()[0][1].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselle()[0][3].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselle()[0][4].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselle()[1][0].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselle()[1][4].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselle()[4][2].setBorder(new LineBorder(Color.white));
 		// setto caselle inutilizzabili
-		caselle[0][0].setBackground(Color.white);
-		caselle[0][1].setBackground(Color.white);
-		caselle[0][3].setBackground(Color.white);
-		caselle[0][4].setBackground(Color.white);
-		caselle[1][0].setBackground(Color.white);
-		caselle[1][4].setBackground(Color.white);
-		caselle[4][2].setBackground(Color.white);
-
-		caselle[0][0].setBorder(new LineBorder(Color.white));
-		caselle[0][1].setBorder(new LineBorder(Color.white));
-		caselle[0][3].setBorder(new LineBorder(Color.white));
-		caselle[0][4].setBorder(new LineBorder(Color.white));
-		caselle[1][0].setBorder(new LineBorder(Color.white));
-		caselle[1][4].setBorder(new LineBorder(Color.white));
-		caselle[4][2].setBorder(new LineBorder(Color.white));
+//		caselle[0][0].setBackground(Color.white);
+//		caselle[0][1].setBackground(Color.white);
+//		caselle[0][3].setBackground(Color.white);
+//		caselle[0][4].setBackground(Color.white);
+//		caselle[1][0].setBackground(Color.white);
+//		caselle[1][4].setBackground(Color.white);
+//		caselle[4][2].setBackground(Color.white);
+//
+//		caselle[0][0].setBorder(new LineBorder(Color.white));
+//		caselle[0][1].setBorder(new LineBorder(Color.white));
+//		caselle[0][3].setBorder(new LineBorder(Color.white));
+//		caselle[0][4].setBorder(new LineBorder(Color.white));
+//		caselle[1][0].setBorder(new LineBorder(Color.white));
+//		caselle[1][4].setBorder(new LineBorder(Color.white));
+//		caselle[4][2].setBorder(new LineBorder(Color.white));
 
 	}
 
@@ -69,10 +99,10 @@ public class GraficaPlanciaNave extends JPanel {
 //		}
 //	}
 
-	public ComponentiProva getComponenteAttuale(int i, int j) {
-		ComponentiProva c = caselle[i][j];
-		return c;
-	}
+//	public ComponentiProva getComponenteAttuale(int i, int j) {
+//		ComponentiProva c = caselle.getCaselle()[i][j];
+//		return c;
+//	}
 
 	enum coordinateComp {
 		NORD, EST, SUD, OVEST

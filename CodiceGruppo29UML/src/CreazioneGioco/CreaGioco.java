@@ -1,5 +1,6 @@
 package CreazioneGioco;
 
+import CreazionePlanciaNave.CreaPlanciaNave;
 import grafica.HandleGraphics;
 import main.GameContext;
 import main.GameState;
@@ -81,7 +82,7 @@ public class CreaGioco implements GameState {
 		case EXIT:
 			HandleGraphics.getGraphics().DisabledAreaText("gioco e giocatori creati, andiamo a creare le navi");
 			GameContext.getIstanzaGC().setState(creaPlanciaNave);
-			GameContext.getIstanzaGC().enter();
+			GameContext.getIstanzaGC().enter(); // entro nell'enter di creaPlanciaNave
 			break;
 
 		default:
