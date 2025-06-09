@@ -52,7 +52,7 @@ public class NaveAbbandonata extends Carte {
             System.out.print( g.getNome() + ", vuoi vendere la nave abbandonata per "
                     + prezzo + " crediti, sacrificando " + pedineEquipaggioPerse + " membri dell'equipaggio e "
                     + giorniPersi + " giorni di volo? (si/no): ");
-            String risposta = scanner.nextLine().trim().toLowerCase();
+            String risposta = scanner.nextLine().trim().toLowerCase(); // pulisce la risposta e la rende tutta minuscola 
             if (risposta.equals("si")) return true;
             if (risposta.equals("no")) return false;
             System.out.println("⚠️ Risposta non valida. Scrivi 'si' o 'no'.");
@@ -60,7 +60,7 @@ public class NaveAbbandonata extends Carte {
     }
 
 
-    // Getter e Setter opzionali
+    
     public int getPrezzo() {
         return prezzo;
     }
