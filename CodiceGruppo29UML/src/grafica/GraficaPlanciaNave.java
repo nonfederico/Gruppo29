@@ -2,6 +2,7 @@ package grafica;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Stack;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -11,35 +12,34 @@ import plancia.ComponentiProva;
 public class GraficaPlanciaNave extends JPanel {
 //TO DO: gestire parte grafica relativa alla plancia nave (posizione 2,2)
 	private ComponentiProva[][] caselle = new ComponentiProva[5][5];
+	private Stack<ComponentiProva> pilaComponenti = new Stack<ComponentiProva>();
 
 	public GraficaPlanciaNave() {
 		setLayout(new GridLayout(5, 5));
 		setCaselleVuote();
+
 		setCaselleDisponibili();
+		setVisible(true);
 	}
 
 	public void setCaselleVuote() {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				ComponentiProva componente = new ComponentiProva();
+				componente.setCoordinate(i, j);
 				componente.setBackground(Color.LIGHT_GRAY);
 				componente.setBorder(new LineBorder(Color.BLUE));
 				caselle[i][j] = componente;
 				add(componente);
-//				JButton bottone = new JButton(Integer.toString(i) + " " + Integer.toString(j));
-//
-//				System.out.println("bottone aggiunto");
-//				bottone.setBorder(new LineBorder(Color.black));
-//				bottone.setBackground(Color.WHITE);
-//				System.out.println("bottone nero");
-//				caselle[i][j] = bottone;
-//				add(bottone);
 
 			}
 		}
 	}
 
 	private void setCaselleDisponibili() {
+		caselle[2][2].setPannello(); // creo il centro
+
+		// setto caselle inutilizzabili
 		caselle[0][0].setBackground(Color.white);
 		caselle[0][1].setBackground(Color.white);
 		caselle[0][3].setBackground(Color.white);
@@ -56,15 +56,48 @@ public class GraficaPlanciaNave extends JPanel {
 		caselle[1][4].setBorder(new LineBorder(Color.white));
 		caselle[4][2].setBorder(new LineBorder(Color.white));
 
-//		caselle[0][0].setEnabled(false);
-//		caselle[0][1].setEnabled(false);
-//		caselle[0][3].setEnabled(false);
-//		caselle[0][4].setEnabled(false);
-//		caselle[1][0].setEnabled(false);
-//		caselle[1][4].setEnabled(false);
-//		caselle[4][2].setEnabled(false);
 	}
 
+//	public Stack<ComponentiProva> getPosDisponibili() {
+//		Stack<ComponentiProva> c = new Stack<ComponentiProva>();
+//
+//		for (int i = 0; i < 5; i++) {
+//			for (int j = 0; j < 5; j++) {
+//
+//				if(getComponenteAttuale(i, j).)
+//			}
+//		}
+//	}
+
+	public ComponentiProva getComponenteAttuale(int i, int j) {
+		ComponentiProva c = caselle[i][j];
+		return c;
+	}
+
+	enum coordinateComp {
+		NORD, EST, SUD, OVEST
+	}
+
+	public void insertInStack(ComponentiProva a, ComponentiProva B) {
+		coordinateComp coord = coordinateComp.NORD;
+		switch (coord) {
+		case NORD: {
+
+		}
+		case EST: {
+
+		}
+		case SUD: {
+
+		}
+		case OVEST: {
+
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + coord);
+		}
+
+	}
 //	public void caselleInutilizzabili() {
 //
 //	}

@@ -40,4 +40,5 @@ public class CreaPlanciaNave extends SwingWorker<Void, Void> implements GameStat
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }
