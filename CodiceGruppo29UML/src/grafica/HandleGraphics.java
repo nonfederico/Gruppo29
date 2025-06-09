@@ -1,11 +1,13 @@
 package grafica;
 
 public class HandleGraphics {
-	// si occupa di creare un unico frame, il contenitore principale
+	// si occupa di creare un unico frame, il contenitore principale , richiamare
+	// sempre questo nelle altre classi per modifica a parti grafiche
+
 	static FrameBase frameBase = null;
 
 	public HandleGraphics() {
-		createGraphics();
+		createGraphics(); // creo grafica quando sul main inizializzo HandleGraphics
 	}
 
 	public static FrameBase createGraphics() {

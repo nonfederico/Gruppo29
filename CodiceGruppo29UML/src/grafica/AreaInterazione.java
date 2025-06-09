@@ -10,8 +10,7 @@ import javax.swing.JTextField;
 //è il primo pannello in cui interagiamo con il giocatore tramite testo
 public class AreaInterazione extends JPanel {
 // jpanel è un contenitore dove aggiungo componenti
-//	private JTextArea textAreaUtente;
-//	private JTextArea textArea;
+
 	private JTextField textField;
 	private JTextField textFieldUtente;
 	private String inputText = ""; // lo salvo in variabile di istanza perchè così è accessibile da tutti i metodi

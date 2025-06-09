@@ -5,14 +5,15 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 public class FrameBase extends JFrame {
-	// classe usata per gestire le 4 aree grafiche, ogni area sarà un thread
-
+	// classe usata per gestire le 4 aree grafiche
 	// viene implementata da tutti gli stati per mostrare a schermo quello che
 	// succede
+
 	private AreaInterazione areaInterazione;
-	private AreaInterazione due;
+	private static GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
-	private AreaInterazione quattro;
+	private AreaInterazione due;
+
 	// solo per prova, poi cambio layout
 
 	public FrameBase() {
@@ -25,23 +26,21 @@ public class FrameBase extends JFrame {
 		// setVisible(true);
 
 		areaInterazione = new AreaInterazione();
+		graficaPlanciaNave = GraficaPlanciaNave.getGraficaPlanciaNave();
 		due = new AreaInterazione();
 		graficaInformazioni = new GraficaInformazioni();
-		quattro = new AreaInterazione();
 
 		// layout del frame, borderLayout è lo standart
 
 		setLayout(new GridLayout(2, 2));
 
-		// imposto i container
-
+		// imposto i 4 container, setto in ordine per posizione 1,1 ; 1,2 ; 2,1 ; 2,2
 		getContentPane().add(areaInterazione);
 		getContentPane().add(due);
 		getContentPane().add(graficaInformazioni);
-		getContentPane().add(quattro);
-
+		getContentPane().add(graficaPlanciaNave);
 		due.writeTextfisso("due");
-		quattro.writeTextfisso("quattro");
+
 		setVisible(true);
 	}
 
@@ -55,12 +54,20 @@ public class FrameBase extends JFrame {
 		return testoScritto;
 	}
 
+	public void disablewriteAreaText() {
+		areaInterazione.disableReadText();
+	}
+
 	public String returnStringScritta() {
 		return areaInterazione.returnString();
 	}
 
-	public void disablewriteAreaText() {
-		areaInterazione.disableReadText();
+	public GraficaPlanciaNave getPlanciaNave() {
+		return this.graficaPlanciaNave;
+	}
+
+	static void setPlanciaNave(GraficaPlanciaNave g) {
+		graficaPlanciaNave = g;
 	}
 
 //funzioni per timer

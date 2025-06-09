@@ -3,7 +3,7 @@ package main;
 public interface GameState {
 	// rappresentiamo tutti i possibili stati, context si occupa dimantenere il
 	// riferimento allo stato corrente che delega l'oggetto context di eseguire le
-	// operazioni (contenitore dello sstao)
+	// operazioni (contenitore dello stato)
 
 //	void mainMenu(GameContext context);
 //

@@ -10,7 +10,7 @@ import player.Giocatore;
 public class CreaGiocatori extends SwingWorker<Void, Void> {
 	private String num = "";
 	private int numeroGiocatori = 0;
-	private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
+//	private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>(); //la lista la prendo direttamente dal gioco
 	private String nome = "";
 	private String colore = "";
 	private statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
@@ -53,7 +53,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 				e.printStackTrace();
 			}
 
-			setInformazioni(giocatori);
+			setInformazioni(Gioco.getIstanza().getlistaGiocatori());
 			break;
 
 		case CREAZIONENAVE:

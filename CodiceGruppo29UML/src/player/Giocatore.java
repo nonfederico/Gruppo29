@@ -5,15 +5,17 @@ package player;
  */
 public class Giocatore {
 
-	public Giocatore() {
-	}
-
 	private String nome;
 	private Ruolo ruolo = null;
 	private String colore = null;
 	private ListaPezziGiocatore listaPezzi = null;
 	private int id;
 	private int crediti;
+	private PlanciaNave planciaNave = null; // quando creo un giocatore creo anche la plancia e uso get per
+	// vederla
+
+	public Giocatore() {
+	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -33,6 +35,14 @@ public class Giocatore {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public PlanciaNave getPlancia() { // se non ho creato una plancia, la creo e poi la restituisco
+		if (planciaNave == null) {
+			System.out.println("creato plancia");
+			planciaNave = new PlanciaNave();
+		}
+		return this.planciaNave;
 	}
 
 	public ListaPezziGiocatore getListaPezzi() {

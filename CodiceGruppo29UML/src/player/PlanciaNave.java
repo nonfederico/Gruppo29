@@ -1,89 +1,55 @@
 package player;
 
-import java.io.*;
-import java.util.*;
+import plancia.ComponentiProva;
 
-/**
- * 
- */
+//la associo ad un giocatore e accedo tramite il giocatore cosi da avere 4 plance diverse
 public class PlanciaNave {
 
-    /**
-     * Default constructor
-     */
-    public PlanciaNave() {
-    }
+	private ComponentiProva[][] caselle = new ComponentiProva[5][5];
 
-    /**
-     * 
-     */
-    public int livello;
+	public PlanciaNave() {
+	}
 
-    /**
-     * 
-     */
-    public boolean legalità;
+	public int livello;
 
-    /**
-     * 
-     */
-    public int potenzaMotrice;
+	public boolean legalità;
 
-    /**
-     * 
-     */
-    public int potenzaFuoco;
+	public int potenzaMotrice;
 
+	public int potenzaFuoco;
 
+	public boolean isLegale() {
 
+		return this.legalità;
+		// TODO implement here
+	}
 
+	public void ritornaRicompensePenalità() {
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    public boolean isLegale() {
-  
-    	return this.legalità;
-        // TODO implement here
-    }
+	public int calcolaPotenzaMotrice() {
+		int potenza = 0;
+		return potenza;
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    public void ritornaRicompensePenalità() {
-        // TODO implement here
-    }
+	public int calcolaPotenzaFuoco() {
+		int potenza = 0;
+		return potenza;
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    public int calcolaPotenzaMotrice() {
-    	int potenza = 0;
-    	return potenza;
-        // TODO implement here
-    }
+	public void returnpenalità() {
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    public int calcolaPotenzaFuoco() {
-    	int potenza = 0;
-    	return potenza;
-        // TODO implement here
-    }
+	public void returnricompense() {
+		// TODO implement here
+	}
 
-    /**
-     * 
-     */
-    public void returnpenalità() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void returnricompense() {
-        // TODO implement here
-    }
+	public ComponentiProva[][] getCaselle() {
+		return this.caselle;
+	}
 
 }
