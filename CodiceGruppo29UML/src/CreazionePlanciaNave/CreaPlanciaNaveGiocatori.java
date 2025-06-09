@@ -38,8 +38,20 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		case GIOCATORE1: {
 			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
 			System.out.println("sono in giocatore1");
+			// si blocca alla riga 40 "sono in giocatore 1" di CreaPlanciaNaveGIocatore dove
+			// vado a prendere il riferimento alla plancia e setto le caselle vuote (stato
+			// iniziale)
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
 					.setCaselleVuote(Gioco.getlistaGiocatori().get(0));
+			System.out.println("sono in giocatore1-plancia creata");
+			try {
+				System.out.println("sono in giocatore1 - ridisegno la plancia");
+				HandleGraphics.getGraphics().rivalidaPlanciaNave();
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 //			GraficaPlanciaNave.getGraficaPlanciaNave().setCaselleVuote(Gioco.getlistaGiocatori().get(0)); // ritorna il
 			// giocatore
 			// 1

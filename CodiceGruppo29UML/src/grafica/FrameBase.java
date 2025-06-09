@@ -13,6 +13,7 @@ public class FrameBase extends JFrame {
 	static GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
 	private AreaInterazione due;
+
 	// solo per prova, poi cambio layout
 
 	public FrameBase() {
@@ -64,8 +65,32 @@ public class FrameBase extends JFrame {
 	}
 
 	public static void rivalidaPlanciaNave() {
-		graficaPlanciaNave.revalidate();
-		graficaPlanciaNave.repaint();
+		// quando la plancia nave passa da un giocatore all'altro
+		try {
+			System.out.println("removeall");
+			graficaPlanciaNave.removeAll();
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			System.out.println("revalidate");
+			graficaPlanciaNave.revalidate();
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			System.out.println("repaint");
+			graficaPlanciaNave.repaint();
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public GraficaPlanciaNave getPlanciaNave() {

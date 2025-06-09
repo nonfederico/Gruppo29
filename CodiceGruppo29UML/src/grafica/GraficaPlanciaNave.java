@@ -39,16 +39,20 @@ public class GraficaPlanciaNave extends JPanel {
 				componente.setCoordinate(i, j);
 				componente.setBackground(Color.LIGHT_GRAY);
 				componente.setBorder(new LineBorder(Color.BLUE));
-				g.getPlancia().getCaselle()[i][j] = componente;
+				g.getPlancia().getCaselle()[i][j] = componente; // prendo oggetto plancia (non grafica)
 //				caselle.getCaselle()[i][j] = componente;
 				add(componente);
 				setCaselleDisponibili(g);
 				// per aggiornare interfaccia
-				FrameBase.rivalidaPlanciaNave();
+
 				setVisible(true);
 
 			}
 		}
+	}
+
+	public void riformattaPlanciaNave() {
+		HandleGraphics.getGraphics().rivalidaPlanciaNave();
 	}
 
 	private void setCaselleDisponibili(Giocatore g) {
