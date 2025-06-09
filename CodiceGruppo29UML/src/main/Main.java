@@ -10,16 +10,22 @@ public class Main {
 
 		HandleGraphics.createGraphics();
 
-		// GameContext context = new GameContext();
+		// partiamo dal primo stato (contesto) creagioco
 		GameState creagioco = new CreaGioco();
 		GameContext.getIstanzaGC().setState(creagioco);
-		GameContext.getIstanzaGC().enter();
-//		context.setState(creagioco);
-//		context.enter(); // entra nell'enter di creagioco
-
-		// context.pause lo associo ad un pulsante che sta in ascolto e cambia stato
-		// quando viene premuto
+		GameContext.getIstanzaGC().enter(); // entro nello stato enter di creagioco
+		// il cambio di stato e contesto lo faremo nelle altre classi tramite
+		// getIstanzaGC().setState(classe entro la quale vuoi attivare lo stato)
+		// , il context è la classe dentro la quale chiamiamo setState
+		// la classe context deve implementare l'interfaccia GameState
 
 	}
 
 }
+
+//struttura codice:
+//	campi
+//	campi statici
+//	costruttori
+//	metodi
+//	metodi statici

@@ -1,16 +1,21 @@
 package CreazioneGioco;
 
+import java.util.ArrayList;
+
+import player.Giocatore;
+
 public class Gioco {
 
 	private String nomeGioco;
 	private int numeroGiocatori;
+	private static ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
 	private static Gioco g = null; // uso pattern singleton
 
-	public Gioco() {
+	private Gioco() {
 		// costruttore vuoto perchè settiamo il nome tramite funzione setnome
 	}
 
-	public static Gioco getIstanza() {
+	public static Gioco getIstanza() { // per accedere all'istanza senza creare un nuovo oggetto nelle altre classi
 		if (g == null) {
 			g = new Gioco();
 		}
@@ -20,6 +25,10 @@ public class Gioco {
 
 	public void setNomeGioco(String nome) {
 		this.nomeGioco = nome;
+	}
+
+	public static ArrayList<Giocatore> getlistaGiocatori() { // per accedere da altre classi
+		return giocatori;
 	}
 
 	public String getNomeGioco() {
