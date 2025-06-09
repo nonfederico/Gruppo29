@@ -21,6 +21,7 @@ public class Contrabbandieri extends Carte {
     }
      
     
+    // da implementare la classe giocatori 
     
     public void battaglia(List<Giocatore> giocatoriInOrdine) {
         System.out.println("⚔️ I Contrabbandieri attaccano! Potenza: " + potenzaFuoco);

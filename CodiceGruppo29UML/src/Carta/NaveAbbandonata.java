@@ -72,4 +72,16 @@ public class NaveAbbandonata extends Carte {
     public int getGiorniPersi() {
         return giorniPersi;
     }
+
+	public void setPrezzo(int prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public void setPedineEquipaggioPerse(int pedineEquipaggioPerse) {
+		this.pedineEquipaggioPerse = pedineEquipaggioPerse;
+	}
+
+	public void setGiorniPersi(int giorniPersi) {
+		this.giorniPersi = giorniPersi;
+	}
 }
