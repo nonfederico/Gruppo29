@@ -38,15 +38,18 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		case GIOCATORE1: {
 			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
 			System.out.println("sono in giocatore1");
-			// si blocca alla riga 40 "sono in giocatore 1" di CreaPlanciaNaveGIocatore dove
+			// si blocca alla riga 40 'sono in giocatore 1' di CreaPlanciaNaveGIocatore dove
 			// vado a prendere il riferimento alla plancia e setto le caselle vuote (stato
 			// iniziale)
-			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-					.setCaselleVuote(Gioco.getlistaGiocatori().get(0));
+//			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
+//					.setCaselleVuote(Gioco.getlistaGiocatori().get(0));
+			rivalidaPlanciaNave();
+
 			System.out.println("sono in giocatore1-plancia creata");
 			try {
 				System.out.println("sono in giocatore1 - ridisegno la plancia");
-				HandleGraphics.getGraphics().rivalidaPlanciaNave();
+//				HandleGraphics.getGraphics().rivalidaPlanciaNave();
+				rivalidaPlanciaNave();
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -55,6 +58,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 //			GraficaPlanciaNave.getGraficaPlanciaNave().setCaselleVuote(Gioco.getlistaGiocatori().get(0)); // ritorna il
 			// giocatore
 			// 1
+			return;
 		}
 		case GIOCATORE2: {
 
@@ -68,6 +72,49 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + stati);
 		}
+	}
+
+	public boolean rivalidaPlanciaNave() {
+		boolean tru = true;
+
+		try {
+			System.out.println("removeall plancia nave");
+			HandleGraphics.getGraphics().getPlanciaNave().removeAll();
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			System.out.println("plancia nave setcaselle");
+			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
+					.setCaselleVuote(Gioco.getlistaGiocatori().get(0));
+
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			System.out.println("plancia nave revalidate");
+			HandleGraphics.getGraphics().getPlanciaNave().revalidate();
+
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+
+			System.out.println(" plancia nave repaint");
+			HandleGraphics.getGraphics().getPlanciaNave().repaint();
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return tru = false;
 	}
 
 }

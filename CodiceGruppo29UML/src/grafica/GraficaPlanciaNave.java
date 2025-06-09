@@ -33,20 +33,31 @@ public class GraficaPlanciaNave extends JPanel {
 
 	public void setCaselleVuote(Giocatore g) { // lo vado a richiamare durante la fase creazionePlanciaNave
 		// setto caselle per ogni giocatore poi faccio repaint
+		System.out.println("INIZIO setCaselleVuote");
 		for (int i = 0; i < 5; i++) {
+			System.out.println("for i");
 			for (int j = 0; j < 5; j++) {
+				System.out.println("for j");
 				ComponentiProva componente = new ComponentiProva();
+				System.out.println("new componenti prova");
 				componente.setCoordinate(i, j);
+				System.out.println("setcordi");
 				componente.setBackground(Color.LIGHT_GRAY);
 				componente.setBorder(new LineBorder(Color.BLUE));
+				System.out.println("imposto colore");
 				g.getPlancia().getCaselle()[i][j] = componente; // prendo oggetto plancia (non grafica)
 //				caselle.getCaselle()[i][j] = componente;
+				System.out.println("getcaselle");
 				add(componente);
-				setCaselleDisponibili(g);
-				// per aggiornare interfaccia
+				System.out.println("add componente");
+
+				// se elimino va ma poi si cancella?
+//				setCaselleDisponibili(g);
+//				System.out.println("setcaselle dispo");
+//				// per aggiornare interfaccia
 
 				setVisible(true);
-
+				System.out.println("FINE setCaselleVuote");
 			}
 		}
 	}
@@ -56,8 +67,10 @@ public class GraficaPlanciaNave extends JPanel {
 	}
 
 	private void setCaselleDisponibili(Giocatore g) {
+		System.out.println("1");
 		g.getPlancia().getCaselle()[2][2].setPannello(); // creo il centro
 
+		System.out.println("2");
 		g.getPlancia().getCaselle()[0][0].setBackground(Color.white);
 		g.getPlancia().getCaselle()[0][1].setBackground(Color.white);
 		g.getPlancia().getCaselle()[0][3].setBackground(Color.white);
@@ -66,6 +79,7 @@ public class GraficaPlanciaNave extends JPanel {
 		g.getPlancia().getCaselle()[1][4].setBackground(Color.white);
 		g.getPlancia().getCaselle()[4][2].setBackground(Color.white);
 
+		System.out.println("3");
 		g.getPlancia().getCaselle()[0][0].setBorder(new LineBorder(Color.white));
 		g.getPlancia().getCaselle()[0][1].setBorder(new LineBorder(Color.white));
 		g.getPlancia().getCaselle()[0][3].setBorder(new LineBorder(Color.white));
