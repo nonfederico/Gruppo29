@@ -25,6 +25,9 @@ https://www.eclipse.org/downloads/
 https://web.cs.ucla.edu/~miryung/teaching/EE379K-Spring2014/SwingTutorial.html  
 https://youtube.com/playlist?list=PLU8dZfh0ZIUn7-TDZfSmX9QRnBgmdJJWD&si=ME4XUM83XkB-9CHQ  
 
+# ISTALLA WINDOWBUILDER 
+https://marketplace.eclipse.org/content/windowbuilder
+
 # USO DEL TERMINALE
 
 prima si compila con il comando javac e poi si esegue con il comando java  
