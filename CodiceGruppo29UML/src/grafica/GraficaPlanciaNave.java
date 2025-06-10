@@ -63,7 +63,7 @@ public class GraficaPlanciaNave extends JPanel {
 		// lo richiamo nella creazione della plancia tramithe handlegraphics
 
 		System.out.println("1");
-		g.getPlancia().getCaselle()[2][2].setPannello(); // creo il centro
+		g.getPlancia().getCaselle()[2][2].setPannello(g.getNome(), g.getId()); // creo il centro
 
 		System.out.println("2");
 		g.getPlancia().getCaselle()[0][0].setBackground(Color.white);

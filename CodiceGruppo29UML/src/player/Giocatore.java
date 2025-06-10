@@ -37,6 +37,10 @@ public class Giocatore {
 		this.id = id;
 	}
 
+	public int getId() {
+		return this.id;
+	}
+
 	public PlanciaNave getPlancia() { // se non ho creato una plancia, la creo e poi la restituisco
 		if (planciaNave == null) {
 			System.out.println("creato plancia");

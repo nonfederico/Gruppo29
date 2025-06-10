@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import CreazioneGioco.Gioco;
+
 public class ComponentiProva extends JPanel {
 
 	private enum connettori {
@@ -57,23 +59,29 @@ public class ComponentiProva extends JPanel {
 		return this.listaConnettori;
 	}
 
-	public void setPannello() {
+	public void setPannello(String s, int i) {
 		// setto il layout del componente(ora uguale per tutti i comp)
 		// lo chiamo solo quando seleziono casella e aggiungo componente, da mettere
 		// nell'event
-		nord.setHorizontalAlignment(JTextField.CENTER);
-		sud.setHorizontalAlignment(JTextField.CENTER);
-		est.setHorizontalAlignment(JTextField.CENTER);
-		ovest.setHorizontalAlignment(JTextField.CENTER);
 
-		this.setLayout(new GridLayout(3, 1));
-		estOvest.setLayout(new GridLayout(1, 2));
+		this.setLayout(new GridLayout(1, 1));
+		JTextField nome = new JTextField();
+		nome.setText(Gioco.getlistaGiocatori().get(i).getNome());
+		add(nome);
 
-		this.add(nord);
-		estOvest.add(ovest);
-		estOvest.add(est);
-		this.add(estOvest);
-		this.add(sud);
+//		nord.setHorizontalAlignment(JTextField.CENTER);
+//		sud.setHorizontalAlignment(JTextField.CENTER);
+//		est.setHorizontalAlignment(JTextField.CENTER);
+//		ovest.setHorizontalAlignment(JTextField.CENTER);
+//
+//		this.setLayout(new GridLayout(3, 1));
+//		estOvest.setLayout(new GridLayout(1, 2));
+//
+//		this.add(nord);
+//		estOvest.add(ovest);
+//		estOvest.add(est);
+//		this.add(estOvest);
+//		this.add(sud);
 
 	}
 

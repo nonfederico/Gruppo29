@@ -4,8 +4,12 @@ import javax.swing.SwingWorker;
 
 import CreazioneGioco.Gioco;
 import grafica.HandleGraphics;
+import main.Clessidra;
 
 public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
+
+	private Clessidra timer = new Clessidra();
+	String finito = "";
 
 	enum sottoStati { // sottostati della creazione planciaNave
 		GIOCATORE1, GIOCATORE2, GIOCATORE3, GIOCATORE4, VOLO
@@ -34,6 +38,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 	public void switchState() {
 		System.out.println("sono in switchPlanciaNave");
 		sottoStati stati = sottoStati.GIOCATORE1;
+
 		switch (stati) {
 		case GIOCATORE1: {
 			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
@@ -42,24 +47,126 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			try {
 				System.out.println("sono in giocatore1 - ridisegno la plancia");
 				// funzione che carica le caselle della plancia nave
-				rivalidaPlanciaNave();
+				rivalidaPlanciaNave(0);
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			return;
+			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			System.out.println("ciclo do");
+			do {
+//				timer.execute();
+
+				finito = HandleGraphics.getGraphics().writeAreaText();
+
+			} while (!finito.toUpperCase().equals("FINITO"));
+			System.out.println("ciclo do finito");
+
+			if (finito.toUpperCase().equals("FINITO") && Gioco.getlistaGiocatori().size() < 3) {
+				System.out.println("setto stato giocatore2");
+				stati = sottoStati.GIOCATORE2;
+				System.out.println("switchstate");
+				switchState();
+			} else {
+				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				return;
+			}
+
 		}
 		case GIOCATORE2: {
+			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
+			System.out.println("sono in giocatore 2");
+
+			try {
+				System.out.println("sono in giocatore 2 - ridisegno la plancia");
+				// funzione che carica le caselle della plancia nave
+				rivalidaPlanciaNave(1);
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			do {
+				timer.execute();
+				finito = HandleGraphics.getGraphics().writeAreaText();
+			} while (!finito.toUpperCase().equals("FINITO") || !timer.isDone());
+
+			if (finito.toUpperCase().equals("FINITO") && Gioco.getlistaGiocatori().size() < 4) {
+				stati = sottoStati.GIOCATORE3;
+				switchState();
+			} else {
+				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				return;
+			}
 
 		}
 		case GIOCATORE3: {
+			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
+			System.out.println("sono in giocatore 3");
+
+			try {
+				System.out.println("sono in giocatore 3 - ridisegno la plancia");
+				// funzione che carica le caselle della plancia nave
+				rivalidaPlanciaNave(2);
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			do {
+				timer.execute();
+				finito = HandleGraphics.getGraphics().writeAreaText();
+			} while (!finito.toUpperCase().equals("FINITO") || !timer.isDone());
+
+			if (finito.toUpperCase().equals("FINITO") && Gioco.getlistaGiocatori().size() < 5) {
+				stati = sottoStati.GIOCATORE4;
+				switchState();
+			} else {
+				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				return;
+			}
 
 		}
 		case GIOCATORE4: {
+			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
+			System.out.println("sono in giocatore 4");
+
+			try {
+				System.out.println("sono in giocatore 4 - ridisegno la plancia");
+				// funzione che carica le caselle della plancia nave
+				rivalidaPlanciaNave(3);
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			do {
+				timer.execute();
+				finito = HandleGraphics.getGraphics().writeAreaText();
+			} while (!finito.toUpperCase().equals("FINITO") || !timer.isDone());
+
+			if (finito.toUpperCase().equals("FINITO")) {
+				stati = sottoStati.VOLO;
+				switchState();
+			} else {
+				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				return;
+			}
 
 		}
 		case VOLO: {
+			try {
+				Thread.sleep(500);
+				HandleGraphics.getGraphics().DisabledAreaText("fase di volo");
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 //			GameContext.getIstanzaGC().setState(Volo);
 //			GameContext.getIstanzaGC().enter();
 		}
@@ -69,7 +176,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 	}
 
-	public boolean rivalidaPlanciaNave() {
+	public boolean rivalidaPlanciaNave(int id) {
 		boolean tru = true;
 
 		try {
@@ -85,9 +192,9 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			// altrimenti non funziona e si blocca nel thread
 			System.out.println("plancia nave setcaselle");
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-					.setCaselleVuote(Gioco.getlistaGiocatori().get(0));
+					.setCaselleVuote(Gioco.getlistaGiocatori().get(id));
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(0));
+					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(id));
 
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
