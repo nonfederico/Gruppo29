@@ -78,7 +78,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		for (int i = 0; i < numeroGiocatori; i++) {
 			Giocatore giocatore = new Giocatore();
 			giocatore.setId(i);
-
+			System.out.println("id: " + giocatore.getId());
 			HandleGraphics.getGraphics()
 					.DisabledAreaText("giocatore " + i + " ,inserisci nome (massimo 10 caratteri):");
 			do {

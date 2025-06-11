@@ -10,6 +10,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 	private Clessidra timer = new Clessidra();
 	String finito = "";
+	sottoStati stati = sottoStati.GIOCATORE1;
 
 	enum sottoStati { // sottostati della creazione planciaNave
 		GIOCATORE1, GIOCATORE2, GIOCATORE3, GIOCATORE4, VOLO
@@ -37,7 +38,6 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 	public void switchState() {
 		System.out.println("sono in switchPlanciaNave");
-		sottoStati stati = sottoStati.GIOCATORE1;
 
 		switch (stati) {
 		case GIOCATORE1: {
@@ -191,13 +191,12 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			// devo chiamare con handlegraphics i metodi per modificare i componenti grafici
 			// altrimenti non funziona e si blocca nel thread
 			System.out.println("plancia nave setcaselle");
-//			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-//					.setCaselleVuote(Gioco.getlistaGiocatori().get(id));
-//			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-//					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(id));
-
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-					.setCaselleG(Gioco.getlistaGiocatori().get(id));
+					.setCaselleVuote(Gioco.getlistaGiocatori().get(id));
+			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
+					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(id));
+
+//			HandleGraphics.getGraphics().getPlanciaNave().setCaselleG(Gioco.getlistaGiocatori().get(id));
 
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
