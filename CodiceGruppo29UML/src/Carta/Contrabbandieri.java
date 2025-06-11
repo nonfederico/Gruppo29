@@ -17,7 +17,7 @@ public class Contrabbandieri extends Carte {
     /**
      * 
      */
-    public int penalità;
+    public int penalita;
 
     /**
      * 

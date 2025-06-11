@@ -74,7 +74,7 @@ public class PlanciaVolo {
     /**
      * 
      */
-    public void penalitàPerdite() {
+    public void penalitaPerdite() {
         // TODO implement here
     }
 

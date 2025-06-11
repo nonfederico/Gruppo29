@@ -19,6 +19,6 @@ public class Pezzi {
 	/**
 	 * 
 	 */
-	public int quantità;
+	public int quantita;
 
 }
