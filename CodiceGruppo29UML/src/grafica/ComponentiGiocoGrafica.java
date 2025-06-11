@@ -1,4 +1,4 @@
-package plancia;
+package grafica;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -8,40 +8,48 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import CreazioneGioco.Gioco;
-import CreazionePlanciaNave.Connettori;
+import CreazionePlanciaNave.ComponentiGioco;
 
-public class ComponentiGioco extends JPanel {
-//
+public class ComponentiGiocoGrafica extends JPanel {
+	// usati in posizionecaselle
+
+// classe per la parte grafica di ogni componente
 //	public enum connettori {
 //		NESSUNO, SINGOLO, DOPPIO, UNIVERSALE
 //	}
 
-	private Connettori[] listaConnettori = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
-			Connettori.NESSUNO };
-	private Connettori[] listaConnettoriAdiacenti = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
-			Connettori.NESSUNO }; // lista usata per vedere se ci sono connettori ai lati adiacenti al pezzo
+	private ComponentiGioco componente;
+
+//	private Connettori[] listaConnettori = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
+//			Connettori.NESSUNO };
+//	private Connettori[] listaConnettoriAdiacenti = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
+//			Connettori.NESSUNO }; // lista usata per vedere se ci sono connettori ai lati adiacenti al pezzo
 
 	private int[] posizioneComponente = { 0, 0 };
 	private String nome = "";
-	private JTextField nord = new JTextField(listaConnettori[0].toString());
-	private JTextField est = new JTextField(listaConnettori[1].toString());
-	private JTextField sud = new JTextField(listaConnettori[2].toString());
-	private JTextField ovest = new JTextField(listaConnettori[3].toString());
+//	private JTextField nord = new JTextField(listaConnettori[0].toString());
+//	private JTextField est = new JTextField(listaConnettori[1].toString());
+//	private JTextField sud = new JTextField(listaConnettori[2].toString());
+//	private JTextField ovest = new JTextField(listaConnettori[3].toString());
 
 	// per settare quali caselle abilitare
 //	Stack<int[]> listaPosizioniSingola = new Stack<>();
 //	Stack<int[]> listaPosizioniDoppio = new Stack<>();
 
-	enum statoPos {
-		NORD, EST, SUD, OVEST
-	}
-
-	statoPos posLati = statoPos.NORD;
+//	enum statoPos {
+//		NORD, EST, SUD, OVEST
+//	}
+//
+//	statoPos posLati = statoPos.NORD;
 
 	JPanel estOvest = new JPanel();
 
-	public ComponentiGioco() {
+	public ComponentiGiocoGrafica() {
 
+//		listaConnettori[0] = Connettori.UNIVERSALE;
+//		listaConnettori[1] = Connettori.UNIVERSALE;
+//		listaConnettori[2] = Connettori.UNIVERSALE;
+//		listaConnettori[3] = Connettori.UNIVERSALE;
 		this.nome = "connettoreProva";
 		setEnabled(false);
 //		setEnabled(true); usato per prova, setto false inizialmente
@@ -66,13 +74,13 @@ public class ComponentiGioco extends JPanel {
 		return posizioneComponente;
 	}
 
-	public Connettori[] getListaConnettori() {
-		return this.listaConnettori;
-	}
-
-	public Connettori[] getListaConnettoriAdiacenti() {
-		return this.listaConnettoriAdiacenti;
-	}
+//	public Connettori[] getListaConnettori() {
+//		return this.listaConnettori;
+//	}
+//
+//	public Connettori[] getListaConnettoriAdiacenti() {
+//		return this.listaConnettoriAdiacenti;
+//	}
 
 	public void setPannello(String s, int i) {
 		// setto il layout del componente(ora uguale per tutti i comp)

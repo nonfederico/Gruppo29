@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import plancia.ComponentiGioco;
+import CreazionePlanciaNave.ComponentiGioco;
 import player.Giocatore;
 
 public class GraficaPlanciaNave extends JPanel {
@@ -36,19 +36,21 @@ public class GraficaPlanciaNave extends JPanel {
 				// ad ogni spazio della gridLayout associo un componente e imposto le
 				// caratteristiche
 				System.out.println("for j");
+				ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
 				ComponentiGioco componente = new ComponentiGioco();
 				System.out.println("new componenti prova");
 				componente.setCoordinate(i, j);
 				System.out.println("setcordi");
-				componente.setBackground(g.getColoreS());
-				componente.setBorder(new LineBorder(Color.BLACK));
+				componenteGrafico.setBackground(g.getColoreS());
+				componenteGrafico.setBorder(new LineBorder(Color.BLACK));
 				System.out.println("imposto colore");
 				// il colore lo imposto in base al colore del giocatore
 
 				g.getPlancia().getCaselle()[i][j] = componente; // prendo oggetto plancia (non grafica)
+				g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
 				System.out.println("getcaselle");
 
-				add(componente);
+				add(componenteGrafico);
 				System.out.println("add componente");
 
 				setVisible(true);
@@ -62,7 +64,7 @@ public class GraficaPlanciaNave extends JPanel {
 
 	public void setCasellaSingola(Giocatore g, int i, int j) {
 		// per modificare le caselle che possono essere selezionate
-		ComponentiGioco componente = g.getPlancia().getCaselle()[i][j];
+		ComponentiGiocoGrafica componente = g.getPlancia().getCaselleGrafica()[i][j];
 		componente.setEnabled(true);
 		componente.setBackground(Color.pink);
 
@@ -72,27 +74,27 @@ public class GraficaPlanciaNave extends JPanel {
 		// lo richiamo nella creazione della plancia tramithe handlegraphics
 
 		System.out.println("1 " + g.getId());
-		g.getPlancia().getCaselle()[2][2].setPannello(g.getNome(), g.getId()); // creo il centro
+		g.getPlancia().getCaselleGrafica()[2][2].setPannello(g.getNome(), g.getId()); // creo il centro
 
 		System.out.println("2");
-		g.getPlancia().getCaselle()[0][0].setBackground(Color.white);
-		g.getPlancia().getCaselle()[0][1].setBackground(Color.white);
-		g.getPlancia().getCaselle()[0][0].setBackground(Color.white);
-		g.getPlancia().getCaselle()[0][1].setBackground(Color.white);
-		g.getPlancia().getCaselle()[0][3].setBackground(Color.white);
-		g.getPlancia().getCaselle()[0][4].setBackground(Color.white);
-		g.getPlancia().getCaselle()[1][0].setBackground(Color.white);
-		g.getPlancia().getCaselle()[1][4].setBackground(Color.white);
-		g.getPlancia().getCaselle()[4][2].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[0][0].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[0][1].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[0][0].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[0][1].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[0][3].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[0][4].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[1][0].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[1][4].setBackground(Color.white);
+		g.getPlancia().getCaselleGrafica()[4][2].setBackground(Color.white);
 
 		System.out.println("3");
-		g.getPlancia().getCaselle()[0][0].setBorder(new LineBorder(Color.white));
-		g.getPlancia().getCaselle()[0][1].setBorder(new LineBorder(Color.white));
-		g.getPlancia().getCaselle()[0][3].setBorder(new LineBorder(Color.white));
-		g.getPlancia().getCaselle()[0][4].setBorder(new LineBorder(Color.white));
-		g.getPlancia().getCaselle()[1][0].setBorder(new LineBorder(Color.white));
-		g.getPlancia().getCaselle()[1][4].setBorder(new LineBorder(Color.white));
-		g.getPlancia().getCaselle()[4][2].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselleGrafica()[0][0].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselleGrafica()[0][1].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselleGrafica()[0][3].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselleGrafica()[0][4].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselleGrafica()[1][0].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselleGrafica()[1][4].setBorder(new LineBorder(Color.white));
+		g.getPlancia().getCaselleGrafica()[4][2].setBorder(new LineBorder(Color.white));
 	}
 
 //	enum statoEnum {
