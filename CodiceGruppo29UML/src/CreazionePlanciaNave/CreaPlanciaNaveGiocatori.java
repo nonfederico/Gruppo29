@@ -191,10 +191,13 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			// devo chiamare con handlegraphics i metodi per modificare i componenti grafici
 			// altrimenti non funziona e si blocca nel thread
 			System.out.println("plancia nave setcaselle");
+//			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
+//					.setCaselleVuote(Gioco.getlistaGiocatori().get(id));
+//			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
+//					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(id));
+
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-					.setCaselleVuote(Gioco.getlistaGiocatori().get(id));
-			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(id));
+					.setCaselleG(Gioco.getlistaGiocatori().get(id));
 
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
