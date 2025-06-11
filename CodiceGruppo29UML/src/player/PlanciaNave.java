@@ -48,6 +48,10 @@ public class PlanciaNave {
 		// TODO implement here
 	}
 
+	public ComponentiProva getComponente(int i, int j) {
+		return caselle[i][j];
+	}
+
 	public ComponentiProva[][] getCaselle() {
 		return this.caselle;
 	}
