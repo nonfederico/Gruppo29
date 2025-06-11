@@ -55,6 +55,9 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
 			System.out.println("ciclo do");
+			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			posCaselle.execute();
+
 			do {
 //				timer.execute();
 
@@ -194,7 +197,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
 					.setCaselleVuote(Gioco.getlistaGiocatori().get(id));
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
-					.setCaselleDisponibili(Gioco.getlistaGiocatori().get(id));
+					.setCaselleNonDisponibili(Gioco.getlistaGiocatori().get(id));
 
 //			HandleGraphics.getGraphics().getPlanciaNave().setCaselleG(Gioco.getlistaGiocatori().get(id));
 

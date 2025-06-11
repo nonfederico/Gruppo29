@@ -1,11 +1,11 @@
 package player;
 
-import plancia.ComponentiProva;
+import plancia.ComponentiGioco;
 
 //la associo ad un giocatore e accedo tramite il giocatore cosi da avere 4 plance diverse
 public class PlanciaNave {
 
-	private ComponentiProva[][] caselle = new ComponentiProva[5][5];
+	private ComponentiGioco[][] caselle = new ComponentiGioco[5][5];
 
 	public PlanciaNave() {
 	}
@@ -48,11 +48,11 @@ public class PlanciaNave {
 		// TODO implement here
 	}
 
-	public ComponentiProva getComponente(int i, int j) {
+	public ComponentiGioco getComponente(int i, int j) {
 		return caselle[i][j];
 	}
 
-	public ComponentiProva[][] getCaselle() {
+	public ComponentiGioco[][] getCaselle() {
 		return this.caselle;
 	}
 

@@ -14,6 +14,7 @@ public class Giocatore {
 	private ListaPezziGiocatore listaPezzi = null;
 	private int id;
 	private int crediti;
+	private int posizioneAttuale; // salvi la posizione in cui è nella plancia di volo
 	private PlanciaNave planciaNave = null; // quando creo un giocatore creo anche la plancia e uso get per
 	// vederla
 
