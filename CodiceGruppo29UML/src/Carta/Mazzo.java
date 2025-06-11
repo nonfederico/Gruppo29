@@ -1,5 +1,7 @@
 package Carta;
 
+import java.util.Stack;
+
 import javax.swing.SwingWorker;
 
   public class Mazzo  extends SwingWorker<Void, Void >{
@@ -21,6 +23,10 @@ import javax.swing.SwingWorker;
 		
 		
 	}
+	
+	private Stack<Carte> mazzo = new Stack<Carte>() ;
+  
+	
 	
 	@Override
 	protected Void doInBackground() throws Exception {

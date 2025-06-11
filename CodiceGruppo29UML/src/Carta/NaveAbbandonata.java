@@ -9,10 +9,10 @@ public class NaveAbbandonata extends Carte {
     private int pedineEquipaggioPerse; // Quanti membri dell’equipaggio devi sacrificare
     private int giorniPersi; // Giorni persi nel vendere la nave
 
-    public NaveAbbandonata(int prezzo, int pedineEquipaggioPerse, int giorniPersi) {
-        this.prezzo = prezzo;
-        this.pedineEquipaggioPerse = pedineEquipaggioPerse;
-        this.giorniPersi = giorniPersi;
+    public NaveAbbandonata() {
+        this.prezzo = 100;
+        this.pedineEquipaggioPerse = 10;
+        this.giorniPersi = 5;
     }
 
     /**

@@ -13,11 +13,9 @@ public class Contrabbandieri extends Carte {
 
     
     
-    public Contrabbandieri(int penalita, int ricompensa, int potenzaFuoco, int giorniPersi) {
-        this.penalita = penalita;
-        this.ricompensa = ricompensa;
-        this.potenzaFuoco = potenzaFuoco;
-        this.giorniPersi = giorniPersi;
+    public Contrabbandieri() {
+    	this.penalita=10;
+    	
     }
      
     
@@ -57,5 +55,45 @@ public class Contrabbandieri extends Carte {
     	
     	// da implementare perdi posizioni 
     }
+
+
+	public int getPenalita() {
+		return penalita;
+	}
+
+
+	public void setPenalita(int penalita) {
+		this.penalita = penalita;
+	}
+
+
+	public int getRicompensa() {
+		return ricompensa;
+	}
+
+
+	public void setRicompensa(int ricompensa) {
+		this.ricompensa = ricompensa;
+	}
+
+
+	public int getPotenzaFuoco() {
+		return potenzaFuoco;
+	}
+
+
+	public void setPotenzaFuoco(int potenzaFuoco) {
+		this.potenzaFuoco = potenzaFuoco;
+	}
+
+
+	public int getGiorniPersi() {
+		return giorniPersi;
+	}
+
+
+	public void setGiorniPersi(int giorniPersi) {
+		this.giorniPersi = giorniPersi;
+	}
   
 }
