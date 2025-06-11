@@ -3,7 +3,6 @@ package Carta;
 import java.io.*;
 import java.util.*;
 
-<<<<<<< Updated upstream
 
 public class Contrabbandieri extends Carte {
 
@@ -51,105 +50,12 @@ public class Contrabbandieri extends Carte {
                     break;
             }
         }
-=======
-public class Contrabbandieri extends Carte {
-
-  
-    private int penalita;
-    private int ricompensa;
-    private int potenzaFuoco;
-
-    public Contrabbandieri(int penalita, int ricompensa, int potenzaFuoco) {
-        this.penalita = penalita;
-        this.ricompensa = ricompensa;
-        this.potenzaFuoco = potenzaFuoco;
-    }
-    
-    
-	
+        
 	
     public void battaglia() {
         // TODO implement here
     	
     	// da implementare perdi posizioni 
->>>>>>> Stashed changes
     }
-    
-    
-	public int getPenalita() {
-		return penalita;
-	}
-
-
-
-	public void setPenalita(int penalita) {
-		this.penalita = penalita;
-	}
-
-
-
-	public int getRicompensa() {
-		return ricompensa;
-	}
-
-
-
-	public void setRicompensa(int ricompensa) {
-		this.ricompensa = ricompensa;
-	}
-
-
-
-	public int getPotenzaFuoco() {
-		return potenzaFuoco;
-	}
-
-
-
-	public void setPotenzaFuoco(int potenzaFuoco) {
-		this.potenzaFuoco = potenzaFuoco;
-	}
-
-
-
-	public int getGiorniPersi() {
-		return giorniPersi;
-	}
-
-
-
-	public void setGiorniPersi(int giorniPersi) {
-		this.giorniPersi = giorniPersi;
-	}
-
-
-	public int getPenalita() {
-		return penalita;
-	}
-
-
-	public void setPenalita(int penalita) {
-		this.penalita = penalita;
-	}
-
-
-	public int getRicompensa() {
-		return ricompensa;
-	}
-
-
-	public void setRicompensa(int ricompensa) {
-		this.ricompensa = ricompensa;
-	}
-
-
-	public int getPotenzaFuoco() {
-		return potenzaFuoco;
-	}
-
-
-	public void setPotenzaFuoco(int potenzaFuoco) {
-		this.potenzaFuoco = potenzaFuoco;
-	}
-
+  
 }
