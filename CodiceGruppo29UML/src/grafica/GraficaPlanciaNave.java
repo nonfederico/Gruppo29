@@ -46,8 +46,8 @@ public class GraficaPlanciaNave extends JPanel {
 				System.out.println("new componenti prova");
 				componente.setCoordinate(i, j);
 				System.out.println("setcordi");
-				componente.setBackground(Color.LIGHT_GRAY);
-				componente.setBorder(new LineBorder(Color.BLUE));
+				componente.setBackground(g.getColoreS());
+				componente.setBorder(new LineBorder(Color.BLACK));
 				System.out.println("imposto colore");
 				// il colore lo imposto in base al colore del giocatore
 

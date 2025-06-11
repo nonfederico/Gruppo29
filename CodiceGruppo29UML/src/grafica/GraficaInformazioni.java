@@ -1,40 +1,38 @@
 package grafica;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import main.Clessidra;
+//https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
 
 public class GraficaInformazioni extends JPanel {
-//TO DO si occuperà di gestire la parte grafica relativa a carte e informazioni (posizione 2,1)
-	private JTextField textField;
-	private Clessidra timer = new Clessidra();
-	JButton button = new JButton();
+	Carta cartaGrafica = new Carta();
+	GraficaClessidra graficaTimer = new GraficaClessidra();
+//	GridBagConstraints c = new GridBagConstraints();
 
 	public GraficaInformazioni() {
-
-		textField = new JTextField();
+//		setLayout(new GridBagLayout());
 		setLayout(new GridLayout(1, 2));
-
-		button.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				timer.execute();
-			}
-		});
-		add(textField);
-		add(button);
-
+//		setUpCarta();
+		add(cartaGrafica);
+		add(graficaTimer);
 	}
 
-	public void writeTextfisso(String testo) {
-		textField.setEditable(false);
-		textField.setText(testo);
+//	public void setUpCarta() {
+//		c.fill = GridBagConstraints.VERTICAL;
+//		c.gridx = 0;
+//		c.gridy = 0; // prima posizione a sx in alto
+//		add(cartaGrafica);
+//	}
+
+//	public void setUpTimer() {
+//		c.gridx = 1;
+//		c.gridy = 0;
+//	}
+
+	public void writeTextFisso(String testo) {
+		graficaTimer.writeTextfisso(testo);
 	}
+
 }

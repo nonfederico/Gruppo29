@@ -18,6 +18,7 @@ public class Clessidra extends SwingWorker<String, Void> {
 				// conta fino a 3 secondi (rimane attivo) e al termine si ferma tramite done(),
 				// funzione usata per chiedere al thread di terminare
 				HandleGraphics.getGraphics().writeInformazioni("timer attivo");
+				System.out.println("timer attivato");
 				Thread.sleep(3 * 1000);
 				done();
 //				stopClessidra();
@@ -27,6 +28,7 @@ public class Clessidra extends SwingWorker<String, Void> {
 			}
 
 		}
+		System.out.println("timer scaduto");
 		HandleGraphics.getGraphics().writeInformazioni("timer scaduto"); // modifico componente tramite handlegraphics
 		return "";
 	}

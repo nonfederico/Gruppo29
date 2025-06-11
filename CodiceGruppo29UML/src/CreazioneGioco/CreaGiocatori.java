@@ -1,5 +1,6 @@
 package CreazioneGioco;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.SwingWorker;
@@ -15,6 +16,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	private String colore = "";
 	private statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
 	private Colore c = new Colore();
+	private Color coloreInterfaccia;
 
 	enum statiCreaGiocatori {
 		NUMEROGIOCATORI, SELEZIONAINFO, CREAZIONENAVE
@@ -104,12 +106,15 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			} while (colore.equals("") || colore.trim().isEmpty()
 					|| (!colore.toLowerCase().equals("verde") && !colore.toLowerCase().equals("blu")
 							&& !colore.toLowerCase().equals("giallo") && !colore.toLowerCase().equals("rosso")));
-			c.chooseColore(colore);
+			coloreInterfaccia = c.chooseColore(colore);
+
 			System.out.println("colore eliminato");
 			try {
 				Thread.sleep(1 * 1000);
 				HandleGraphics.getGraphics().DisabledAreaText("colore =" + colore);
 				giocatore.setColore(colore);
+				giocatore.setColoreS(coloreInterfaccia);
+				System.out.println(giocatore.getColoreS());
 				System.out.println(giocatore.getColore());
 				Thread.sleep(1 * 1000);
 			} catch (InterruptedException e) {

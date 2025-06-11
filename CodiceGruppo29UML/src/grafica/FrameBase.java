@@ -8,7 +8,7 @@ public class FrameBase extends JFrame {
 	// classe usata per gestire le 4 aree grafiche
 	// viene implementata da tutti gli stati per mostrare a schermo quello che
 	// succede
-
+	private GraficaClessidra graficaClessidra;
 	private AreaInterazione areaInterazione;
 	private static GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
@@ -72,7 +72,7 @@ public class FrameBase extends JFrame {
 
 //funzioni per timer
 	public void writeInformazioni(String timer) {
-		graficaInformazioni.writeTextfisso(timer);
+		graficaInformazioni.writeTextFisso(timer);
 	}
 
 }

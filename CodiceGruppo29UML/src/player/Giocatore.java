@@ -1,5 +1,7 @@
 package player;
 
+import java.awt.Color;
+
 /**
  * 
  */
@@ -8,6 +10,7 @@ public class Giocatore {
 	private String nome;
 	private Ruolo ruolo = null;
 	private String colore = null;
+	private Color coloreS = null;
 	private ListaPezziGiocatore listaPezzi = null;
 	private int id;
 	private int crediti;
@@ -31,6 +34,14 @@ public class Giocatore {
 
 	public String getColore() {
 		return this.colore;
+	}
+
+	public void setColoreS(Color colore) {
+		this.coloreS = colore;
+	}
+
+	public Color getColoreS() {
+		return this.coloreS;
 	}
 
 	public void setId(int id) {

@@ -1,5 +1,6 @@
 package CreazioneGioco;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class Colore {
@@ -30,14 +31,23 @@ public class Colore {
 		return listaColoriDisponibili.toString();
 	}
 
-	public void chooseColore(String s) {
+	public Color chooseColore(String s) {
+		Color coloreSettato = null;
 		for (int i = 0; i < colori.size(); i++) {
 			if (colori.get(i).name().equalsIgnoreCase(s)) {
 				colori.remove(i);
-				return;
+				if (s.toLowerCase().equals("blu")) {
+					coloreSettato = Color.blue;
+				} else if (s.toLowerCase().equals("verde")) {
+					coloreSettato = Color.green;
+				} else if (s.toLowerCase().equals("giallo")) {
+					coloreSettato = Color.yellow;
+				} else if (s.toLowerCase().equals("rosso")) {
+					coloreSettato = Color.red;
+				}
 			}
-
 		}
+		return coloreSettato;
 	}
 
 }
