@@ -11,12 +11,8 @@ import CreazioneGioco.Gioco;
 import CreazionePlanciaNave.ComponentiGioco;
 
 public class ComponentiGiocoGrafica extends JPanel {
-	// usati in posizionecaselle
-
+// usati in posizionecaselle
 // classe per la parte grafica di ogni componente
-//	public enum connettori {
-//		NESSUNO, SINGOLO, DOPPIO, UNIVERSALE
-//	}
 
 	private ComponentiGioco componente;
 
@@ -27,29 +23,13 @@ public class ComponentiGiocoGrafica extends JPanel {
 
 	private int[] posizioneComponente = { 0, 0 };
 	private String nome = "";
-//	private JTextField nord = new JTextField(listaConnettori[0].toString());
-//	private JTextField est = new JTextField(listaConnettori[1].toString());
-//	private JTextField sud = new JTextField(listaConnettori[2].toString());
-//	private JTextField ovest = new JTextField(listaConnettori[3].toString());
-
-	// per settare quali caselle abilitare
-//	Stack<int[]> listaPosizioniSingola = new Stack<>();
-//	Stack<int[]> listaPosizioniDoppio = new Stack<>();
-
-//	enum statoPos {
-//		NORD, EST, SUD, OVEST
-//	}
-//
-//	statoPos posLati = statoPos.NORD;
+//	private JTextField nord = new JTextField(listaConnettori[0].toString()); ...
 
 	JPanel estOvest = new JPanel();
 
 	public ComponentiGiocoGrafica() {
 
-//		listaConnettori[0] = Connettori.UNIVERSALE;
-//		listaConnettori[1] = Connettori.UNIVERSALE;
-//		listaConnettori[2] = Connettori.UNIVERSALE;
-//		listaConnettori[3] = Connettori.UNIVERSALE;
+//		listaConnettori[0] = Connettori.UNIVERSALE;...
 		this.nome = "connettoreProva";
 		setEnabled(false);
 //		setEnabled(true); usato per prova, setto false inizialmente
@@ -91,101 +71,8 @@ public class ComponentiGiocoGrafica extends JPanel {
 		JTextField nome = new JTextField();
 		nome.setText(Gioco.getlistaGiocatori().get(i).getNome());
 		add(nome);
-
-//		nord.setHorizontalAlignment(JTextField.CENTER);
-//		sud.setHorizontalAlignment(JTextField.CENTER);
-//		est.setHorizontalAlignment(JTextField.CENTER);
-//		ovest.setHorizontalAlignment(JTextField.CENTER);
-//
-//		this.setLayout(new GridLayout(3, 1));
-//		estOvest.setLayout(new GridLayout(1, 2));
-//
-//		this.add(nord);
-//		estOvest.add(ovest);
-//		estOvest.add(est);
-//		this.add(estOvest);
-//		this.add(sud);
-
 	}
 }
-
-// funzione che abilita le posizioni selezionabili
-//	public void posizioniSelezionabili(PlanciaNave p) {
-//		switch (posLati) {
-//		case NORD: { // guardo a nord di tutte le carte
-//			for (int i = 1; i < p.getCaselle().length; i++) { // i=1 perchè partiamo dalla seconda fila poiche
-//																// consideriamo lato nord
-//				for (int j = 0; j < p.getCaselle()[i].length; j++) {
-//					if (p.getComponente(i, j).getListaConnettoriAdiacenti()[0].equals(connettori.NESSUNO)) { // se non
-//																												// ci
-//																												// sono
-//																												// connettori
-//																												// adiacenti
-//						if (!p.getComponente(i, j).getListaConnettori()[0].equals(connettori.NESSUNO)) {// se ci sono
-//																										// connettori
-//							// abilita casella, se schiaccia quella casella poi metterà il pezzo solo se lo
-//							// posiziona con la direzione giusta
-//							p.getComponente(i - 1, j).setEnabled(true);
-//							p.getCaselle()[i - 1][j].setBackground(Color.pink);
-//						}
-//
-//					}
-//				}
-//			}
-//
-//		}
-//		case EST: { // guardo a nord di tutte le carte
-//			for (int i = 0; i < p.getCaselle().length; i++) {
-//				for (int j = 0; j < p.getCaselle()[i].length - 1; j++) { // l'ultima colonna non la valuto
-//					if (p.getComponente(i, j).getListaConnettoriAdiacenti()[1].equals(connettori.NESSUNO)) {
-//						if (!p.getComponente(i, j).getListaConnettori()[1].equals(connettori.NESSUNO)) {
-//							p.getComponente(i, j + 1).setEnabled(true);
-//							p.getCaselle()[i][j + 1].setBackground(Color.pink);
-//						}
-//
-//					}
-//				}
-//			}
-//
-//		}
-//		case SUD: { // guardo a nord di tutte le carte
-//			for (int i = 0; i < p.getCaselle().length - 1; i++) {// l'ultima riga non la valuto
-//				for (int j = 0; j < p.getCaselle()[i].length; j++) {
-//					if (p.getComponente(i, j).getListaConnettoriAdiacenti()[2].equals(connettori.NESSUNO)) {
-//						if (!p.getComponente(i, j).getListaConnettori()[2].equals(connettori.NESSUNO)) {
-//							p.getComponente(i + 1, j).setEnabled(true);
-//							p.getCaselle()[i + 1][j].setBackground(Color.pink);
-//						}
-//
-//					}
-//				}
-//			}
-//
-//		}
-//		case OVEST: { // guardo a nord di tutte le carte
-//			for (int i = 0; i < p.getCaselle().length; i++) {
-//				for (int j = 1; j < p.getCaselle()[i].length; j++) {// la prima colonna non la valuto
-//					if (p.getComponente(i, j).getListaConnettoriAdiacenti()[3].equals(connettori.NESSUNO)) {
-//						if (!p.getComponente(i, j).getListaConnettori()[3].equals(connettori.NESSUNO)) {
-//							p.getComponente(i, j - 1).setEnabled(true);
-//							p.getCaselle()[i][j - 1].setBackground(Color.pink);
-//						}
-//
-//					}
-//				}
-//			}
-//
-//		}
-//		default:
-//			throw new IllegalArgumentException("Unexpected value: " + posLati);
-//		}
-////modifico stack listaPosizioni
-//	}
-//
-//	public connettori[] getAdiacenti() {
-//		return this.listaConnettoriAdiacenti;
-//	}
-//}
 
 //METODO PER SCELTA POSTO
 //

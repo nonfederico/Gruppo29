@@ -5,15 +5,7 @@ public interface GameState {
 	// riferimento allo stato corrente che delega l'oggetto context di eseguire le
 	// operazioni (contenitore dello stato)
 
-//	void mainMenu(GameContext context);
-//
-//	void playing(GameContext context);
-//
-//	void paused(GameContext context);
-//
-//	// void loading(); //da implementare se volessimo dare l'opzione di caricare i
-//	// salvataggi
-//
+//	void loading(); //da implementare se volessimo dare l'opzione di caricare i salvataggi
 //	void ending(GameContext context);
 
 	void enter(); // per entrare nello stato corrente

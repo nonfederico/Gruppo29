@@ -59,18 +59,22 @@ public class GraficaPlanciaNave extends JPanel {
 
 				setVisible(true);
 				System.out.println("FINE setCaselleVuote");
-//				setCaselleDisponibili(g);
-//				sottoStato = statoEnum.CASELLEDISPONIBILI;
-//				setCaselleG(g);
+
 			}
 		}
 	}
 
 	public void setCasellaSingola(Giocatore g, int i, int j) {
 		// per modificare le caselle che possono essere selezionate
+
 		ComponentiGiocoGrafica componente = g.getPlancia().getCaselleGrafica()[i][j];
-		componente.setEnabled(true);
-		componente.setBackground(Color.pink);
+//		ComponentiGioco componenteGioco = g.getPlancia().getCaselle()[i][j];
+		g.getPlancia().getCaselle()[i][j].setConnettori();
+//		componenteGioco.setConnettori();
+		g.getPlancia().getCaselleGrafica()[i][j].setEnabled(true);
+		g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.pink);
+//		componente.setEnabled(true);
+//		componente.setBackground(Color.pink);
 
 	}
 
@@ -100,100 +104,5 @@ public class GraficaPlanciaNave extends JPanel {
 		g.getPlancia().getCaselleGrafica()[1][4].setBorder(new LineBorder(Color.white));
 		g.getPlancia().getCaselleGrafica()[4][2].setBorder(new LineBorder(Color.white));
 	}
-
-//	enum statoEnum {
-//		CASELLEVUOTE, CASELLEDISPONIBILI
-//	}
-//
-//	statoEnum sottoStato = statoEnum.CASELLEVUOTE;
-
-//	public void setCaselleG(Giocatore g) {
-//	// lo vado a richiamare durante la fase creazionePlanciaNave (per ogni
-//	// giocatore)
-//
-//	switch (sottoStato) {
-//	case CASELLEDISPONIBILI:
-//
-//		System.out.println("1");
-//		g.getPlancia().getCaselle()[2][2].setPannello(g.getNome(), g.getId()); // creo il centro
-//
-//		System.out.println("2");
-//		g.getPlancia().getCaselle()[0][0].setBackground(Color.white);
-//		g.getPlancia().getCaselle()[0][1].setBackground(Color.white);
-//		g.getPlancia().getCaselle()[0][3].setBackground(Color.white);
-//		g.getPlancia().getCaselle()[0][4].setBackground(Color.white);
-//		g.getPlancia().getCaselle()[1][0].setBackground(Color.white);
-//		g.getPlancia().getCaselle()[1][4].setBackground(Color.white);
-//		g.getPlancia().getCaselle()[4][2].setBackground(Color.white);
-//
-//		System.out.println("3");
-//		g.getPlancia().getCaselle()[0][0].setBorder(new LineBorder(Color.white));
-//		g.getPlancia().getCaselle()[0][1].setBorder(new LineBorder(Color.white));
-//		g.getPlancia().getCaselle()[0][3].setBorder(new LineBorder(Color.white));
-//		g.getPlancia().getCaselle()[0][4].setBorder(new LineBorder(Color.white));
-//		g.getPlancia().getCaselle()[1][0].setBorder(new LineBorder(Color.white));
-//		g.getPlancia().getCaselle()[1][4].setBorder(new LineBorder(Color.white));
-//		g.getPlancia().getCaselle()[4][2].setBorder(new LineBorder(Color.white));
-//
-//	case CASELLEVUOTE:
-//		System.out.println("INIZIO setCaselleVuote");
-//		for (int i = 0; i < 5; i++) {
-//			System.out.println("for i");
-//			for (int j = 0; j < 5; j++) {
-//				// ad ogni spazio della gridLayout associo un componente e imposto le
-//				// caratteristiche
-//				System.out.println("for j");
-//				ComponentiProva componente = new ComponentiProva();
-//				System.out.println("new componenti prova");
-//				componente.setCoordinate(i, j);
-//				System.out.println("setcordi");
-//				componente.setBackground(Color.LIGHT_GRAY);
-//				componente.setBorder(new LineBorder(Color.BLUE));
-//				System.out.println("imposto colore");
-//				// il colore lo imposto in base al colore del giocatore
-//
-//				g.getPlancia().getCaselle()[i][j] = componente; // prendo oggetto plancia (non grafica)
-//				System.out.println("getcaselle");
-//
-//				add(componente);
-//				System.out.println("add componente");
-//
-//				setVisible(true);
-//				System.out.println("FINE setCaselleVuote");
-////				setCaselleDisponibili(g);
-//				sottoStato = statoEnum.CASELLEDISPONIBILI;
-//				setCaselleG(g);
-//			}
-//		}
-//	default:
-//		throw new IllegalArgumentException("Unexpected value: " + sottoStato);
-//	}
-//
-//}
-//	enum coordinateComp {
-//		NORD, EST, SUD, OVEST
-//	}
-//
-//	public void insertInStack(ComponentiProva a, ComponentiProva B) {
-//		// come settare componenti adiacenti?
-//		coordinateComp coord = coordinateComp.NORD;
-//		switch (coord) {
-//		case NORD: {
-//
-//		}
-//		case EST: {
-//
-//		}
-//		case SUD: {
-//
-//		}
-//		case OVEST: {
-//
-//		}
-//		default:
-//			throw new IllegalArgumentException("Unexpected value: " + coord);
-//		}
-//
-//	}
 
 }

@@ -14,6 +14,7 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 
 	public PosizionaCaselle(Giocatore p) {
 		this.giocatore = p;
+		HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(p, 2, 2);
 	}
 
 	statoPos posLati = statoPos.NORD;
@@ -22,23 +23,29 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 	public void posizioniSelezionabili(Giocatore g) {
 		switch (posLati) {
 		case NORD: { // guardo a nord di tutte le carte
+			System.out.println("confronto nord");
 			for (int i = 1; i < g.getPlancia().getCaselle().length; i++) { // i=1 perchè partiamo dalla seconda fila
 																			// poiche
+				System.out.println("for 1");
 				// consideriamo lato nord
 				for (int j = 0; j < g.getPlancia().getCaselle()[i].length; j++) {
+					System.out.println("for 2");
 					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[0]
 							.equals(Connettori.NESSUNO)) { // se
+						System.out.println("confronto connettori");
 						// ci
 						// sono
 						// connettori
 						// adiacenti
 						if (!g.getPlancia().getComponente(i, j).getListaConnettori()[0].equals(Connettori.NESSUNO)) {// se
-																														// ci
+							System.out.println("setto casella");
+							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i, j);
+							// ci
 							// sono
 							// connettori
 							// abilita casella, se schiaccia quella casella poi metterà il pezzo solo se lo
 							// posiziona con la direzione giusta
-							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i, j);
+
 							// si trova in graficaplancianave
 //							g.getPlancia().getComponente(i - 1, j).setEnabled(true);
 //							g.getPlancia().getCaselle()[i - 1][j].setBackground(Color.pink);

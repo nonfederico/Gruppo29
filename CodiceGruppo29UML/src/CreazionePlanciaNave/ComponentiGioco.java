@@ -48,10 +48,11 @@ public class ComponentiGioco {
 	}
 
 	public void setConnettori() {
-		this.listaConnettori[0] = Connettori.UNIVERSALE;
-		this.listaConnettori[1] = Connettori.UNIVERSALE;
-		this.listaConnettori[2] = Connettori.UNIVERSALE;
-		this.listaConnettori[3] = Connettori.UNIVERSALE;
+		getListaConnettori()[0] = Connettori.UNIVERSALE;
+//		this.listaConnettori[0] = Connettori.UNIVERSALE;
+//		this.listaConnettori[1] = Connettori.UNIVERSALE;
+//		this.listaConnettori[2] = Connettori.UNIVERSALE;
+//		this.listaConnettori[3] = Connettori.UNIVERSALE;
 	}
 
 }
