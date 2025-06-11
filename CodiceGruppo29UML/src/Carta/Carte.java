@@ -4,13 +4,10 @@ import java.io.*;
 import java.util.*;
 import java.util.ArrayList;
 
-/**
- * 
- */
 public abstract class Carte {
 
 
-	public  ArrayList<Carte> getListaCarte() {
+	public static ArrayList<Carte> getListaCarte() {
 		
 		ArrayList<Carte>  carte = new ArrayList();
 		
@@ -34,15 +31,6 @@ public abstract class Carte {
     public Carte() {
     }
 
-    
-    
-    
-    
-    public int numeroGiorni; 
-
-    
-
-    
     
     public void ifromLeader() {
         // TODO implement here

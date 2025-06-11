@@ -1,10 +1,12 @@
 package Carta;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
 
 import javax.swing.SwingWorker;
 
-  public class Mazzo  extends SwingWorker<Void, Void >{
+  public class Mazzo  {
 	
 	 private Mazzo istanza = null; 
 	  
@@ -26,12 +28,25 @@ import javax.swing.SwingWorker;
 	
 	private Stack<Carte> mazzo = new Stack<Carte>() ;
   
-	
-	
-	@Override
-	protected Void doInBackground() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	  public Stack<Carte> creaMazzoMescolato() {
+	        ArrayList<Carte> carte = Carte.getListaCarte(); // chiamata statica
+	        Collections.shuffle(carte);
+	       
+	        for (int i = 0 ; i <8 ; i++) {
+	            mazzo.push(carte.get(i));
+	        }
+
+	        return mazzo;
+	    }
+
+	public Carte getCarta() {
+		
+			return mazzo.pop();
+
 	}
+	
+
+
+
 
 }
