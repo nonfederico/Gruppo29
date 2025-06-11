@@ -31,7 +31,7 @@ public class GraficaPlanciaVolo extends JPanel{
 		return grafica;
 	}
 	
-	enum StatoEnum{
+	enum StatoEnum {
 		
 		CASELLEVUOTE,
 		CASELLEDISPONIBILI
