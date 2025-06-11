@@ -24,7 +24,10 @@ public class ComponentiGioco {
 
 //
 	public ComponentiGioco() {
-		setConnettori();
+//		setConnettori();
+		// se lo abilito nel costruttore funziona e tutti i conettori diventano attivi,
+		// se lo richiamo in
+		// graficaPlanciaNave-> setcasellevuote no
 	}
 
 	public void setCoordinate(int riga, int colonna) {

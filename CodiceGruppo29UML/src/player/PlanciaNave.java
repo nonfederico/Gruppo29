@@ -10,6 +10,9 @@ public class PlanciaNave {
 	private ComponentiGioco[][] caselle = new ComponentiGioco[5][5];
 
 	public PlanciaNave() {
+
+//		caselle[2][2].setConnettori();
+//		System.out.println(caselle[2][2].toString());
 	}
 
 	public int livello;

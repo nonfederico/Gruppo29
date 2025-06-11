@@ -39,14 +39,18 @@ public class GraficaPlanciaNave extends JPanel {
 				ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
 				ComponentiGioco componente = new ComponentiGioco();
 				System.out.println("new componenti prova");
-				componente.setCoordinate(i, j);
+				componenteGrafico.setCoordinate(i, j);
 				System.out.println("setcordi");
 				componenteGrafico.setBackground(g.getColoreS());
 				componenteGrafico.setBorder(new LineBorder(Color.BLACK));
 				System.out.println("imposto colore");
 				// il colore lo imposto in base al colore del giocatore
 
-				g.getPlancia().getCaselle()[i][j] = componente; // prendo oggetto plancia (non grafica)
+				g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico; // prendo oggetto plancia (non grafica)
+//				if (!g.getPlancia().getCaselleGrafica()[2][2].equals(null)) {
+//					g.getPlancia().getCaselle()[2][2].setConnettori(); // creo il centro
+//				}
+				g.getPlancia().getCaselle()[i][j] = componente;
 				g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
 				System.out.println("getcaselle");
 

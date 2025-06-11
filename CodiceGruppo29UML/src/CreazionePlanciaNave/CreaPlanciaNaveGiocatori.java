@@ -56,11 +56,10 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
 			System.out.println("ciclo do");
 			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
-			posCaselle.execute();
 
 			do {
 //				timer.execute();
-
+				posCaselle.execute();
 				finito = HandleGraphics.getGraphics().writeAreaText();
 
 			} while (!finito.toUpperCase().equals("FINITO"));
