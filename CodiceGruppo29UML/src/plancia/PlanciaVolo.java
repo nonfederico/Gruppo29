@@ -85,22 +85,4 @@ public class PlanciaVolo {
     	
     	return null;
     }
-    
-//    visualizza la plancia di volo 
-    
-    public void stampaPlancia() {
-    	
-    	for(int i = 0; i < LUNGHEZZA ; i++) {
-    		
-    		System.out.println("[ " + i + " ]");
-    		
-    		for(Giocatore g : percorso[i]) {
-    			
-    			System.out.println(g.getNome() + " ");
-    			
-    		}
-    		
-    		System.out.println();
-    	}
-    }
 }
