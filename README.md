@@ -4,11 +4,11 @@ Repository per il progetto del corso “programmazione ad oggetti”
 # interfaccia gioco
 ![layoutUltimaVersione - Page 01](https://github.com/user-attachments/assets/2c2e263d-cc89-4577-8909-9d731c2e2678)
 
-
-
 frame formato da 4 panel fissi  
 composti da sottoContenitori contenenti gli elementi grafici 
 
+non c'è un controllo sull'inserimento di nomi giocatori duplicati poichè ogni giocatore è caratterizzato da un id univoco e da un colore univoco  
+identifichiamo un giocatore con nome + id + colore
 # programmi utilizzati
 
 starUML per diagramma delle classi e macchina a stati  
