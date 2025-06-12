@@ -72,22 +72,25 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 				for (int j = 0; j < g.getPlancia().getCaselle()[i].length - 1; j++) { // l'ultima colonna non la valuto
 					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[1]
 							.equals(Connettori.NESSUNO)) {
-						if (!g.getPlancia().getComponente(i, j).getListaConnettori()[1].equals(Connettori.NESSUNO)) {
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[1] == Connettori.UNIVERSALE) {// se
+							System.out.println("setto casella");
+							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i, j + 1);
 
 						}
-
 					}
 				}
+				posLati = statoPos.SUD;
+				posizioniSelezionabili(g);
 			}
-			posLati = statoPos.SUD;
-			posizioniSelezionabili(g);
 		}
 		case SUD: { // guardo a nord di tutte le carte
 			for (int i = 0; i < g.getPlancia().getCaselle().length - 1; i++) {// l'ultima riga non la valuto
 				for (int j = 0; j < g.getPlancia().getCaselle()[i].length; j++) {
 					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[2]
 							.equals(Connettori.NESSUNO)) {
-						if (!g.getPlancia().getComponente(i, j).getListaConnettori()[2].equals(Connettori.NESSUNO)) {
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[2] == Connettori.UNIVERSALE) {// se
+							System.out.println("setto casella");
+							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i + 1, j);
 
 						}
 
@@ -102,7 +105,9 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 				for (int j = 1; j < g.getPlancia().getCaselle()[i].length; j++) {// la prima colonna non la valuto
 					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[3]
 							.equals(Connettori.NESSUNO)) {
-						if (!g.getPlancia().getComponente(i, j).getListaConnettori()[3].equals(Connettori.NESSUNO)) {
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[3] == Connettori.UNIVERSALE) {// se
+							System.out.println("setto casella");
+							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i, j - 1);
 
 						}
 

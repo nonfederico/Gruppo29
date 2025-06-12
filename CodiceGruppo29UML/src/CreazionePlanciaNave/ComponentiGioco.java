@@ -49,6 +49,9 @@ public class ComponentiGioco {
 
 	public void setConnettori() {
 		getListaConnettori()[0] = Connettori.UNIVERSALE;
+		getListaConnettori()[1] = Connettori.UNIVERSALE;
+		getListaConnettori()[2] = Connettori.UNIVERSALE;
+		getListaConnettori()[3] = Connettori.UNIVERSALE;
 //		this.listaConnettori[0] = Connettori.UNIVERSALE;
 //		this.listaConnettori[1] = Connettori.UNIVERSALE;
 //		this.listaConnettori[2] = Connettori.UNIVERSALE;

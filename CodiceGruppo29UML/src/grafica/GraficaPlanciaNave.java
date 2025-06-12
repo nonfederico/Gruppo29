@@ -70,7 +70,7 @@ public class GraficaPlanciaNave extends JPanel {
 
 			}
 		}
-		g.getPlancia().getCaselle()[2][2].setConnettori(); // setto connettore centrale
+		g.getPlancia().getCaselle()[2][2].setConnettori(); // setto connettore centrale in componentiGioco
 	}
 
 	public void setCasellaSingola(Giocatore g, int i, int j) {

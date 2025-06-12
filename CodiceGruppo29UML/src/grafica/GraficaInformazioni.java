@@ -3,6 +3,7 @@ package grafica;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 //https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
 
@@ -14,6 +15,7 @@ public class GraficaInformazioni extends JPanel {
 	public GraficaInformazioni() {
 //		setLayout(new GridBagLayout());
 		setLayout(new GridLayout(1, 2));
+		setBorder(new EmptyBorder(10, 10, 10, 10));
 //		setUpCarta();
 		add(cartaGrafica);
 		add(graficaTimer);
