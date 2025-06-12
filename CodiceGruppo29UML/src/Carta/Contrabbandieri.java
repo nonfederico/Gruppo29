@@ -11,12 +11,13 @@ public class Contrabbandieri extends Carte {
 	private int potenzaFuoco;
 	private int giorniPersi;
 
+	private String titolo = "contrabbandieri";
+	private String descrizione = "siamo contrabbandieri";
+
 	public Contrabbandieri() {
 		this.penalita = 10;
 
 	}
-
-	// da implementare la classe giocatori
 
 	public void battaglia(List<Giocatore> giocatoriInOrdine) {
 		System.out.println("⚔️ I Contrabbandieri attaccano! Potenza: " + potenzaFuoco);
@@ -87,6 +88,10 @@ public class Contrabbandieri extends Carte {
 
 	public void setGiorniPersi(int giorniPersi) {
 		this.giorniPersi = giorniPersi;
+	}
+
+	public String getTitolo() {
+		return this.titolo;
 	}
 
 }

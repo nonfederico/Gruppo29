@@ -12,10 +12,17 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 	String finito = "";
 	sottoStati stati = sottoStati.GIOCATORE1;
 
-	enum sottoStati { // sottostati della creazione planciaNave
+	/*
+	 * sottostati della creazione planciaNave, per indicare il turno del giocatore
+	 */
+	enum sottoStati {
 		GIOCATORE1, GIOCATORE2, GIOCATORE3, GIOCATORE4, VOLO
 	}
 
+	/*
+	 * funzione richiamata quando facciamo thread.execute, con switchstate
+	 * richiamiamo il cambio dello stato della macchina a stati
+	 */
 	@Override
 	protected Void doInBackground() throws Exception {
 		System.out.println("sono in doInBackground");
@@ -27,41 +34,38 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		}
 		HandleGraphics.getGraphics().DisabledAreaText("crea la plancia nave");
 
-		switchState(); // switch per la creazione delle 1..4 navi
+		switchState();
 		return null;
 	}
 
-//	protected void done() {
-//		System.out.println("sono in done");
-//		switchState();
-//	}
-
+	/*
+	 * funzione usata per ridisegnare le plancie navi dei giocatori e tramite le
+	 * caselle rosa far vedere quali sono gli spazi in cui si possono inserire i
+	 * componenti per la creazione della nave
+	 */
 	public void switchState() {
 		System.out.println("sono in switchPlanciaNave");
 
 		switch (stati) {
 		case GIOCATORE1: {
-			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
 			System.out.println("sono in giocatore 1");
 
 			try {
 				System.out.println("sono in giocatore1 - ridisegno la plancia");
-				// funzione che carica le caselle della plancia nave
+
 				rivalidaPlanciaNave(0);
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			HandleGraphics.getGraphics().DisabledAreaText(
+					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
 			System.out.println("ciclo do");
-			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0)); // swingWorker da
-																									// trattare come
-																									// thread a parte
+			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
 			posCaselle.execute();
 			do {
 //				timer.execute();
-
 				finito = HandleGraphics.getGraphics().writeAreaText();
 
 			} while (!finito.toUpperCase().equals("FINITO"));
@@ -74,90 +78,108 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 				switchState();
 			} else {
 				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				stati = sottoStati.VOLO;
+				System.out.println("switchstate");
+				switchState();
 				return;
 			}
 
 		}
 		case GIOCATORE2: {
-			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
 			System.out.println("sono in giocatore 2");
 
 			try {
 				System.out.println("sono in giocatore 2 - ridisegno la plancia");
-				// funzione che carica le caselle della plancia nave
+
 				rivalidaPlanciaNave(1);
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			HandleGraphics.getGraphics().DisabledAreaText(
+					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
+			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			posCaselle.execute();
 			do {
-				timer.execute();
+//				timer.execute();
 				finito = HandleGraphics.getGraphics().writeAreaText();
-			} while (!finito.toUpperCase().equals("FINITO") || !timer.isDone());
+			} while (!finito.toUpperCase().equals("FINITO"));
 
 			if (finito.toUpperCase().equals("FINITO") && Gioco.getlistaGiocatori().size() < 4) {
 				stati = sottoStati.GIOCATORE3;
 				switchState();
 			} else {
 				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				stati = sottoStati.VOLO;
+				System.out.println("switchstate");
+				switchState();
 				return;
 			}
 
 		}
 		case GIOCATORE3: {
-			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
+
 			System.out.println("sono in giocatore 3");
 
 			try {
 				System.out.println("sono in giocatore 3 - ridisegno la plancia");
-				// funzione che carica le caselle della plancia nave
+
 				rivalidaPlanciaNave(2);
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			HandleGraphics.getGraphics().DisabledAreaText(
+					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
+			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			posCaselle.execute();
 			do {
-				timer.execute();
 				finito = HandleGraphics.getGraphics().writeAreaText();
-			} while (!finito.toUpperCase().equals("FINITO") || !timer.isDone());
+			} while (!finito.toUpperCase().equals("FINITO"));
 
 			if (finito.toUpperCase().equals("FINITO") && Gioco.getlistaGiocatori().size() < 5) {
 				stati = sottoStati.GIOCATORE4;
 				switchState();
 			} else {
 				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				stati = sottoStati.VOLO;
+				System.out.println("switchstate");
+				switchState();
 				return;
 			}
 
 		}
 		case GIOCATORE4: {
-			// carico la plancia di ogni giocatore, update grafica, seleziono componenti
+
 			System.out.println("sono in giocatore 4");
 
 			try {
 				System.out.println("sono in giocatore 4 - ridisegno la plancia");
-				// funzione che carica le caselle della plancia nave
+
 				rivalidaPlanciaNave(3);
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			HandleGraphics.getGraphics().DisabledAreaText("inserisci FINITO al termine della creazione");
+			HandleGraphics.getGraphics().DisabledAreaText(
+					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
+			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			posCaselle.execute();
 			do {
-				timer.execute();
 				finito = HandleGraphics.getGraphics().writeAreaText();
-			} while (!finito.toUpperCase().equals("FINITO") || !timer.isDone());
+			} while (!finito.toUpperCase().equals("FINITO"));
 
 			if (finito.toUpperCase().equals("FINITO")) {
 				stati = sottoStati.VOLO;
 				switchState();
 			} else {
 				HandleGraphics.getGraphics().DisabledAreaText("creazione nava finita");
+				stati = sottoStati.VOLO;
+				System.out.println("switchstate");
+				switchState();
 				return;
 			}
 
@@ -165,13 +187,11 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		case VOLO: {
 			try {
 				Thread.sleep(500);
-				HandleGraphics.getGraphics().DisabledAreaText("fase di volo");
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-//			GameContext.getIstanzaGC().setState(Volo);
+//			GameContext.getIstanzaGC().setState(FaseVolo);
 //			GameContext.getIstanzaGC().enter();
 		}
 		default:
@@ -180,6 +200,11 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 	}
 
+	/*
+	 * @param id usato per capire di quale giocatore dobbiamo ridisegnare la plancia
+	 * uso handlegraphics per modificare i componenti grafici, cosi da lavorare sul
+	 * EDT
+	 */
 	public boolean rivalidaPlanciaNave(int id) {
 		boolean tru = true;
 
@@ -192,15 +217,12 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			e.printStackTrace();
 		}
 		try {
-			// devo chiamare con handlegraphics i metodi per modificare i componenti grafici
-			// altrimenti non funziona e si blocca nel thread
+
 			System.out.println("plancia nave setcaselle");
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
 					.setCaselleVuote(Gioco.getlistaGiocatori().get(id));
 			HandleGraphics.getGraphics().getPlanciaNave().getGraficaPlanciaNave()
 					.setCaselleNonDisponibili(Gioco.getlistaGiocatori().get(id));
-
-//			HandleGraphics.getGraphics().getPlanciaNave().setCaselleG(Gioco.getlistaGiocatori().get(id));
 
 			Thread.sleep(500);
 		} catch (InterruptedException e) {

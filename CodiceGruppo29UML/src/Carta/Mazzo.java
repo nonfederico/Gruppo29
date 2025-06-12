@@ -1,23 +1,18 @@
 package Carta;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Stack;
 
 public class Mazzo {
 
-	private Mazzo istanza = null;
+	private static Mazzo istanza = null;
 
 	private Mazzo() {
-
+		creaMazzoMescolato();
 	}
 
-	public Mazzo getMazzo() {
-
+	public static Mazzo getMazzo() {
 		if (istanza == null) {
-
 			istanza = new Mazzo();
-
 		}
 		return istanza;
 
@@ -26,17 +21,23 @@ public class Mazzo {
 	private Stack<Carte> mazzo = new Stack<Carte>();
 
 	public Stack<Carte> creaMazzoMescolato() {
-		ArrayList<Carte> carte = Carte.getListaCarte(); // chiamata statica
-		Collections.shuffle(carte);
-
-		for (int i = 0; i < 8; i++) {
-			mazzo.push(carte.get(i));
-		}
-
+		mazzo.push(new ZonaDiGuerra());
+		mazzo.push(new Contrabbandieri());
+		mazzo.push(new ZonaDiGuerra());
+		mazzo.push(new Contrabbandieri());
+		mazzo.push(new ZonaDiGuerra());
+		mazzo.push(new Contrabbandieri());
+		mazzo.push(new ZonaDiGuerra());
+		mazzo.push(new ZonaDiGuerra());
+		// creo mazzo di 8 carte
 		return mazzo;
 	}
 
 	public Carte getCarta() {
+		if (mazzo.isEmpty()) {
+			System.out.println("no carte");
+			return null;
+		}
 		return mazzo.pop();
 
 	}

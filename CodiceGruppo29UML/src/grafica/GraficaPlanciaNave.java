@@ -9,19 +9,29 @@ import javax.swing.border.LineBorder;
 import CreazionePlanciaNave.ComponentiGioco;
 import player.Giocatore;
 
+/*
+ * usata per gestire parte grafica relativa alla plancia nave (posizione 2,2)
+ */
 public class GraficaPlanciaNave extends JPanel {
-//gestire parte grafica relativa alla plancia nave (posizione 2,2)
 
-	private static GraficaPlanciaNave grafica = null; // creo istanza singola di GraficaPlanciaNave e uso
-														// getGraficaPlanciaNave se devo modificare la planciaNa
+	/*
+	 * creo istanza singola di GraficaPlanciaNave e uso getGraficaPlanciaNave se
+	 * devo modificare la planciaNa
+	 */
+	private static GraficaPlanciaNave grafica = null;
 
+	/*
+	 * imposto visibile un layout di 5righe e 5 colonne
+	 */
 	private GraficaPlanciaNave() {
-		setLayout(new GridLayout(5, 5)); // imposto visibile un layout di 5righe e 5 colonne
+		setLayout(new GridLayout(5, 5));
 		setVisible(true);
 	}
 
+	/*
+	 * singleton, creo una sola istanza per gestire la grafica di PlanciaNave
+	 */
 	public static GraficaPlanciaNave getGraficaPlanciaNave() {
-		// singleton, creo una sola istanza per gestire la grafica di PlanciaNave
 		if (grafica == null) {
 			grafica = new GraficaPlanciaNave();
 		}
@@ -35,13 +45,18 @@ public class GraficaPlanciaNave extends JPanel {
 
 	}
 
-	public void setCaselleVuote(Giocatore g) { // package CreazionePlanciaNave
+	/*
+	 * guarda CreazionePlanciaNave
+	 * 
+	 * ad ogni spazio della gridLayout associo un componente e imposto le
+	 * caratteristiche il colore lo imposto in base al colore del giocatore
+	 */
+	public void setCaselleVuote(Giocatore g) {
 		System.out.println("INIZIO setCaselleVuote");
 		for (int i = 0; i < 5; i++) {
 			System.out.println("for i");
 			for (int j = 0; j < 5; j++) {
-				// ad ogni spazio della gridLayout associo un componente e imposto le
-				// caratteristiche
+
 				System.out.println("for j");
 				ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
 				ComponentiGioco componente = new ComponentiGioco();
@@ -52,12 +67,7 @@ public class GraficaPlanciaNave extends JPanel {
 				componenteGrafico.setBorder(new LineBorder(Color.BLACK));
 				System.out.println("imposto colore");
 
-				// il colore lo imposto in base al colore del giocatore
-
-				g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico; // prendo oggetto plancia (non grafica)
-//				if (!g.getPlancia().getCaselleGrafica()[2][2].equals(null)) {
-//					g.getPlancia().getCaselle()[2][2].setConnettori(); // creo il centro
-//				}
+				g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
 				g.getPlancia().getCaselle()[i][j] = componente;
 				g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
 				System.out.println("getcaselle");
@@ -73,77 +83,34 @@ public class GraficaPlanciaNave extends JPanel {
 		g.getPlancia().getCaselle()[2][2].setConnettori(); // setto connettore centrale in componentiGioco
 	}
 
+	/*
+	 * funzione usata per settare una singola casella alla volta, utile quando
+	 * dobbiamo evidenziare quali sono le caselle disponibili per posizionare i
+	 * componenti
+	 */
 	public void setCasellaSingola(Giocatore g, int i, int j) {
 		System.out.println("set casella singola");
-		// per modificare le caselle che possono essere selezionate
 		ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
 		componenteGrafico.setCoordinate(i, j);
 		componenteGrafico.setBackground(Color.pink);
 		componenteGrafico.setEnabled(true);
 
 		JPanel graficaCasella = HandleGraphics.getGraphics().getPlanciaNave();
-		int index = i * 5 + j; // per 5 perchè ci sono 5 colonne quidi 5 elemtni per riga
-		graficaCasella.remove(index); // non posso rimuovere con l'indice della matrice , non va
+		int index = i * 5 + j; // per 5 perchè ci sono 5 colonne quidi 5 elementi per riga
+		graficaCasella.remove(index); // non posso rimuovere con l'indice della matrice
 		graficaCasella.add(componenteGrafico, index);
 		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
 		graficaCasella.revalidate();
 		graficaCasella.repaint();
 		System.out.println("Casella aggiornata graficamente: [" + i + "," + j + "]");
 
-//		try {
-//			System.out.println("removeall casella " + i + " " + j);
-//			HandleGraphics.getGraphics().getPlanciaNave().remove(g.getPlancia().getCaselleGrafica()[i - 1][j]);
-//			
-//			Thread.sleep(200);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		componenteGrafico.setBackground(Color.pink);
-//		componenteGrafico.setEnabled(true);
-//		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
-
-//		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
-//		ComponentiGiocoGrafica componente = g.getPlancia().getCaselleGrafica()[i][j];
-
-//		ComponentiGioco componenteGioco = g.getPlancia().getCaselle()[i][j];
-
-//		componenteGioco.setConnettori();
-
-//		try {
-//			g.getPlancia().getCaselleGrafica()[i][j].setEnabled(true);
-//			g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.pink);
-//			Thread.sleep(200);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//			System.out.println("plancia nave revalidate");
-//			HandleGraphics.getGraphics().getPlanciaNave().revalidate();
-//
-//			Thread.sleep(200);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//
-//			System.out.println(" plancia nave repaint");
-//			HandleGraphics.getGraphics().getPlanciaNave().repaint();
-//			Thread.sleep(200);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		componente.setEnabled(true);
-//		componente.setBackground(Color.pink);
-
 	}
 
+	/*
+	 * tramite handleGraphics setto le caselle della PlanciaNave che non possono
+	 * essere utilizzate
+	 */
 	public void setCaselleNonDisponibili(Giocatore g) {
-		// lo richiamo nella creazione della plancia tramithe handlegraphics
 
 		System.out.println("1 " + g.getId());
 		g.getPlancia().getCaselleGrafica()[2][2].setPannello(g.getNome(), g.getId()); // creo il centro

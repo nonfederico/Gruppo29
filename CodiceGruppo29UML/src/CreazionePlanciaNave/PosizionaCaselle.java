@@ -21,15 +21,28 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 
 	statoPos posLati = statoPos.NORD;
 
-	// funzione che abilita le posizioni selezionabili
+	@Override
+	protected Void doInBackground() throws Exception {
+		Thread.sleep(500);
+		posizioniSelezionabili(giocatore);
+		return null;
+	}
+
+	/*
+	 * funzione che abilita le posizioni disponibili per posizionare i componenti
+	 * macchina a stati guarda un lato per ogni casella presente (NORD, EST, SUD,
+	 * OVEST), e abilita le caselle adiacenti se sono vuote e se la casella attuale
+	 * ha un connettore disponibile
+	 * 
+	 * @param g Giocatore per il quale valutiamo le posizioni disponibili nella
+	 * plancia della sua nave
+	 */
 	public void posizioniSelezionabili(Giocatore g) {
 		switch (posLati) {
-		case NORD: { // guardo a nord di tutte le carte
+		case NORD: {
 			System.out.println("confronto nord");
-			for (int i = 1; i < g.getPlancia().getCaselle().length; i++) { // i=1 perchè partiamo dalla seconda fila
-																			// poiche
+			for (int i = 1; i < g.getPlancia().getCaselle().length; i++) {
 				System.out.println("for 1");
-				// consideriamo lato nord
 				for (int j = 0; j < g.getPlancia().getCaselle()[i].length; j++) {
 					System.out.println("for 2");
 					System.out.println("ListaConnettori: "
@@ -37,26 +50,10 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 					System.out.println("ListaAdiacenti: "
 							+ Arrays.toString(g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()));
 
-					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[0] == Connettori.NESSUNO) { // se
-						System.out.println("confronto connettori");
-						// ci
-						// sono
-						// connettori
-						// adiacenti
-						if (g.getPlancia().getComponente(i, j).getListaConnettori()[0] == Connettori.UNIVERSALE) {// se
+					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[0] == Connettori.NESSUNO) {
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[0] == Connettori.UNIVERSALE) {
 							System.out.println("setto casella");
 							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i - 1, j);
-
-//							HandleGraphics.getGraphics().getPlanciaNave()
-							// ci
-							// sono
-							// connettori
-							// abilita casella, se schiaccia quella casella poi metterà il pezzo solo se lo
-							// posiziona con la direzione giusta
-
-							// si trova in graficaplancianave
-//							g.getPlancia().getComponente(i - 1, j).setEnabled(true);
-//							g.getPlancia().getCaselle()[i - 1][j].setBackground(Color.pink);
 
 						}
 
@@ -67,12 +64,12 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 			posizioniSelezionabili(g);
 
 		}
-		case EST: { // guardo a nord di tutte le carte
+		case EST: {
 			for (int i = 0; i < g.getPlancia().getCaselle().length; i++) {
 				for (int j = 0; j < g.getPlancia().getCaselle()[i].length - 1; j++) { // l'ultima colonna non la valuto
 					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[1]
 							.equals(Connettori.NESSUNO)) {
-						if (g.getPlancia().getComponente(i, j).getListaConnettori()[1] == Connettori.UNIVERSALE) {// se
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[1] == Connettori.UNIVERSALE) {
 							System.out.println("setto casella");
 							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i, j + 1);
 
@@ -83,12 +80,12 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 				posizioniSelezionabili(g);
 			}
 		}
-		case SUD: { // guardo a nord di tutte le carte
+		case SUD: {
 			for (int i = 0; i < g.getPlancia().getCaselle().length - 1; i++) {// l'ultima riga non la valuto
 				for (int j = 0; j < g.getPlancia().getCaselle()[i].length; j++) {
 					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[2]
 							.equals(Connettori.NESSUNO)) {
-						if (g.getPlancia().getComponente(i, j).getListaConnettori()[2] == Connettori.UNIVERSALE) {// se
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[2] == Connettori.UNIVERSALE) {
 							System.out.println("setto casella");
 							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i + 1, j);
 
@@ -100,12 +97,12 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 			posLati = statoPos.OVEST;
 			posizioniSelezionabili(g);
 		}
-		case OVEST: { // guardo a nord di tutte le carte
+		case OVEST: {
 			for (int i = 0; i < g.getPlancia().getCaselle().length; i++) {
 				for (int j = 1; j < g.getPlancia().getCaselle()[i].length; j++) {// la prima colonna non la valuto
 					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[3]
 							.equals(Connettori.NESSUNO)) {
-						if (g.getPlancia().getComponente(i, j).getListaConnettori()[3] == Connettori.UNIVERSALE) {// se
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[3] == Connettori.UNIVERSALE) {
 							System.out.println("setto casella");
 							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i, j - 1);
 
@@ -122,11 +119,4 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 
 	}
 
-	@Override
-	protected Void doInBackground() throws Exception {
-		Thread.sleep(500);
-		HandleGraphics.getGraphics().DisabledAreaText("i quadrati rosa sono selezionabili per connettere i componenti");
-		posizioniSelezionabili(giocatore);
-		return null;
-	}
 }

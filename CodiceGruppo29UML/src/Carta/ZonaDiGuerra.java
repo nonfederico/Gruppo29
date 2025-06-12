@@ -14,6 +14,9 @@ public class ZonaDiGuerra extends Carte {
 		avanti, dietro, sinistra, destra
 	}
 
+	private String titolo = "Zona di guerra";
+	private String descrizione = "sono la zona di guerra";
+
 	// Costruttore base, non servono parametri
 	public ZonaDiGuerra() {
 	}
@@ -92,5 +95,13 @@ public class ZonaDiGuerra extends Carte {
 		if (g2 == null)
 			return true;
 		return ordine.indexOf(g1) < ordine.indexOf(g2);
+	}
+
+	public String getTitolo() {
+		return this.titolo;
+	}
+
+	public String getDescrizione() {
+		return this.descrizione;
 	}
 }

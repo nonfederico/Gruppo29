@@ -8,20 +8,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import CreazioneGioco.Gioco;
-import CreazionePlanciaNave.ComponentiGioco;
 
 public class ComponentiGiocoGrafica extends JPanel {
-// usati in posizionecaselle
-// classe per la parte grafica di ogni componente
 
+	/*
+	 * classe per la parte grafica dei componenti
+	 */
 	private enum connettori {
 		NESSUNO, SINGOLO, DOPPIO, UNIVERSALE;
 	}
-
-//	private Connettori[] listaConnettori = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
-//			Connettori.NESSUNO };
-//	private Connettori[] listaConnettoriAdiacenti = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
-//			Connettori.NESSUNO }; // lista usata per vedere se ci sono connettori ai lati adiacenti al pezzo
 
 	private int[] posizioneComponente = { 0, 0 };
 	private String nome = "";
@@ -34,7 +29,6 @@ public class ComponentiGiocoGrafica extends JPanel {
 //		listaConnettori[0] = Connettori.UNIVERSALE;...
 		this.nome = "connettoreProva";
 		setEnabled(false);
-//		setEnabled(true); usato per prova, setto false inizialmente
 
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -56,18 +50,11 @@ public class ComponentiGiocoGrafica extends JPanel {
 		return posizioneComponente;
 	}
 
-//	public Connettori[] getListaConnettori() {
-//		return this.listaConnettori;
-//	}
-//
-//	public Connettori[] getListaConnettoriAdiacenti() {
-//		return this.listaConnettoriAdiacenti;
-//	}
-
+	/*
+	 * setto il layout del componente(ora uguale per tutti i componenti lo chiamo
+	 * solo quando seleziono casella e aggiungo componente, da mettere nell'event
+	 */
 	public void setPannello(String s, int i) {
-		// setto il layout del componente(ora uguale per tutti i comp)
-		// lo chiamo solo quando seleziono casella e aggiungo componente, da mettere
-		// nell'event
 
 		this.setLayout(new GridLayout(1, 1));
 		JTextField nome = new JTextField();
@@ -75,44 +62,3 @@ public class ComponentiGiocoGrafica extends JPanel {
 		add(nome);
 	}
 }
-
-//METODO PER SCELTA POSTO
-//
-//funzione 1) scansiono tutto l'array caselle (composto da componenti), per ogni componente che incontro guardo dove hanno connettori e salvo in una pila la posizione della casella libera adiacente.
-//funzione 2) estraggo dalla pila ogni posizione salvata e la abilito per la scelta
-//funzione 3) con l'event associato allo spazio cliccato vado a disabilitare tutte le posizioni e a richiamare la funzione dello scan dell'array di caselle
-//++questo finchè non fisiscono soldi o finiscono pezzi o finisce il tempo
-
-//******************per vedere connettori***************
-//seleziono pezzo attuale, faccio confronto:
-//	se this.nord=lista[i-1][j] (riga-1, stessa colonna) allora possono essere collegati
-//	se this.est=lista[i][j+1] (stessa rga, colonna+1) allora possono essere collegati
-//	se this.sud=lista[i+1][j] (riga+1, stessa colonna) allora possono essere collegati
-//	se this.ovest=lista[i][j-1] (stessa riga, colonna-1) allora possono essere collegati
-//	
-//	case NORD: { // guardo a nord di tutte le carte
-//for (int i = 1; i < p.getCaselle().length; i++) { // i=1 perchè partiamo dalla seconda fila poiche
-//	// consideriamo lato nord
-//for (int j = 0; j < p.getCaselle()[i].length; j++) {
-//if (p.getComponente(i, j).getListaConnettoriAdiacenti()[0].equals(connettori.NESSUNO)) { // se non
-//													// ci
-//													// sono
-//													// connettori
-//													// adiacenti
-//if (p.getComponente(i, j).getListaConnettori()[0].equals(connettori.SINGOLO)) {// se il
-//											// connettore è
-//											// singolo
-//// abilita pos componente i-1, j
-//} else if (p.getComponente(i, j).getListaConnettori()[0].equals(connettori.DOPPIO)) {// se il
-//// connettore è
-//// doppio
-//// abilita pos componente i-1, j
-//} else {
-//// non fare nulla
-//}
-//
-//}
-//}
-//}
-//
-//}

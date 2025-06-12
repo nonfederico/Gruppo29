@@ -11,23 +11,32 @@ public class Gioco {
 	private static ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
 	private static Gioco g = null; // uso pattern singleton
 
+	/*
+	 * costruttore vuoto perchè settiamo il nome tramite funzione setnome
+	 */
 	private Gioco() {
-		// costruttore vuoto perchè settiamo il nome tramite funzione setnome
 	}
 
-	public static Gioco getIstanza() { // per accedere all'istanza senza creare un nuovo oggetto nelle altre classi
+	/*
+	 * per accedere all'istanza senza creare un nuovo oggetto nelle altre classi,
+	 * viene creata un'istanza nuova solo se non esiste
+	 */
+	public static Gioco getIstanza() {
 		if (g == null) {
 			g = new Gioco();
 		}
 		return g;
-		// Se esisteva già un gioco questo viene sovrascritto
+
 	}
 
 	public void setNomeGioco(String nome) {
 		this.nomeGioco = nome;
 	}
 
-	public static ArrayList<Giocatore> getlistaGiocatori() { // per accedere da altre classi
+	/*
+	 * funzione usata dalle classi per l'accesso alla lista di giocatori
+	 */
+	public static ArrayList<Giocatore> getlistaGiocatori() {
 		return giocatori;
 	}
 
@@ -42,22 +51,6 @@ public class Gioco {
 
 	public int getNumeroGiocatori() {
 		return this.numeroGiocatori;
-	}
-
-	public void creaMazzo() {
-		// TODO implement here
-	}
-
-	public void creaPlanciaNave() {
-		// TODO implement here
-	}
-
-	public void iniziaGioco() {
-		// TODO implement here
-	}
-
-	public void restart() {
-		// TODO implement here
 	}
 
 	public void ritornaVincitore() {

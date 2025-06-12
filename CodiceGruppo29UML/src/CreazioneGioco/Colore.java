@@ -20,6 +20,9 @@ public class Colore {
 		colori.add(Colori.ROSSO);
 	}
 
+	/*
+	 * @return lista dei colori disponibili, non ancora selezionati
+	 */
 	public String getListaColori() {
 		StringBuilder listaColoriDisponibili = new StringBuilder();
 		if (esiste == true) {
@@ -31,6 +34,13 @@ public class Colore {
 		return listaColoriDisponibili.toString();
 	}
 
+	/*
+	 * funzione per far scegliere il colore all'utente
+	 * 
+	 * @param s stringa inserita dall'utente
+	 * 
+	 * @return Color ritorna oggetto di tipo Color
+	 */
 	public Color chooseColore(String s) {
 		Color coloreSettato = null;
 		for (int i = 0; i < colori.size(); i++) {

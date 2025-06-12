@@ -24,45 +24,53 @@ public class PlanciaVolo {
 		return contatore++;
 	}
 
-//    ritorna il caso Giorni Persi 
-
+	/*
+	 * @return Giorni Persi
+	 */
 	public int getGiorniPersi() {
 		return giorniPersi;
 	}
 
-//    calcola la posizione di un giocatore mosso 
-
-//    aggiuge un giocatore nella posizione 0 (iniziale)
-
+	/*
+	 * calcola la posizione di un giocatore mosso aggiuge un giocatore nella
+	 * posizione 0 (iniziale)
+	 * 
+	 * @param g giocatore da settare
+	 */
 	public void aggiungiGiocatore(Giocatore g) {
 
 		percorso[0].setOccupante(g);
 	}
 
-//    trova la posizione di un determinato giocatore
-
+	/*
+	 * @param g giocatore di cui vogliamo trovare la posizione
+	 * 
+	 * @return int, -1 se non troviamo la posizione del giocatore indicato
+	 */
 	public int trovaPosizione(Giocatore g) {
-
 		for (int i = 0; i < LUNGHEZZA; i++) {
-
 			if (percorso[i].getOccupante() != null && percorso[i].getOccupante().equals(g)) {
-
 				return i;
 			}
 		}
 
-		return -1; // posizione non trovata
+		return -1;
+
 	}
 
-//    determina chi è più avanti nel tracciato 
-
+	/*
+	 * per determinare chi è il primo giocatore in termini di posizione sul
+	 * tabellone
+	 * 
+	 * @return Giocatore
+	 */
 	public Giocatore getLeader() {
 
 		for (int i = LUNGHEZZA - 1; i >= 0; i--) {
 
 			if (!percorso[i].isOccupata()) {
 
-				return percorso[i].getOccupante(); // giocatore nella posizione più avanzata
+				return percorso[i].getOccupante();
 			}
 		}
 
@@ -72,19 +80,14 @@ public class PlanciaVolo {
 	public void muoviGiocatore(Giocatore g, int passi) {
 
 		int posizioneAttuale = trovaPosizione(g);
-
 		if (posizioneAttuale == -1) {
-
 			System.out.println("\nGiocatore non trovato");
 			return;
 		}
 
-//		libera la posizione attuale
-
 		percorso[posizioneAttuale].libera();
 
 		int nuovaPosizione = posizioneAttuale + passi;
-
 		while (nuovaPosizione < LUNGHEZZA && percorso[nuovaPosizione].isOccupata()) {
 			nuovaPosizione++;
 		}
@@ -94,8 +97,6 @@ public class PlanciaVolo {
 			System.out.println("\nGiro completato! Riparti dalla casella iniziale");
 			System.out.println("\nGiro numero " + incremento());
 		}
-
-//		sposta il giocatore nella nuova posizione
 
 		percorso[nuovaPosizione].setOccupante(g);
 		System.out.println("\nGiocatore " + g.getNome() + " si sposta alla casella " + nuovaPosizione);

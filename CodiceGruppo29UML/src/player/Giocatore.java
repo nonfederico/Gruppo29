@@ -15,9 +15,8 @@ public class Giocatore {
 	private int id;
 	private int crediti;
 	private int creditiVintiMerci;
-	private int posizioneAttuale; // salvi la posizione in cui è nella plancia di volo
-	private PlanciaNave planciaNave = null; // quando creo un giocatore creo anche la plancia e uso get per
-	// vederla
+	private int posizioneAttuale;
+	private PlanciaNave planciaNave = null; //
 
 	public Giocatore() {
 
@@ -83,7 +82,10 @@ public class Giocatore {
 
 	}
 
-	public PlanciaNave getPlancia() { // se non ho creato una plancia, la creo e poi la restituisco
+	/*
+	 * quando creo un giocatore creo anche la plancia e uso get per vederla
+	 */
+	public PlanciaNave getPlancia() {
 		if (planciaNave == null) {
 			System.out.println("creato plancia");
 			planciaNave = new PlanciaNave();
@@ -91,8 +93,11 @@ public class Giocatore {
 		return this.planciaNave;
 	}
 
+	/*
+	 * @return ListaPezziGiocatore ad ogni giocatore è associata un'unica lista
+	 * pezzi
+	 */
 	public ListaPezziGiocatore getListaPezzi() {
-		// una sola listapezzi per ogni giocatore
 		if (listaPezzi == null) {
 			listaPezzi = new ListaPezziGiocatore();
 		}

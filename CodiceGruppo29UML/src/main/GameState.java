@@ -1,13 +1,13 @@
 package main;
 
 public interface GameState {
-	// rappresentiamo tutti i possibili stati, context si occupa dimantenere il
-	// riferimento allo stato corrente che delega l'oggetto context di eseguire le
-	// operazioni (contenitore dello stato)
 
-//	void loading(); //da implementare se volessimo dare l'opzione di caricare i salvataggi
-//	void ending(GameContext context);
-
+	/*
+	 * rappresentiamo tutti i possibili stati context mantiene il riferimento allo
+	 * stato corrente
+	 * 
+	 * TO DO: void loading(); per caricare i salvataggi
+	 */
 	void enter(); // per entrare nello stato corrente
 
 	void pause();

@@ -13,13 +13,19 @@ public class Caselle {
 		this.occupante = null;
 	}
 
+	/*
+	 * per indicare a quale posizione della matrice si trova la casella
+	 * 
+	 * @param i numero di riga
+	 * 
+	 * @param j numero della colonna
+	 */
 	public void setCoordinata(int i, int j) {
 		this.cordinatai = i;
 		this.cordinataj = j;
 	}
 
 	public int getNumero() {
-
 		return numero;
 	}
 

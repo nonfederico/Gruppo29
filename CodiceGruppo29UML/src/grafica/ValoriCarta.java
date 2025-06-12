@@ -22,7 +22,7 @@ public class ValoriCarta extends JPanel {
 		// tramite il get in carte andremo ad impostare i valori
 		this.potenza.setText("potenza");
 		this.valore.setText("valore");
-		this.turni.setText("turni");
+		this.turni.setText("turni persi");
 	}
 
 }

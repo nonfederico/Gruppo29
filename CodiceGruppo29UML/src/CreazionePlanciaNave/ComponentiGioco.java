@@ -2,32 +2,21 @@ package CreazionePlanciaNave;
 
 public class ComponentiGioco {
 
-//	public enum connettori {
-//		NESSUNO, SINGOLO, DOPPIO, UNIVERSALE
-//	}
-//
-//	// usati in PosizionaCaselle
-//
-
+	/*
+	 * lista usata per vedere se ci sono connettori ai lati adiacenti al pezzo
+	 */
 	private Connettori[] listaConnettori = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
 			Connettori.NESSUNO };
 	private Connettori[] listaConnettoriAdiacenti = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
 			Connettori.NESSUNO };
-// lista usata per vedere se ci sono connettori ai lati adiacenti al pezzo
-//
+
 	private int[] posizioneComponente = { 0, 0 };
 
-//
 	enum statoPos {
 		NORD, EST, SUD, OVEST
 	}
 
-//
 	public ComponentiGioco() {
-//		setConnettori();
-		// se lo abilito nel costruttore funziona e tutti i conettori diventano attivi,
-		// se lo richiamo in
-		// graficaPlanciaNave-> setcasellevuote no
 	}
 
 	public void setCoordinate(int riga, int colonna) {

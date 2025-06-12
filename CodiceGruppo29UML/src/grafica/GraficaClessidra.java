@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import main.Clessidra;
 
 public class GraficaClessidra extends JPanel {
-	// ex GraficaInformazioni
+
 	private JTextField textField;
 	private Clessidra timer = new Clessidra();
 	JButton button = new JButton();
@@ -36,6 +36,9 @@ public class GraficaClessidra extends JPanel {
 
 	}
 
+	/*
+	 * per modificare il testo visualizzato nell'area di print della clessidra
+	 */
 	public void writeTextfisso(String testo) {
 		textField.setEditable(false);
 		textField.setText(testo);

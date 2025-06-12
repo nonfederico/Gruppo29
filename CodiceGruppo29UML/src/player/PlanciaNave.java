@@ -3,7 +3,10 @@ package player;
 import CreazionePlanciaNave.ComponentiGioco;
 import grafica.ComponentiGiocoGrafica;
 
-//la associo ad un giocatore e accedo tramite il giocatore cosi da avere 4 plance diverse
+/*
+ * la associo ad un giocatore e accedo tramite il giocatore cosi da avere 4 plance diverse
+ */
+
 public class PlanciaNave {
 
 	private ComponentiGiocoGrafica[][] caselleGrafica = new ComponentiGiocoGrafica[5][5];
@@ -11,8 +14,6 @@ public class PlanciaNave {
 
 	public PlanciaNave() {
 
-//		caselle[2][2].setConnettori();
-//		System.out.println(caselle[2][2].toString());
 	}
 
 	public int livello;

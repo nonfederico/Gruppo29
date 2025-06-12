@@ -11,7 +11,6 @@ import player.Giocatore;
 public class CreaGiocatori extends SwingWorker<Void, Void> {
 	private String num = "";
 	private int numeroGiocatori = 0;
-//	private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>(); //la lista la prendo direttamente dal gioco
 	private String nome = "";
 	private String colore = "";
 	private statiCreaGiocatori statiCrea = statiCreaGiocatori.NUMEROGIOCATORI;
@@ -22,6 +21,16 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		NUMEROGIOCATORI, SELEZIONAINFO, CREAZIONENAVE
 	}
 
+	@Override
+	protected Void doInBackground() throws Exception {
+		statiCreaGiocatori();
+		return null;
+	}
+
+	/*
+	 * funzione che suddivide in sottostati la creazione dei giocatori per passare
+	 * poi alla fase di creazione della nave
+	 */
 	public void statiCreaGiocatori() {
 
 		switch (statiCrea) {
@@ -76,6 +85,9 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 
 	}
 
+	/*
+	 * @param lista è la lista di giocatori che partecipano alla partita
+	 */
 	private void setInformazioni(ArrayList<Giocatore> lista) {
 		for (int i = 0; i < numeroGiocatori; i++) {
 			Giocatore giocatore = new Giocatore();
@@ -134,12 +146,6 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 		statiCrea = statiCreaGiocatori.CREAZIONENAVE;
 		statiCreaGiocatori();
 
-	}
-
-	@Override
-	protected Void doInBackground() throws Exception {
-		statiCreaGiocatori();
-		return null;
 	}
 
 	public int getNumeGiocatori() {

@@ -1,5 +1,6 @@
 package CreazioneGioco;
 
+import Carta.Mazzo;
 import CreazionePlanciaNave.CreaPlanciaNave;
 import grafica.HandleGraphics;
 import main.GameContext;
@@ -11,7 +12,7 @@ public class CreaGioco implements GameState {
 	private static Gioco g = null; // uso pattern singleton per creare una sola partita (per la versione attuale)
 	private CreaGiocatori creaGioc = new CreaGiocatori(); // sottoclasse per creare giocatori
 	private String testoInserito = "";
-
+	private Mazzo mazzo = Mazzo.getMazzo();
 	GameState creaPlanciaNave = new CreaPlanciaNave(); // contesto logico nel quale voglio entrare dopo aver finito di
 														// creare i giocatori
 
@@ -20,16 +21,20 @@ public class CreaGioco implements GameState {
 		switchState();
 	};
 
+	/*
+	 * salva stato attuale per andare nel menu se schiaccia il pulsante pausa
+	 * succede qualcosa
+	 */
 	@Override
 	public void pause() {
-		// salva stato attuale per andare nel menu
-		// se schiaccia il pulsante pausa succede qualcosa
+
 	}
 
+	/*
+	 * salva stato del gioco , esce dal gioco
+	 */
 	@Override
 	public void exit() {
-		// salva stato del gioco
-		// esce dal gioco
 
 	}
 
@@ -45,8 +50,11 @@ public class CreaGioco implements GameState {
 
 	}
 
+	/*
+	 * funzione che suddivide la creazione del giocatore in sottostati
+	 */
+
 	public void switchState() {
-		// suddiviso la creazione del giocatore in sottostati
 
 		statoCorrente = getCurrentState();
 		System.out.println("entrato in switch con stato " + getCurrentState().toString());
@@ -55,7 +63,8 @@ public class CreaGioco implements GameState {
 
 		case ENTER:
 
-			HandleGraphics.getGraphics().DisabledAreaText("benvenuto astronauta... Inserisci nome del gioco:");
+			HandleGraphics.getGraphics().DisabledAreaText(
+					"benvenuto astronauta... Inserisci nome della partit (compila l'area sottostante) :");
 
 			do {
 				testoInserito = HandleGraphics.getGraphics().writeAreaText();
@@ -63,7 +72,7 @@ public class CreaGioco implements GameState {
 					|| (testoInserito.length() > 10 || testoInserito.length() < 1));
 			;
 
-			g.getIstanza(); // creo un gioco o carico quello che esiste già
+			g.getIstanza();
 
 			HandleGraphics.getGraphics().DisabledAreaText("gioco creato");
 			System.out.println("stato attuale " + getCurrentState().toString());
@@ -86,6 +95,8 @@ public class CreaGioco implements GameState {
 
 		case EXIT:
 			HandleGraphics.getGraphics().DisabledAreaText("gioco e giocatori creati, andiamo a creare le navi");
+			Mazzo mazzo = Mazzo.getMazzo();
+			HandleGraphics.getGraphics().getGraficaInfo().setTitolo();
 			GameContext.getIstanzaGC().setState(creaPlanciaNave); // setto il contesto logico in cui voglio entrare
 			GameContext.getIstanzaGC().enter(); // entro nello stato enter del contesto creaPlanciaNave
 			break;
@@ -108,6 +119,11 @@ public class CreaGioco implements GameState {
 
 	public static Gioco getGioco() {
 		return g;
+	}
+
+	public String titoloCarta() {
+		String titolo = mazzo.getCarta().getTitolo();
+		return titolo;
 	}
 
 }
