@@ -1,5 +1,6 @@
 package plancia;
 
+import plancia.Caselle;
 import java.io.*;
 import java.util.*;
 import player.Giocatore;
@@ -7,24 +8,38 @@ import player.Giocatore;
 public class PlanciaVolo {
 
 	private final int LUNGHEZZA = 21;
-	private ArrayList[] percorso;
-	
+	private int giorniPersi;
+	private Caselle[] percorso;
+	private int contatore = 0;
+			
+			
     public PlanciaVolo() {
     	
-    	percorso = new ArrayList[LUNGHEZZA];
+    	percorso = new Caselle[LUNGHEZZA];
     	
     	for(int i = 0; i < LUNGHEZZA; i++ ) {
-    		
-    		percorso[i] = new ArrayList();
+    		percorso[i] = new Caselle(i);
     	}
     	
     }
+	    public int incremento() {
+	        return contatore++;
+	    }
+    
+//    ritorna il caso Giorni Persi 
+    
+    public int getGiorniPersi() {
+    	return giorniPersi;
+    }
+    
+//    calcola la posizione di un giocatore mosso 
+    
     
 //    aggiuge un giocatore nella posizione 0 (iniziale)
     
     public void aggiungiGiocatore(Giocatore g) {
     	
-    	percorso[0].add(g);
+    	percorso[0].setOccupante(g);
     }
     
 //    trova la posizione di un determinato giocatore
@@ -33,43 +48,15 @@ public class PlanciaVolo {
     	
     	for(int i = 0; i < LUNGHEZZA; i++) {
     		
-    		if(percorso[i].contains(g)) {
+    		if(percorso[i].getOccupante() != null && percorso[i].getOccupante().equals(g)) {
     			
     			return i;
     		}
     	}
     	
-    	return -1;
+    	return -1; // posizione non trovata 
     }
-    
-//    muove un giocatore di un certo numero di passi
-    
-    public void muoviGiocatore(Giocatore g, int passi) {
-    	
-    	int posizioneCorrente = trovaPosizione(g);
-    	if(posizioneCorrente == -1) {
-    		
-    		System.out.println("il giocatore: " + g.getNome() + " non è presente sulla plancia.");
-    		return;
-    	}
-    	
-    	int nuovaPosizione = Math.min(posizioneCorrente + passi, LUNGHEZZA -1);
-    	
-    	
-    	if(!percorso[nuovaPosizione].isEmpty()) {
-			
-			System.out.println("la posizione " + nuovaPosizione + " è gia occupata.");
-		}
-    	
-//    	sposta il giocatore 
-    	
-    	percorso[posizioneCorrente].remove(g);
-    	percorso[nuovaPosizione].add(g);
-    	
-    	System.out.println(g.getNome() + " si è mosso alla posizione " + nuovaPosizione);
-    	
-    }
-    
+
     
 //    determina chi è più avanti nel tracciato 
     
@@ -77,14 +64,46 @@ public class PlanciaVolo {
     	
     	for(int i = LUNGHEZZA - 1; i >= 0; i-- ) {
     		
-    		if(!percorso[i].isEmpty()) {
+    		if(!percorso[i].isOccupata()) {
     			
-    			return (Giocatore) percorso[i].get(0); // giocatore nella posizione più avanzata
+    			return percorso[i].getOccupante(); // giocatore nella posizione più avanzata
     		}
     	}
     	
     	return null;
     }
     
-//    commento
+	public void muoviGiocatore(Giocatore g, int passi) {
+		
+		int posizioneAttuale = trovaPosizione(g);
+		
+		
+		if(posizioneAttuale == -1) {
+			
+			System.out.println("\nGiocatore non trovato");
+			return;
+		}
+		
+//		libera la posizione attuale
+		
+		percorso[posizioneAttuale].libera();
+		
+		int nuovaPosizione = posizioneAttuale + passi;
+	
+		
+		while(nuovaPosizione < LUNGHEZZA && percorso[nuovaPosizione].isOccupata()) {
+			nuovaPosizione++;
+		}
+		
+		if(nuovaPosizione >= LUNGHEZZA) {
+			
+			System.out.println("\nGiro completato! Riparti dalla casella iniziale");
+			System.out.println("\nGiro numero " + incremento());
+		}
+		
+//		sposta il giocatore nella nuova posizione
+		
+		percorso[nuovaPosizione].setOccupante(g);
+		System.out.println("\nGiocatore " + g.getNome() + " si sposta alla casella " + nuovaPosizione);
+	}
 }

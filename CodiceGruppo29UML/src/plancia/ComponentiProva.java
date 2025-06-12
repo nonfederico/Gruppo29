@@ -12,7 +12,7 @@ import CreazioneGioco.Gioco;
 public class ComponentiProva extends JPanel {
 
 	private enum connettori {
-		NESSUNO, SINGOLO, DOPPIO;
+		NESSUNO, SINGOLO, DOPPIO, UNIVERSALE;
 	}
 
 	private connettori[] listaConnettori = { connettori.NESSUNO, connettori.NESSUNO, connettori.NESSUNO,

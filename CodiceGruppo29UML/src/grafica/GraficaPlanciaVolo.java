@@ -1,6 +1,7 @@
 package grafica;
 
 import java.awt.Color;
+
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -11,13 +12,14 @@ import player.Giocatore;
 
 public class GraficaPlanciaVolo extends JPanel{
 	
-	// TO DO: gestire parte grafica relativa alla plancia volo (posizione 1,2)
 	
 	private static GraficaPlanciaVolo grafica = null;
+
+	Giocatore giocatore = null;
 	
 	private GraficaPlanciaVolo() {
 		
-		setLayout(new GridLayout(5,5));
+		setLayout(new GridLayout(6,6));
 		setVisible(true);
 		
 	}
@@ -37,5 +39,16 @@ public class GraficaPlanciaVolo extends JPanel{
 		CASELLEDISPONIBILI
 	}
 	
+	public void setCaselleDisponibili(Giocatore g) {
+		
+		this.giocatore = null;
+		
+	}
+	
+	public void setCaselleVuote(Giocatore g) {
+		
+		
+		
+	}
 	
 }
