@@ -14,6 +14,7 @@ public class Giocatore {
 	private ListaPezziGiocatore listaPezzi = null;
 	private int id;
 	private int crediti;
+	private int creditiVintiMerci;
 	private int posizioneAttuale; // salvi la posizione in cui è nella plancia di volo
 	private PlanciaNave planciaNave = null; // quando creo un giocatore creo anche la plancia e uso get per
 	// vederla
@@ -52,6 +53,34 @@ public class Giocatore {
 
 	public int getId() {
 		return this.id;
+	}
+
+	public int calcolaPotenzaFuoco() {
+		return 100;
+	}
+
+	public int calcolaPotenzaMotrice() {
+		return 100;
+	}
+
+	public void guadagnaMerci(int a) {
+		creditiVintiMerci = a * 50;
+	}
+
+	public void perdiGiorniVolo(int g) {
+		return;
+	}
+
+	public void subisciPenalita(int p) {
+		return;
+	}
+
+	public int getEquipaggioTotale() {
+		return 5;
+	}
+
+	public void perdiEquipaggio(int p) {
+
 	}
 
 	public PlanciaNave getPlancia() { // se non ho creato una plancia, la creo e poi la restituisco
@@ -112,7 +141,7 @@ public class Giocatore {
 		// TODO implement here
 	}
 
-	public void prendiCrediti() {
+	public void prendiCrediti(int i) {
 		// TODO implement here
 	}
 
