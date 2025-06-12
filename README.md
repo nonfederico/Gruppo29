@@ -2,8 +2,9 @@
 Repository per il progetto del corso “programmazione ad oggetti”
 
 # interfaccia gioco
+![layoutUltimaVersione - Page 01](https://github.com/user-attachments/assets/2c2e263d-cc89-4577-8909-9d731c2e2678)
 
-[LayoutUltimaVersione.pdf](https://github.com/user-attachments/files/20708705/LayoutUltimaVersione.pdf)
+
 
 frame formato da 4 panel fissi  
 composti da sottoContenitori contenenti gli elementi grafici 
