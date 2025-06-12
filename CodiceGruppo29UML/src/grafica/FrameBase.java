@@ -12,7 +12,7 @@ public class FrameBase extends JFrame {
 	private AreaInterazione areaInterazione;
 	private static GraficaPlanciaNave graficaPlanciaNave;
 	private GraficaInformazioni graficaInformazioni;
-	private AreaInterazione due;
+	private GraficaPlanciaVolo due;
 
 	// solo per prova, poi cambio layout
 
@@ -27,7 +27,7 @@ public class FrameBase extends JFrame {
 
 		areaInterazione = new AreaInterazione();
 		graficaPlanciaNave = GraficaPlanciaNave.getGraficaPlanciaNave();
-		due = new AreaInterazione();
+		due = GraficaPlanciaVolo.getGraficaPlanciaVolo();
 		graficaInformazioni = new GraficaInformazioni();
 
 		// layout del frame, borderLayout è lo standart
@@ -39,7 +39,6 @@ public class FrameBase extends JFrame {
 		getContentPane().add(due);
 		getContentPane().add(graficaInformazioni);
 		getContentPane().add(graficaPlanciaNave);
-		due.writeTextfisso("due");
 
 		setVisible(true);
 	}
