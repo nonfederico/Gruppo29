@@ -1,18 +1,21 @@
 package grafica;
 
+import java.awt.Color;
+
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-public class GraficaPlanciaVolo extends JPanel {
-
-	// TO DO: gestire parte grafica relativa alla plancia volo (posizione 1,2)
-
+public class GraficaPlanciaVolo extends JPanel{
+	
+	
 	private static GraficaPlanciaVolo grafica = null;
 
+	Giocatore giocatore = null;
+	
 	private GraficaPlanciaVolo() {
-
-		setLayout(new GridLayout(6, 6));
+		
+		setLayout(new GridLayout(6,6));
 		setVisible(true);
 
 	}
@@ -29,4 +32,17 @@ public class GraficaPlanciaVolo extends JPanel {
 		CASELLEVUOTE, CASELLEDISPONIBILI
 	}
 
+	
+	public void setCaselleDisponibili(Giocatore g) {
+		
+		this.giocatore = null;
+		
+	}
+	
+	public void setCaselleVuote(Giocatore g) {
+		
+		
+		
+	}
+	
 }

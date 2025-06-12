@@ -14,7 +14,9 @@ public class ComponentiGiocoGrafica extends JPanel {
 // usati in posizionecaselle
 // classe per la parte grafica di ogni componente
 
-	private ComponentiGioco componente;
+	private enum connettori {
+		NESSUNO, SINGOLO, DOPPIO, UNIVERSALE;
+	}
 
 //	private Connettori[] listaConnettori = { Connettori.NESSUNO, Connettori.NESSUNO, Connettori.NESSUNO,
 //			Connettori.NESSUNO };
