@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import eccezioni.MazzoInvalido;
+
 //https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
 
 public class GraficaInformazioni extends JPanel {
@@ -23,7 +25,7 @@ public class GraficaInformazioni extends JPanel {
 	/*
 	 * settare il titolo della carta (per la grafica)
 	 */
-	public void setTitolo() {
+	public void setTitolo() throws MazzoInvalido {
 		cartaGrafica.setValori();
 	}
 

@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import CreazionePlanciaNave.ComponentiGioco;
+import eccezioni.CasellaNonPresenteException;
 import player.Giocatore;
 
 /*
@@ -89,7 +90,13 @@ public class GraficaPlanciaNave extends JPanel {
 	 * componenti
 	 */
 	public void setCasellaSingola(Giocatore g, int i, int j) {
-		System.out.println("set casella singola");
+
+		System.out.println("modifico la casella disponibile");
+
+		if (i < 0 || i >= 5 || j < 0 || j >= 5) {
+			System.err.println("sto accedendo a una casella fuori dalla griglia");
+			return;
+		}
 		ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
 		componenteGrafico.setCoordinate(i, j);
 		componenteGrafico.setBackground(Color.pink);
@@ -97,13 +104,25 @@ public class GraficaPlanciaNave extends JPanel {
 
 		JPanel graficaCasella = HandleGraphics.getGraphics().getPlanciaNave();
 		int index = i * 5 + j; // per 5 perchè ci sono 5 colonne quidi 5 elementi per riga
-		graficaCasella.remove(index); // non posso rimuovere con l'indice della matrice
-		graficaCasella.add(componenteGrafico, index);
-		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
-		graficaCasella.revalidate();
-		graficaCasella.repaint();
-		System.out.println("Casella aggiornata graficamente: [" + i + "," + j + "]");
 
+		try {
+			if (index >= graficaCasella.getComponentCount()) {
+				throw new CasellaNonPresenteException(index);
+			}
+
+			graficaCasella.remove(index);
+			graficaCasella.add(componenteGrafico, index);
+
+			g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
+			graficaCasella.revalidate();
+			graficaCasella.repaint();
+			System.out.println("òa casella aggiornata è la: [" + i + "," + j + "]");
+
+		} catch (CasellaNonPresenteException e) {
+			System.err.println(e.getMessage());
+			HandleGraphics.getGraphics().DisabledAreaText("Errore aggiornamento casella: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	/*

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.SwingWorker;
 
+import eccezioni.ErroreNome;
 import grafica.HandleGraphics;
 import player.Giocatore;
 
@@ -64,7 +65,13 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 				e.printStackTrace();
 			}
 
-			setInformazioni(Gioco.getIstanza().getlistaGiocatori());
+			try {
+				setInformazioni(Gioco.getIstanza().getlistaGiocatori());
+			} catch (ErroreNome e) {
+				// TODO Auto-generated catch block
+
+				e.printStackTrace();
+			}
 			break;
 
 		case CREAZIONENAVE:
@@ -76,6 +83,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 			} catch (InterruptedException e) {
 				HandleGraphics.getGraphics().disablewriteAreaText();
 				// TODO Auto-generated catch block
+				System.err.println("Errore inserimento nome: " + e.getMessage());
 				e.printStackTrace();
 			}
 			done();
@@ -88,7 +96,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 	/*
 	 * @param lista è la lista di giocatori che partecipano alla partita
 	 */
-	private void setInformazioni(ArrayList<Giocatore> lista) {
+	private void setInformazioni(ArrayList<Giocatore> lista) throws ErroreNome {
 		for (int i = 0; i < numeroGiocatori; i++) {
 			Giocatore giocatore = new Giocatore();
 			giocatore.setId(i);
@@ -97,7 +105,7 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 					.DisabledAreaText("giocatore " + i + " ,inserisci nome (massimo 10 caratteri):");
 			do {
 				nome = HandleGraphics.getGraphics().writeAreaText().trim();
-			} while (nome.equals("") || nome.isEmpty() || (nome.length() > 10 && nome.length() > 1));
+			} while (nome.equals("") || nome.isEmpty() || (nome.length() > 10 && nome.length() < 1));
 
 			try {
 				Thread.sleep(1 * 1000);
@@ -109,7 +117,6 @@ public class CreaGiocatori extends SwingWorker<Void, Void> {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 			HandleGraphics.getGraphics()
 					.DisabledAreaText(giocatore.getNome() + " ,inserisci colore " + c.getListaColori());
 

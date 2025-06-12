@@ -2,11 +2,16 @@ package Carta;
 
 import java.util.Stack;
 
+import eccezioni.MazzoInvalido;
+
 public class Mazzo {
 
 	private static Mazzo istanza = null;
 
+	int istanzaConteggio = 0;
+
 	private Mazzo() {
+		istanzaConteggio = 1;
 		creaMazzoMescolato();
 	}
 
@@ -33,10 +38,9 @@ public class Mazzo {
 		return mazzo;
 	}
 
-	public Carte getCarta() {
-		if (mazzo.isEmpty()) {
-			System.out.println("no carte");
-			return null;
+	public Carte getCarta() throws MazzoInvalido {
+		if (mazzo.isEmpty() && istanzaConteggio == 0) {
+			throw new MazzoInvalido("errore nella creazione del mazzo");
 		}
 		return mazzo.pop();
 

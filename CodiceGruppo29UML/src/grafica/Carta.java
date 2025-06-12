@@ -8,6 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Carta.Mazzo;
+import eccezioni.ErroreNome;
+import eccezioni.MazzoInvalido;
 
 public class Carta extends JPanel {
 
@@ -25,14 +27,20 @@ public class Carta extends JPanel {
 		add(valoriCarta);
 	}
 
-	public void setValori() {
-		this.titolo.setText(getTitolo());
+	public void setValori() throws MazzoInvalido {
+		try {
+			this.titolo.setText(getTitolo());
+		} catch (ErroreNome e) {
+			// TODO Auto-generated catch block
+			System.err.println("Errore, titolo carta non valido: " + e.getMessage());
+			e.printStackTrace();
+		}
 		this.descrizione.setText("descrizione della carta con cui interagiamo, è la prima carta della pila");
 		descrizione.setLineWrap(true);
 		descrizione.setWrapStyleWord(true);
 	}
 
-	public String getTitolo() {
+	public String getTitolo() throws MazzoInvalido, ErroreNome {
 		String t = Mazzo.getMazzo().getCarta().getTitolo();
 		return t;
 	}

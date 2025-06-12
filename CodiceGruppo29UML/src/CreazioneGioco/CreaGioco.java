@@ -2,6 +2,8 @@ package CreazioneGioco;
 
 import Carta.Mazzo;
 import CreazionePlanciaNave.CreaPlanciaNave;
+import eccezioni.ErroreNome;
+import eccezioni.MazzoInvalido;
 import grafica.HandleGraphics;
 import main.GameContext;
 import main.GameState;
@@ -18,7 +20,14 @@ public class CreaGioco implements GameState {
 
 	@Override
 	public void enter() {
-		switchState();
+		try {
+			switchState();
+		} catch (MazzoInvalido | ErroreNome e) {
+			System.err.println("Errore creazione del gioco: " + e.getMessage());
+			HandleGraphics.getGraphics().DisabledAreaText("Errore creazione gioco: " + e.getMessage());
+			e.printStackTrace();
+			// eventualmente puoi impostare uno stato di errore o uscire
+		}
 	};
 
 	/*
@@ -54,7 +63,7 @@ public class CreaGioco implements GameState {
 	 * funzione che suddivide la creazione del giocatore in sottostati
 	 */
 
-	public void switchState() {
+	public void switchState() throws MazzoInvalido, ErroreNome {
 
 		statoCorrente = getCurrentState();
 		System.out.println("entrato in switch con stato " + getCurrentState().toString());
@@ -71,7 +80,6 @@ public class CreaGioco implements GameState {
 			} while (testoInserito.equals("") || testoInserito.isEmpty()
 					|| (testoInserito.length() > 10 || testoInserito.length() < 1));
 			;
-
 			g.getIstanza();
 
 			HandleGraphics.getGraphics().DisabledAreaText("gioco creato");
@@ -121,7 +129,7 @@ public class CreaGioco implements GameState {
 		return g;
 	}
 
-	public String titoloCarta() {
+	public String titoloCarta() throws MazzoInvalido {
 		String titolo = mazzo.getCarta().getTitolo();
 		return titolo;
 	}

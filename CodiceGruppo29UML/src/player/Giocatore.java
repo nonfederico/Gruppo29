@@ -2,6 +2,8 @@ package player;
 
 import java.awt.Color;
 
+import eccezioni.ErroreNome;
+
 /**
  * 
  */
@@ -22,7 +24,7 @@ public class Giocatore {
 
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws ErroreNome {
 		this.nome = nome;
 	}
 
