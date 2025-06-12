@@ -1,9 +1,12 @@
 package grafica;
 
 import java.awt.Color;
+
+import CreazioneGioco.Gioco;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import plancia.Caselle;
@@ -22,8 +25,9 @@ public class GraficaPlanciaVolo extends JPanel {
 		setLayout(new GridLayout(6, 6));
 		setBorder(new LineBorder(Color.LIGHT_GRAY));
 		addCaselle();
+		setCaselleDisponibili();
+		setCaselleVuote();
 		setVisible(true);
-
 	}
 
 	public void addCaselle() {
@@ -49,14 +53,79 @@ public class GraficaPlanciaVolo extends JPanel {
 		CASELLEVUOTE, CASELLEDISPONIBILI
 	}
 
-	public void setCaselleDisponibili(Giocatore g) {
+	public void setCaselleDisponibili() {
 
 		this.giocatore = null;
 
 	}
 
-	public void setCaselleVuote(Giocatore g) {
-
+	public void setCaselleVuote() {
+		
+		
+		caselleGrafica[1][1].setBackground(Color.white);
+		caselleGrafica[1][1].setBorder(new LineBorder(Color.white));
+		caselleGrafica[1][1].setEnabled(false);
+		
+		caselleGrafica[1][2].setBackground(Color.white);
+		caselleGrafica[1][2].setBorder(new LineBorder(Color.white));
+		caselleGrafica[1][2].setEnabled(false);
+		
+		caselleGrafica[1][3].setBackground(Color.white);
+		caselleGrafica[1][3].setBorder(new LineBorder(Color.white));
+		caselleGrafica[1][3].setEnabled(false);
+		
+		caselleGrafica[1][4].setBackground(Color.white);
+		caselleGrafica[1][4].setBorder(new LineBorder(Color.white));
+		caselleGrafica[1][4].setEnabled(false);
+		
+		caselleGrafica[2][1].setBackground(Color.white);
+		caselleGrafica[2][1].setBorder(new LineBorder(Color.white));
+		caselleGrafica[2][1].setEnabled(false);
+		
+		caselleGrafica[2][2].setBackground(Color.white);
+		caselleGrafica[2][2].setBorder(new LineBorder(Color.white));
+		caselleGrafica[2][2].setEnabled(false);
+		
+		caselleGrafica[2][3].setBackground(Color.white);
+		caselleGrafica[2][3].setBorder(new LineBorder(Color.white));
+		caselleGrafica[2][3].setEnabled(false);
+		
+		caselleGrafica[2][4].setBackground(Color.white);
+		caselleGrafica[2][4].setBorder(new LineBorder(Color.white));
+		caselleGrafica[2][4].setEnabled(false);
+		
+		caselleGrafica[3][1].setBackground(Color.white);
+		caselleGrafica[3][1].setBorder(new LineBorder(Color.white));
+		caselleGrafica[3][1].setEnabled(false);
+		
+		caselleGrafica[3][2].setBackground(Color.white);
+		caselleGrafica[3][2].setBorder(new LineBorder(Color.white));
+		caselleGrafica[3][2].setEnabled(false);
+		
+		caselleGrafica[3][3].setBackground(Color.white);
+		caselleGrafica[3][3].setBorder(new LineBorder(Color.white));
+		caselleGrafica[3][3].setEnabled(false);
+		
+		caselleGrafica[3][4].setBackground(Color.white);
+		caselleGrafica[3][4].setBorder(new LineBorder(Color.white));
+		caselleGrafica[3][4].setEnabled(false);
+		
+		caselleGrafica[4][1].setBackground(Color.white);
+		caselleGrafica[4][1].setBorder(new LineBorder(Color.white));
+		caselleGrafica[4][1].setEnabled(false);
+		
+		caselleGrafica[4][2].setBackground(Color.white);
+		caselleGrafica[4][2].setBorder(new LineBorder(Color.white));
+		caselleGrafica[4][2].setEnabled(false);
+		
+		caselleGrafica[4][3].setBackground(Color.white);
+		caselleGrafica[4][3].setBorder(new LineBorder(Color.white));
+		caselleGrafica[4][3].setEnabled(false);
+		
+		caselleGrafica[4][4].setBackground(Color.white);
+		caselleGrafica[4][4].setBorder(new LineBorder(Color.white));
+		caselleGrafica[4][4].setEnabled(false);
+		
 	}
 
 }

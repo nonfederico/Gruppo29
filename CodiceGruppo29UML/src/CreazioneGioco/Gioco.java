@@ -1,7 +1,8 @@
 package CreazioneGioco;
 
-import java.util.ArrayList;
+import java.util.*;
 
+import plancia.PlanciaVolo;
 import player.Giocatore;
 
 public class Gioco {
@@ -10,7 +11,8 @@ public class Gioco {
 	private int numeroGiocatori;
 	private static ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
 	private static Gioco g = null; // uso pattern singleton
-
+	private PlanciaVolo planciaVolo = null;
+	
 	private Gioco() {
 		// costruttore vuoto perchè settiamo il nome tramite funzione setnome
 	}
@@ -42,6 +44,14 @@ public class Gioco {
 
 	public int getNumeroGiocatori() {
 		return this.numeroGiocatori;
+	}
+	
+	public PlanciaVolo getPlanciaVolo() { 
+		if (planciaVolo == null) {
+			System.out.println("creato plancia di volo");
+			planciaVolo = new PlanciaVolo();
+		}
+		return this.planciaVolo;
 	}
 
 	public void creaMazzo() {

@@ -2,6 +2,8 @@ package player;
 
 import java.awt.Color;
 
+import plancia.PlanciaVolo;
+
 /**
  * 
  */
@@ -16,8 +18,8 @@ public class Giocatore {
 	private int crediti;
 	private int creditiVintiMerci;
 	private int posizioneAttuale; // salvi la posizione in cui è nella plancia di volo
-	private PlanciaNave planciaNave = null; // quando creo un giocatore creo anche la plancia e uso get per
-	// vederla
+	private PlanciaNave planciaNave = null;// quando creo un giocatore creo anche la plancia e uso get per vederla
+
 
 	public Giocatore() {
 
@@ -85,11 +87,12 @@ public class Giocatore {
 
 	public PlanciaNave getPlancia() { // se non ho creato una plancia, la creo e poi la restituisco
 		if (planciaNave == null) {
-			System.out.println("creato plancia");
+			System.out.println("creato plancia di nave");
 			planciaNave = new PlanciaNave();
 		}
 		return this.planciaNave;
 	}
+	
 
 	public ListaPezziGiocatore getListaPezzi() {
 		// una sola listapezzi per ogni giocatore
