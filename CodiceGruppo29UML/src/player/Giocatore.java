@@ -19,6 +19,7 @@ public class Giocatore {
 	// vederla
 
 	public Giocatore() {
+
 	}
 
 	public void setNome(String nome) {

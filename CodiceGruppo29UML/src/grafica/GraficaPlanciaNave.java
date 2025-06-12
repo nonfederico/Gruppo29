@@ -28,6 +28,13 @@ public class GraficaPlanciaNave extends JPanel {
 		return grafica;
 	}
 
+	public void getPosizioneDaModificare(Giocatore g, int i, int j) {
+		ComponentiGioco componenteGrafico = new ComponentiGioco();
+		g.getPlancia().getComponenteGrafica(i, j).setBackground(Color.pink);
+		g.getPlancia().getComponenteGrafica(i, j).setEnabled(true);
+
+	}
+
 	public void setCaselleVuote(Giocatore g) { // package CreazionePlanciaNave
 		System.out.println("INIZIO setCaselleVuote");
 		for (int i = 0; i < 5; i++) {
@@ -44,6 +51,7 @@ public class GraficaPlanciaNave extends JPanel {
 				componenteGrafico.setBackground(g.getColoreS());
 				componenteGrafico.setBorder(new LineBorder(Color.BLACK));
 				System.out.println("imposto colore");
+
 				// il colore lo imposto in base al colore del giocatore
 
 				g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico; // prendo oggetto plancia (non grafica)
@@ -62,17 +70,73 @@ public class GraficaPlanciaNave extends JPanel {
 
 			}
 		}
+		g.getPlancia().getCaselle()[2][2].setConnettori(); // setto connettore centrale
 	}
 
 	public void setCasellaSingola(Giocatore g, int i, int j) {
+		System.out.println("set casella singola");
 		// per modificare le caselle che possono essere selezionate
+		ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
+		componenteGrafico.setCoordinate(i, j);
+		componenteGrafico.setBackground(Color.pink);
+		componenteGrafico.setEnabled(true);
 
-		ComponentiGiocoGrafica componente = g.getPlancia().getCaselleGrafica()[i][j];
+		JPanel graficaCasella = HandleGraphics.getGraphics().getPlanciaNave();
+		int index = i * 5 + j; // per 5 perchè ci sono 5 colonne quidi 5 elemtni per riga
+		graficaCasella.remove(index); // non posso rimuovere con l'indice della matrice , non va
+		graficaCasella.add(componenteGrafico, index);
+		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
+		graficaCasella.revalidate();
+		graficaCasella.repaint();
+		System.out.println("Casella aggiornata graficamente: [" + i + "," + j + "]");
+
+//		try {
+//			System.out.println("removeall casella " + i + " " + j);
+//			HandleGraphics.getGraphics().getPlanciaNave().remove(g.getPlancia().getCaselleGrafica()[i - 1][j]);
+//			
+//			Thread.sleep(200);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		componenteGrafico.setBackground(Color.pink);
+//		componenteGrafico.setEnabled(true);
+//		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
+
+//		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
+//		ComponentiGiocoGrafica componente = g.getPlancia().getCaselleGrafica()[i][j];
+
 //		ComponentiGioco componenteGioco = g.getPlancia().getCaselle()[i][j];
-		g.getPlancia().getCaselle()[i][j].setConnettori();
+
 //		componenteGioco.setConnettori();
-		g.getPlancia().getCaselleGrafica()[i][j].setEnabled(true);
-		g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.pink);
+
+//		try {
+//			g.getPlancia().getCaselleGrafica()[i][j].setEnabled(true);
+//			g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.pink);
+//			Thread.sleep(200);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			System.out.println("plancia nave revalidate");
+//			HandleGraphics.getGraphics().getPlanciaNave().revalidate();
+//
+//			Thread.sleep(200);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//
+//			System.out.println(" plancia nave repaint");
+//			HandleGraphics.getGraphics().getPlanciaNave().repaint();
+//			Thread.sleep(200);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 //		componente.setEnabled(true);
 //		componente.setBackground(Color.pink);
 

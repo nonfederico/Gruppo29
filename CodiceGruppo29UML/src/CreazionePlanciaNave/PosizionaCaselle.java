@@ -1,5 +1,7 @@
 package CreazionePlanciaNave;
 
+import java.util.Arrays;
+
 import javax.swing.SwingWorker;
 
 import grafica.HandleGraphics;
@@ -14,7 +16,7 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 
 	public PosizionaCaselle(Giocatore p) {
 		this.giocatore = p;
-		HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(p, 2, 2);
+
 	}
 
 	statoPos posLati = statoPos.NORD;
@@ -30,16 +32,22 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 				// consideriamo lato nord
 				for (int j = 0; j < g.getPlancia().getCaselle()[i].length; j++) {
 					System.out.println("for 2");
-					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[0]
-							.equals(Connettori.NESSUNO)) { // se
+					System.out.println("ListaConnettori: "
+							+ Arrays.toString(g.getPlancia().getComponente(i, j).getListaConnettori()));
+					System.out.println("ListaAdiacenti: "
+							+ Arrays.toString(g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()));
+
+					if (g.getPlancia().getComponente(i, j).getListaConnettoriAdiacenti()[0] == Connettori.NESSUNO) { // se
 						System.out.println("confronto connettori");
 						// ci
 						// sono
 						// connettori
 						// adiacenti
-						if (!g.getPlancia().getComponente(i, j).getListaConnettori()[0].equals(Connettori.NESSUNO)) {// se
+						if (g.getPlancia().getComponente(i, j).getListaConnettori()[0] == Connettori.UNIVERSALE) {// se
 							System.out.println("setto casella");
-							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i, j);
+							HandleGraphics.getGraphics().getPlanciaNave().setCasellaSingola(g, i - 1, j);
+
+//							HandleGraphics.getGraphics().getPlanciaNave()
 							// ci
 							// sono
 							// connettori
@@ -111,6 +119,8 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 
 	@Override
 	protected Void doInBackground() throws Exception {
+		Thread.sleep(500);
+		HandleGraphics.getGraphics().DisabledAreaText("i quadrati rosa sono selezionabili per connettere i componenti");
 		posizioniSelezionabili(giocatore);
 		return null;
 	}
