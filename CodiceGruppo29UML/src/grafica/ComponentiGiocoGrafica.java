@@ -36,6 +36,7 @@ public class ComponentiGiocoGrafica extends JPanel {
 					return;
 				} else {
 					System.out.println("Hai cliccato su un pannello!");
+					// se clicco qui richiamo funzione per settare componente
 				}
 			}
 		});
