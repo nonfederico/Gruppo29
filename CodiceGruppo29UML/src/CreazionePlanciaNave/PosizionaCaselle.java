@@ -9,7 +9,7 @@ import player.Giocatore;
 
 public class PosizionaCaselle extends SwingWorker<Void, Void> {
 	enum statoPos {
-		NORD, EST, SUD, OVEST
+		NORD, EST, SUD, OVEST, ATTESA
 	}
 
 	private Giocatore giocatore;
@@ -113,6 +113,11 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 			}
 			return;
 		}
+		case ATTESA:
+//Se clicco su casella qui sento, aggiorno il componente e ritorno all'inizio di questo switch
+
+//			HandleGraphics.getGraphics().getPlanciaNave().setCasellaSelezionata(g,g.getPlancia().getcom     , getProgress(), null);
+
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + posLati);
 		}

@@ -98,6 +98,7 @@ public class GraficaPlanciaNave extends JPanel {
 			return;
 		}
 		ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
+		componenteGrafico.setGiocatore(g);
 		componenteGrafico.setCoordinate(i, j);
 		componenteGrafico.setBackground(Color.pink);
 		componenteGrafico.setEnabled(true);
@@ -123,6 +124,18 @@ public class GraficaPlanciaNave extends JPanel {
 			HandleGraphics.getGraphics().DisabledAreaText("Errore aggiornamento casella: " + e.getMessage());
 			e.printStackTrace();
 		}
+	}
+
+	/*
+	 * funzione da richiamare in posizionaCaselle -> ATTESA quando senti click di
+	 * selezione su una casella rosa
+	 */
+	public void setCasellaSelezionata(Giocatore g, int i, int j, ComponentiGioco comp) {
+		System.out.println("setto la casella selezionata");
+		g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.green); // imposto grafica casella
+		g.getPlancia().getCaselleGrafica()[i][j].setEnabled(false);
+		g.getPlancia().getCaselle()[i][j] = comp; // in quella posizione aggiungo nuovo componente
+
 	}
 
 	/*

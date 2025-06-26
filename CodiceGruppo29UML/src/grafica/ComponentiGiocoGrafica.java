@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import CreazioneGioco.Gioco;
+import CreazionePlanciaNave.ComponentiGioco;
+import player.Giocatore;
 
 public class ComponentiGiocoGrafica extends JPanel {
 
@@ -20,6 +22,7 @@ public class ComponentiGiocoGrafica extends JPanel {
 
 	private int[] posizioneComponente = { 0, 0 };
 	private String nome = "";
+	private Giocatore g;
 //	private JTextField nord = new JTextField(listaConnettori[0].toString()); ...
 
 	JPanel estOvest = new JPanel();
@@ -35,11 +38,18 @@ public class ComponentiGiocoGrafica extends JPanel {
 				if (!isEnabled()) {
 					return;
 				} else {
-					System.out.println("Hai cliccato su un pannello!");
+					System.out.println("Hai cliccato su un pannello! pos: " + (getPosX() + 1) + " " + (getPosY() + 1));
 					// se clicco qui richiamo funzione per settare componente
+					HandleGraphics.getGraphics().getPlanciaNave().setCasellaSelezionata(g, getPosX(), getPosY(),
+							new ComponentiGioco());
+
 				}
 			}
 		});
+	}
+
+	public void setGiocatore(Giocatore g) {
+		this.g = g;
 	}
 
 	public void setCoordinate(int riga, int colonna) {
@@ -49,6 +59,14 @@ public class ComponentiGiocoGrafica extends JPanel {
 
 	public int[] returnCoordinate() {
 		return posizioneComponente;
+	}
+
+	public int getPosX() {
+		return this.posizioneComponente[0];
+	}
+
+	public int getPosY() {
+		return this.posizioneComponente[1];
 	}
 
 	/*

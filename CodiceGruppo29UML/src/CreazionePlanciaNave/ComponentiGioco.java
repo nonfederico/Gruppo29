@@ -1,5 +1,8 @@
 package CreazionePlanciaNave;
 
+/**
+ * classe per componente di test
+ */
 public class ComponentiGioco {
 
 	/*
@@ -41,10 +44,6 @@ public class ComponentiGioco {
 		getListaConnettori()[1] = Connettori.UNIVERSALE;
 		getListaConnettori()[2] = Connettori.UNIVERSALE;
 		getListaConnettori()[3] = Connettori.UNIVERSALE;
-//		this.listaConnettori[0] = Connettori.UNIVERSALE;
-//		this.listaConnettori[1] = Connettori.UNIVERSALE;
-//		this.listaConnettori[2] = Connettori.UNIVERSALE;
-//		this.listaConnettori[3] = Connettori.UNIVERSALE;
 	}
 
 }
