@@ -63,6 +63,8 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			HandleGraphics.getGraphics().DisabledAreaText(
 					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
 			System.out.println("ciclo do");
+			System.out.println(Gioco.getlistaGiocatori().get(0).getNome());
+			// qui funziona
 			PosizionaCaselle posCaselle = PosizionaCaselle.getIstanzaPosCaselle(Gioco.getlistaGiocatori().get(0));
 //			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
 			posCaselle.execute();
