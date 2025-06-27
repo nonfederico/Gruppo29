@@ -49,6 +49,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 		switch (stati) {
 		case GIOCATORE1: {
 			System.out.println("sono in giocatore 1");
+			System.out.println("stato giocatore " + Gioco.getlistaGiocatori().get(0));
 
 			try {
 				System.out.println("sono in giocatore1 - ridisegno la plancia");

@@ -53,6 +53,10 @@ public class ComponentiGiocoGrafica extends JPanel {
 		this.g = g;
 	}
 
+	public String getGiocatore() {
+		return this.g.getNome();
+	}
+
 	public void setCoordinate(int riga, int colonna) {
 		this.posizioneComponente[0] = riga;
 		this.posizioneComponente[1] = colonna;

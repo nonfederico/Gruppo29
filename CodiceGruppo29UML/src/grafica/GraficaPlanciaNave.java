@@ -40,12 +40,12 @@ public class GraficaPlanciaNave extends JPanel {
 		return grafica;
 	}
 
-	public void getPosizioneDaModificare(Giocatore g, int i, int j) {
-		ComponentiGioco componenteGrafico = new ComponentiGioco();
-		g.getPlancia().getComponenteGrafica(i, j).setBackground(Color.pink);
-		g.getPlancia().getComponenteGrafica(i, j).setEnabled(true);
-
-	}
+//	public void getPosizioneDaModificare(Giocatore g, int i, int j) {
+//		ComponentiGioco componenteGrafico = new ComponentiGioco();
+//		g.getPlancia().getComponenteGrafica(i, j).setBackground(Color.pink);
+//		g.getPlancia().getComponenteGrafica(i, j).setEnabled(true);
+//
+//	}
 
 	/*
 	 * guarda CreazionePlanciaNave
@@ -98,11 +98,17 @@ public class GraficaPlanciaNave extends JPanel {
 			System.err.println("sto accedendo a una casella fuori dalla griglia");
 			return;
 		}
-		ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
-		componenteGrafico.setGiocatore(g);
-		componenteGrafico.setCoordinate(i, j);
-		componenteGrafico.setBackground(Color.pink);
-		componenteGrafico.setEnabled(true);
+//		ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
+//		ComponentiGiocoGrafica componenteGrafico = g.getPlancia().getCaselleGrafica()[i][j];
+		g.getPlancia().getCaselleGrafica()[i][j].setGiocatore(g);
+		g.getPlancia().getCaselleGrafica()[i][j].setCoordinate(i, j);
+		g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.pink);
+		g.getPlancia().getCaselleGrafica()[i][j].setEnabled(true);
+
+//		componenteGrafico.setGiocatore(g);
+//		componenteGrafico.setCoordinate(i, j);
+//		componenteGrafico.setBackground(Color.pink);
+//		componenteGrafico.setEnabled(true);
 
 		JPanel graficaCasella = HandleGraphics.getGraphics().getPlanciaNave();
 		int index = i * 5 + j; // per 5 perchè ci sono 5 colonne quidi 5 elementi per riga
@@ -112,12 +118,12 @@ public class GraficaPlanciaNave extends JPanel {
 				throw new CasellaNonPresenteException(index);
 			}
 
-			graficaCasella.remove(index);
-			graficaCasella.add(componenteGrafico, index);
+//			graficaCasella.remove(index);
+//			graficaCasella.add(componenteGrafico, index);
 
-			g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
-			graficaCasella.revalidate();
-			graficaCasella.repaint();
+//			g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
+//			graficaCasella.revalidate();
+//			graficaCasella.repaint();
 			System.out.println("òa casella aggiornata è la: [" + i + "," + j + "]");
 
 		} catch (CasellaNonPresenteException e) {
@@ -133,13 +139,43 @@ public class GraficaPlanciaNave extends JPanel {
 	 */
 	public void setCasellaSelezionata(Giocatore g, int i, int j, ComponentiGioco comp) {
 		JPanel graficaCasella = HandleGraphics.getGraphics().getPlanciaNave();
-		System.out.println("setto la casella selezionata");
-		g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.green); // imposto grafica casella
+		int index = i * 5 + j;
+
+//		ComponentiGiocoGrafica componenteGrafico = new ComponentiGiocoGrafica();
+//		ComponentiGiocoGrafica componenteGrafico = g.getPlancia().getCaselleGrafica()[i][j];
+//		componenteGrafico.setGiocatore(g);
+//		componenteGrafico.setCoordinate(i, j);
+		g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.magenta);
 		g.getPlancia().getCaselleGrafica()[i][j].setEnabled(false);
-		g.getPlancia().getCaselle()[i][j] = comp; // in quella posizione aggiungo nuovo componente
-		PosizionaCaselle.getIstanzaPosCaselle(g).posizioniSelezionabili(g);
+//		componenteGrafico.setBackground(Color.magenta);
+//		componenteGrafico.setEnabled(false);
+
+//		graficaCasella.remove(index);
+//		graficaCasella.add(componenteGrafico, index);
+
+//		g.getPlancia().getCaselleGrafica()[i][j] = componenteGrafico;
 		graficaCasella.revalidate();
 		graficaCasella.repaint();
+
+		System.out.println("la casella aggiornata a verde è la: [" + i + "," + j + "]");
+
+//		g.getPlancia().getCaselle()[i][j] = comp; // in quella posizione aggiungo nuovo componente
+		g.getPlancia().addComponente(comp, i, j);
+		System.out.println("STATO NORD (resetto macchina)");
+		PosizionaCaselle.getIstanzaPosCaselle(g).setStati();
+//
+//		// LANCIO il prossimo step della macchina a stati
+//		PosizionaCaselle.getIstanzaPosCaselle(g).posizioniSelezionabili(g);
+		g.getPlancia().getListaCaselle();
+//		System.out.println("stato nord");
+//		PosizionaCaselle.getIstanzaPosCaselle(g).setStati();
+//		System.out.println("chiamo posizioniSelezionabili");
+//		PosizionaCaselle.getIstanzaPosCaselle(g).posizioniSelezionabili(g);
+//		System.out.println("revalidate");
+//		graficaCasella.revalidate();
+//		System.out.println("repaint");
+//		graficaCasella.repaint();
+
 	}
 
 	/*

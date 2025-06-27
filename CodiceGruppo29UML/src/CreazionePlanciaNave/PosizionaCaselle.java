@@ -42,6 +42,11 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 		return null;
 	}
 
+	public void setStati() {
+		istanzaPosCaselle.posLati = statoPos.NORD;
+		System.out.println("lato: " + this.posLati);
+	}
+
 	/*
 	 * funzione che abilita le posizioni disponibili per posizionare i componenti
 	 * macchina a stati guarda un lato per ogni casella presente (NORD, EST, SUD,
@@ -125,12 +130,12 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 					}
 				}
 			}
-			return;
+			posLati = statoPos.ATTESA;
+			break;
 		}
-//		case ATTESA:
-//Se clicco su casella qui sento, aggiorno il componente e ritorno all'inizio di questo switch
-
-//			HandleGraphics.getGraphics().getPlanciaNave().setCasellaSelezionata(g,g.getPlancia().getcom     , getProgress(), null);
+		case ATTESA:
+			System.out.println("STATO ATTESA - attendi il click");
+			return;
 
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + posLati);

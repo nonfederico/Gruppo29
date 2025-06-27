@@ -62,12 +62,26 @@ public class PlanciaNave {
 		return this.caselle;
 	}
 
+	public void addComponente(ComponentiGioco gi, int i, int j) {
+		this.caselle[i][j] = gi;
+	}
+
 	public ComponentiGiocoGrafica getComponenteGrafica(int i, int j) {
 		return caselleGrafica[i][j];
 	}
 
 	public ComponentiGiocoGrafica[][] getCaselleGrafica() {
 		return this.caselleGrafica;
+	}
+
+	public void getListaCaselle() {
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				System.out.println("componente " + i + " " + caselleGrafica[i][j].returnCoordinate());
+				System.out.println("componente " + i + " " + caselleGrafica[i][j].getGiocatore());
+
+			}
+		}
 	}
 
 }
