@@ -1,3 +1,4 @@
+
 package CreazionePlanciaNave;
 
 import java.util.Arrays;
@@ -13,10 +14,23 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 	}
 
 	private Giocatore giocatore;
+	private static PosizionaCaselle istanzaPosCaselle;
 
-	public PosizionaCaselle(Giocatore p) {
+	private PosizionaCaselle(Giocatore p) {
 		this.giocatore = p;
+	}
 
+	private void setGiocatore(Giocatore g) {
+		this.giocatore = g;
+	}
+
+	public static PosizionaCaselle getIstanzaPosCaselle(Giocatore g) {
+		if (istanzaPosCaselle == null) {
+			istanzaPosCaselle = new PosizionaCaselle(g);
+		} else {
+			istanzaPosCaselle.setGiocatore(g);
+		}
+		return istanzaPosCaselle;
 	}
 
 	statoPos posLati = statoPos.NORD;
@@ -113,7 +127,7 @@ public class PosizionaCaselle extends SwingWorker<Void, Void> {
 			}
 			return;
 		}
-		case ATTESA:
+//		case ATTESA:
 //Se clicco su casella qui sento, aggiorno il componente e ritorno all'inizio di questo switch
 
 //			HandleGraphics.getGraphics().getPlanciaNave().setCasellaSelezionata(g,g.getPlancia().getcom     , getProgress(), null);

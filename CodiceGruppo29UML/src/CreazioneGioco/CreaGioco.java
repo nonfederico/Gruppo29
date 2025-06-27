@@ -22,7 +22,7 @@ public class CreaGioco implements GameState {
 	public void enter() {
 		try {
 			switchState();
-		} catch (MazzoInvalido | ErroreNome e) {
+		} catch (MazzoInvalido | ErroreNome e) { // multi catch
 			System.err.println("Errore creazione del gioco: " + e.getMessage());
 			HandleGraphics.getGraphics().DisabledAreaText("Errore creazione gioco: " + e.getMessage());
 			e.printStackTrace();

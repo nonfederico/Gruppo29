@@ -62,7 +62,8 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 			HandleGraphics.getGraphics().DisabledAreaText(
 					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
 			System.out.println("ciclo do");
-			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			PosizionaCaselle posCaselle = PosizionaCaselle.getIstanzaPosCaselle(Gioco.getlistaGiocatori().get(0));
+//			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
 			posCaselle.execute();
 			do {
 //				timer.execute();
@@ -99,7 +100,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 			HandleGraphics.getGraphics().DisabledAreaText(
 					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
-			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			PosizionaCaselle posCaselle = PosizionaCaselle.getIstanzaPosCaselle(Gioco.getlistaGiocatori().get(1));
 			posCaselle.execute();
 			do {
 //				timer.execute();
@@ -133,7 +134,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 			HandleGraphics.getGraphics().DisabledAreaText(
 					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
-			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			PosizionaCaselle posCaselle = PosizionaCaselle.getIstanzaPosCaselle(Gioco.getlistaGiocatori().get(2));
 			posCaselle.execute();
 			do {
 				finito = HandleGraphics.getGraphics().writeAreaText();
@@ -166,7 +167,7 @@ public class CreaPlanciaNaveGiocatori extends SwingWorker<Void, Void> {
 
 			HandleGraphics.getGraphics().DisabledAreaText(
 					"inserisci FINITO al termine della creazione.. spazi rosa per connettere componenti");
-			PosizionaCaselle posCaselle = new PosizionaCaselle(Gioco.getlistaGiocatori().get(0));
+			PosizionaCaselle posCaselle = PosizionaCaselle.getIstanzaPosCaselle(Gioco.getlistaGiocatori().get(3));
 			posCaselle.execute();
 			do {
 				finito = HandleGraphics.getGraphics().writeAreaText();

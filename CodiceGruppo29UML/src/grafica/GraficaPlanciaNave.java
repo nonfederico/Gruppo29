@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import CreazionePlanciaNave.ComponentiGioco;
+import CreazionePlanciaNave.PosizionaCaselle;
 import eccezioni.CasellaNonPresenteException;
 import player.Giocatore;
 
@@ -131,11 +132,14 @@ public class GraficaPlanciaNave extends JPanel {
 	 * selezione su una casella rosa
 	 */
 	public void setCasellaSelezionata(Giocatore g, int i, int j, ComponentiGioco comp) {
+		JPanel graficaCasella = HandleGraphics.getGraphics().getPlanciaNave();
 		System.out.println("setto la casella selezionata");
 		g.getPlancia().getCaselleGrafica()[i][j].setBackground(Color.green); // imposto grafica casella
 		g.getPlancia().getCaselleGrafica()[i][j].setEnabled(false);
 		g.getPlancia().getCaselle()[i][j] = comp; // in quella posizione aggiungo nuovo componente
-
+		PosizionaCaselle.getIstanzaPosCaselle(g).posizioniSelezionabili(g);
+		graficaCasella.revalidate();
+		graficaCasella.repaint();
 	}
 
 	/*

@@ -42,6 +42,7 @@ public class ComponentiGiocoGrafica extends JPanel {
 					// se clicco qui richiamo funzione per settare componente
 					HandleGraphics.getGraphics().getPlanciaNave().setCasellaSelezionata(g, getPosX(), getPosY(),
 							new ComponentiGioco());
+//					PosizionaCaselle.getIstanzaPosCaselle(g).posizioniSelezionabili(g);
 
 				}
 			}
